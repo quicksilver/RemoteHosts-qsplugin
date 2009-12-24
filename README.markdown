@@ -39,7 +39,7 @@ The Terminal in 10.5 and later recognizes `.term` files but handles them in such
 
 The three login actions are working.
 
-A preset catalog entry pulls hostnames from `~/.hosts` using the built-in file parser. This gets them each into the catalog as a simple string (most likely interpreted as a web site URL, but don't worry — it will be passed to the actions without the `http://`.)
+The core functionality is there for scanning hosts into the catalog (from `~/.hosts`).
 
 The optional username on “Connect as…” is not asked for in text mode automatically, so you'll have to hit `.` to switch.
 

@@ -37,58 +37,73 @@
     NSString *path = [self fullPathForSettings:settings];
     NSLog(@"Remote hosts loaded from: %@", path);
     
+    // a list of objects that will get returned (and added to the Catalog)
     NSMutableArray *objects=[NSMutableArray arrayWithCapacity:1];
+    
+    // somewhere to dump errors… I guess?
     NSError **e;
     
-    NSString *string = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:e];
-	return [self linesFromString:string atPath:path lineType:[settings objectForKey:@"lineContentType"]];
-//
-//    
-//    QSObject *newObject;
-//    
-//    newObject=[QSObject objectWithName:@"host1.skurfer.com"];
-//    //[newObject setName:@"Mandingo"];
-//    [newObject setObject:@"Remote Host host1" forType:QSRemoteHostsType];
-//    //[newObject setIdentifier:@"QSMachineObject0"];
-//    //[newObject setPrimaryType:QSRemoteHostsType];
-//    [newObject setIcon:[QSResourceManager imageNamed:@"com.apple.mac"]];
-//    [objects addObject:newObject];
-//
-//    newObject=[QSObject objectWithName:@"host2.skurfer.com"];
-//    [newObject setObject:@"Remote Host host2" forType:QSRemoteHostsType];
-//    [newObject setIcon:[QSResourceManager imageNamed:@"com.apple.mac"]];
-//    [objects addObject:newObject];
-//    
-//    return objects;
+    // read the entire file in as a string
+    NSString *hostsSource = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:e];
+    hostsSource = [hostsSource stringByReplacing:@"\n" with:@"\r"];
+	NSArray *lines = [hostsSource componentsSeparatedByString:@"\r"];
     
-}
-
-- (NSArray *)linesFromString:(NSString *)string atPath:(NSString *)path lineType:(NSString *)lineType
-{
-	NSMutableArray *array = [NSMutableArray arrayWithCapacity:1];
-	QSObject *newObject;
-	string = [string stringByReplacing:@"\n" with:@"\r"];
-	NSArray *lines = [string componentsSeparatedByString:@"\r"];
+    // read in hosts, one per line
+    QSObject *newObject;
 	NSString *line;
     int i;
 	for (i = 0; i<[lines count]; i++) {
 		line = [lines objectAtIndex:i];
-		if (lineType)
-			newObject = [QSObject objectWithType:lineType value:line name:line];
-		else
-			newObject = [QSObject objectWithString:line];
+        // skip empty lines
+        if (line == @"") {
+            continue;
+        }
+        // allow other metadata in the file, separated by whitespace
+        // hostname or FQDN should be the first thing on the line
+        NSArray *lineParts = [line componentsSeparatedByString:@" "];
+        NSString *host = [lineParts objectAtIndex:0];
+        // build a QSObject
+		newObject = [QSObject objectWithName:host];
+        [newObject setObject:@"Remote Host" forType:QSRemoteHostsType];
+        [newObject setIcon:[QSResourceManager imageNamed:@"com.apple.mac"]];
+        [newObject setIdentifier:host];
+        //[newObject setPrimaryType:QSRemoteHostsType];
         
-		[newObject setDetails:nil];
-        
-		if (path) {
-			[newObject setObject:[NSDictionary dictionaryWithObjectsAndKeys:path, @"path", [NSNumber numberWithInt:i+1] , @"line", nil]
-						 forType:@"QSLineReferenceType"];
-		}
+        // if the object is OK, add it to the list
 		if (newObject)
-			[array addObject:newObject];
+			[objects addObject:newObject];
 	}
-    return array;
+    
+    return objects;
+    
 }
+
+//- (NSArray *)linesFromString:(NSString *)string atPath:(NSString *)path lineType:(NSString *)lineType
+//{
+//	NSMutableArray *array = [NSMutableArray arrayWithCapacity:1];
+//	QSObject *newObject;
+//	string = [string stringByReplacing:@"\n" with:@"\r"];
+//	NSArray *lines = [string componentsSeparatedByString:@"\r"];
+//	NSString *line;
+//    int i;
+//	for (i = 0; i<[lines count]; i++) {
+//		line = [lines objectAtIndex:i];
+//		if (lineType)
+//			newObject = [QSObject objectWithType:lineType value:line name:line];
+//		else
+//			newObject = [QSObject objectWithString:line];
+//        
+//		[newObject setDetails:nil];
+//        
+//		if (path) {
+//			[newObject setObject:[NSDictionary dictionaryWithObjectsAndKeys:path, @"path", [NSNumber numberWithInt:i+1] , @"line", nil]
+//						 forType:@"QSLineReferenceType"];
+//		}
+//		if (newObject)
+//			[array addObject:newObject];
+//	}
+//    return array;
+//}
 
 
 - (NSString *)fullPathForSettings:(NSDictionary *)settings
