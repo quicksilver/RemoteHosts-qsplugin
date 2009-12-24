@@ -1,0 +1,85 @@
+// !$*UTF8*$!
+{
+	0259C573FE90428111CA0C5A /* Project object */ = {
+		activeBuildConfigurationName = Development;
+		activeTarget = 8D1AC9600486D14A00FE50C9 /* RemoteHosts */;
+		codeSenseManager = D46346BD10E3C34C0046E655 /* Code sense */;
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					341,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 283363984;
+			PBXWorkspaceStateSaveDate = 283363984;
+		};
+		perUserProjectItems = {
+			D46346C010E3C3580046E655 = D46346C010E3C3580046E655 /* PBXBookmark */;
+			D46346C110E3C3580046E655 = D46346C110E3C3580046E655 /* PlistBookmark */;
+			D4922A0E10E3CABD00E49984 /* PlistBookmark */ = D4922A0E10E3CABD00E49984 /* PlistBookmark */;
+		};
+		sourceControlManager = D46346BC10E3C34C0046E655 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	8D1AC9600486D14A00FE50C9 /* RemoteHosts */ = {
+		activeExec = 0;
+	};
+	D46346BC10E3C34C0046E655 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = "";
+			};
+		};
+	};
+	D46346BD10E3C34C0046E655 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	D46346C010E3C3580046E655 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 8D1AC9730486D14A00FE50C9 /* Info.plist */;
+	};
+	D46346C110E3C3580046E655 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D1AC9730486D14A00FE50C9 /* Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = /Users/rob/Coding/RemoteHosts/Info.plist;
+		rLen = 0;
+		rLoc = 9223372036854775808;
+	};
+	D4922A0E10E3CABD00E49984 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D1AC9730486D14A00FE50C9 /* Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = /Users/rob/Coding/RemoteHosts/Info.plist;
+		rLen = 0;
+		rLoc = 9223372036854775807;
+	};
+}
