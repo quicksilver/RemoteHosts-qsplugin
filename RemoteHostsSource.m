@@ -32,22 +32,75 @@
 
 - (NSArray *) objectsForEntry:(NSDictionary *)theEntry
 {
+    // use the plist settings to determine which file to load from
+    NSMutableDictionary *settings = [theEntry objectForKey:kItemSettings];
+    NSString *path = [self fullPathForSettings:settings];
+    NSLog(@"Remote hosts loaded from: %@", path);
+    
     NSMutableArray *objects=[NSMutableArray arrayWithCapacity:1];
-    QSObject *newObject;
+    NSError **e;
     
-    NSString *path = [@"~/.hosts" stringByStandardizingPath];
+    NSString *string = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:e];
+	return [self linesFromString:string atPath:path lineType:[settings objectForKey:@"lineContentType"]];
+//
+//    
+//    QSObject *newObject;
+//    
+//    newObject=[QSObject objectWithName:@"host1.skurfer.com"];
+//    //[newObject setName:@"Mandingo"];
+//    [newObject setObject:@"Remote Host host1" forType:QSRemoteHostsType];
+//    //[newObject setIdentifier:@"QSMachineObject0"];
+//    //[newObject setPrimaryType:QSRemoteHostsType];
+//    [newObject setIcon:[QSResourceManager imageNamed:@"com.apple.mac"]];
+//    [objects addObject:newObject];
+//
+//    newObject=[QSObject objectWithName:@"host2.skurfer.com"];
+//    [newObject setObject:@"Remote Host host2" forType:QSRemoteHostsType];
+//    [newObject setIcon:[QSResourceManager imageNamed:@"com.apple.mac"]];
+//    [objects addObject:newObject];
+//    
+//    return objects;
     
-    NSLog(@"Hosts scanned from: %@", path);
-    
-    newObject=[QSObject objectWithName:@"Mandingo"];
-    //[newObject setName:@"Mandingo"];
-    [newObject setObject:@"wanker.skurfer.com" forType:QSRemoteHostsType];
-    //[newObject setIdentifier:@"QSMachineObject0"];
-    //[newObject setPrimaryType:QSRemoteHostsType];
-    [objects addObject:newObject];
-    
-    return objects;
-    
+}
+
+- (NSArray *)linesFromString:(NSString *)string atPath:(NSString *)path lineType:(NSString *)lineType
+{
+	NSMutableArray *array = [NSMutableArray arrayWithCapacity:1];
+	QSObject *newObject;
+	string = [string stringByReplacing:@"\n" with:@"\r"];
+	NSArray *lines = [string componentsSeparatedByString:@"\r"];
+	NSString *line;
+    int i;
+	for (i = 0; i<[lines count]; i++) {
+		line = [lines objectAtIndex:i];
+		if (lineType)
+			newObject = [QSObject objectWithType:lineType value:line name:line];
+		else
+			newObject = [QSObject objectWithString:line];
+        
+		[newObject setDetails:nil];
+        
+		if (path) {
+			[newObject setObject:[NSDictionary dictionaryWithObjectsAndKeys:path, @"path", [NSNumber numberWithInt:i+1] , @"line", nil]
+						 forType:@"QSLineReferenceType"];
+		}
+		if (newObject)
+			[array addObject:newObject];
+	}
+    return array;
+}
+
+
+- (NSString *)fullPathForSettings:(NSDictionary *)settings
+{
+	if (![settings objectForKey:kItemPath]) return nil;
+	NSString *itemPath = [[settings objectForKey:kItemPath] stringByResolvingWildcardsInPath];
+	if (![itemPath isAbsolutePath]) {
+		NSString *bundlePath = [[QSReg bundleWithIdentifier:[settings objectForKey:kItemBaseBundle]] bundlePath];
+		if (!bundlePath) bundlePath = [[NSBundle mainBundle] bundlePath];
+		itemPath = [bundlePath stringByAppendingPathComponent:itemPath];
+	}
+	return itemPath;
 }
 
 // Object Handler Methods

@@ -12,5 +12,5 @@
 @interface QSRemoteHostsSource : QSObjectSource
 {
 }
+- (NSString *)fullPathForSettings:(NSDictionary *)settings;
 @end
-

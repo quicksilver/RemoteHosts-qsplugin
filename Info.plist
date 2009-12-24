@@ -15,7 +15,7 @@
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleVersion</key>
-	<string>4A</string>
+	<string>5F</string>
 	<key>NSPrincipalClass</key>
 	<string>RemoteHosts</string>
 	<key>QSActions</key>
@@ -66,7 +66,7 @@
 			<string>connectAsUser:withUserName:</string>
 			<key>directTypes</key>
 			<array>
-				<string>*</string>
+				<string>QSRemoteHostsType</string>
 			</array>
 			<key>displaysResult</key>
 			<false/>
@@ -76,7 +76,7 @@
 			<false/>
 			<key>indirectTypes</key>
 			<array>
-				<string>QSRemoteHostsType</string>
+				<string>NSString</string>
 			</array>
 			<key>name</key>
 			<string>Connect as… (SSH)</string>
@@ -114,6 +114,15 @@
 			<string>com.apple.xserve</string>
 			<key>name</key>
 			<string>Remote Hosts</string>
+			<key>settings</key>
+			<dict>
+				<key>parser</key>
+				<string>QSTextLineParser</string>
+				<key>path</key>
+				<string>~/.hosts</string>
+				<key>skipItem</key>
+				<true/>
+			</dict>
 			<key>source</key>
 			<string>QSRemoteHostsSource</string>
 		</dict>

@@ -11,7 +11,7 @@
 				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
 				PBXFileTableDataSourceColumnWidthsKey = (
 					20,
-					341,
+					565,
 					20,
 					48,
 					43,
@@ -26,6 +26,22 @@
 					PBXFileDataSource_Errors_ColumnID,
 					PBXFileDataSource_Warnings_ColumnID,
 					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXConfiguration.PBXFileTableDataSource3.PBXSymbolsDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXSymbolsDataSource_SymbolNameID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					16,
+					200,
+					50,
+					505,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXSymbolsDataSource_SymbolTypeIconID,
+					PBXSymbolsDataSource_SymbolNameID,
+					PBXSymbolsDataSource_SymbolTypeID,
+					PBXSymbolsDataSource_ReferenceNameID,
 				);
 			};
 			PBXPerProjectTemplateStateSaveDate = 283363984;
@@ -43,6 +59,27 @@
 	};
 	8D1AC9600486D14A00FE50C9 /* RemoteHosts */ = {
 		activeExec = 0;
+	};
+	BBF5817B0B1D9D84003CFF55 /* RemoteHostsAction.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {743, 936}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{459, 937}";
+		};
+	};
+	BBF581820B1D9DC3003CFF55 /* RemoteHostsSource.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {743, 460}}";
+			sepNavSelRange = "{290, 0}";
+			sepNavVisRange = "{0, 290}";
+		};
+	};
+	BBF581830B1D9DC3003CFF55 /* RemoteHostsSource.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {803, 1092}}";
+			sepNavSelRange = "{1531, 0}";
+			sepNavVisRange = "{624, 1500}";
+		};
 	};
 	D46346BC10E3C34C0046E655 /* Source Control */ = {
 		isa = PBXSourceControlManager;
