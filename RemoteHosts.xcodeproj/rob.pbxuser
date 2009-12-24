@@ -2,6 +2,7 @@
 {
 	0259C573FE90428111CA0C5A /* Project object */ = {
 		activeBuildConfigurationName = Development;
+		activeSDKPreference = macosx10.5;
 		activeTarget = 8D1AC9600486D14A00FE50C9 /* RemoteHosts */;
 		codeSenseManager = D46346BD10E3C34C0046E655 /* Code sense */;
 		perUserDictionary = {
@@ -34,6 +35,7 @@
 			D46346C010E3C3580046E655 = D46346C010E3C3580046E655 /* PBXBookmark */;
 			D46346C110E3C3580046E655 = D46346C110E3C3580046E655 /* PlistBookmark */;
 			D4922A0E10E3CABD00E49984 /* PlistBookmark */ = D4922A0E10E3CABD00E49984 /* PlistBookmark */;
+			D4922A1810E3CC6400E49984 /* PlistBookmark */ = D4922A1810E3CC6400E49984 /* PlistBookmark */;
 		};
 		sourceControlManager = D46346BC10E3C34C0046E655 /* Source Control */;
 		userBuildSettings = {
@@ -72,6 +74,17 @@
 		rLoc = 9223372036854775808;
 	};
 	D4922A0E10E3CABD00E49984 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D1AC9730486D14A00FE50C9 /* Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = /Users/rob/Coding/RemoteHosts/Info.plist;
+		rLen = 0;
+		rLoc = 9223372036854775807;
+	};
+	D4922A1810E3CC6400E49984 /* PlistBookmark */ = {
 		isa = PlistBookmark;
 		fRef = 8D1AC9730486D14A00FE50C9 /* Info.plist */;
 		fallbackIsa = PBXBookmark;
