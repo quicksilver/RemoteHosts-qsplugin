@@ -67,4 +67,18 @@
     return nil;
 }
 
+- (QSObject *)getIPForHost:(QSObject *)dObject
+{
+    // look up the IP address for this host and return it to the Quicksilver interface
+    NSString *hostName = [dObject stringValue];
+    NSHost *host = [NSHost hostWithName:hostName];
+    
+    // if there is no such host, return an error
+    if (!host) {
+        return [QSObject objectWithString:@"Host not found"];
+    } else {
+        return [QSObject objectWithString:[host address]];
+    }
+}
+
 @end

@@ -5,8 +5,7 @@ Given a text file with a list of machine names in it (either hostname or FQDN), 
   * Login
   * Login as root
   * Login as… (username in 3rd pane)
-
-All of those will use `ssh://[user@]host`.
+  * Get IP Address
 
 The plug-in will scan `~/.hosts` for a list of machines.
 

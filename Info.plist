@@ -15,7 +15,7 @@
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleVersion</key>
-	<string>69</string>
+	<string>6E</string>
 	<key>NSPrincipalClass</key>
 	<string>RemoteHosts</string>
 	<key>QSActions</key>
@@ -83,6 +83,25 @@
 			<key>validatesObjects</key>
 			<false/>
 		</dict>
+		<key>GetIPAddress</key>
+		<dict>
+			<key>actionClass</key>
+			<string>QSRemoteHostsAction</string>
+			<key>actionSelector</key>
+			<string>getIPForHost:</string>
+			<key>directTypes</key>
+			<array>
+				<string>QSRemoteHostsType</string>
+			</array>
+			<key>displaysResult</key>
+			<true/>
+			<key>icon</key>
+			<string>com.apple.Terminal</string>
+			<key>name</key>
+			<string>Get IP Address</string>
+			<key>validatesObjects</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>QSPlugIn</key>
 	<dict>
@@ -116,8 +135,6 @@
 			<string>Remote Hosts</string>
 			<key>settings</key>
 			<dict>
-				<key>parser</key>
-				<string>QSTextLineParser</string>
 				<key>path</key>
 				<string>~/.hosts</string>
 				<key>skipItem</key>

@@ -55,16 +55,17 @@
 	for (i = 0; i<[lines count]; i++) {
 		line = [lines objectAtIndex:i];
         // skip empty lines
-        if (line == @"") {
+        if ([line length] == 0) {
             continue;
         }
         // allow other metadata in the file, separated by whitespace
         // hostname or FQDN should be the first thing on the line
         NSArray *lineParts = [line componentsSeparatedByString:@" "];
         NSString *host = [lineParts objectAtIndex:0];
+        NSString *objectText = [NSString stringWithFormat:@"%@ (remote host)", host];
         // build a QSObject
 		newObject = [QSObject objectWithName:host];
-        [newObject setObject:@"Remote Host" forType:QSRemoteHostsType];
+        [newObject setObject:objectText forType:QSRemoteHostsType];
         [newObject setIcon:[QSResourceManager imageNamed:@"com.apple.mac"]];
         [newObject setIdentifier:host];
         //[newObject setPrimaryType:QSRemoteHostsType];
