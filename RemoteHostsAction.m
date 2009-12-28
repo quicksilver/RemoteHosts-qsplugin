@@ -25,6 +25,7 @@
     return nil;
 }
 
+// TODO look for "combined objects" (sent via the comma trick) and handle them
 - (QSObject *)connectAsDefault:(QSObject *)dObject
 {
     // launch SSH with system defaults
@@ -53,6 +54,7 @@
     return nil;
 }
 
+// TODO make the third pane come up in text entry mode by default
 - (QSObject *)connectAsUser:(QSObject *)dObject withUserName:(QSObject *)userName
 {
     // launch SSH with a user provided username
