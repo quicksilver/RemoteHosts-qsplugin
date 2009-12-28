@@ -25,11 +25,11 @@ I've kept a list of systems I use in `~/.hosts` for years to allow shell complet
   * There's no interface for configuring a custom catalog entry (to pull hosts from different files) although you can add them, and such entries will work if you edit them in `Catalog.plist` by hand.
   * Icons appear when items are first indexed, but then seem to get lost soon after. I'm also not 100% sure that remote hosts in the catalog are ever updated automatically.
   * There will eventually be an extended description in the `Info.plist` to provide basic features and documentation.
-  * The actions should apply to strings typed by hand or pasted (so you can type a hostname by hand if it wasn't scanned in from a file).
+  * The actions won't apply to strings typed by hand or pasted (so you can type a hostname by hand if it wasn't scanned in from a file). I wanted to give the actions some default priority to make them easier to access in the most common use cases. If I supported strings and assigned these priorities, the remote host actions would end up being higher than other defaults for things typed by hand, such as "Large Type". If enough people ask, I may add arbitrary string support and just set the priorities for all to 0.
 
 ### Possible Future Actions ###
 
-  * Connect with Remote Desktop
+  * Connect with MS Remote Desktop
   * Ping
   * Scan with nmap
   * Connect with FTP
@@ -38,6 +38,8 @@ I've kept a list of systems I use in `~/.hosts` for years to allow shell complet
 
 ### Pie-in-the-Sky Stuff ###
 
+  * Optionally use a the output from a command as the source instead of a file
+    (so you could pull a list of hostnames from LDAP, DNS, etc. in real-time)
   * Make each host object a target for file copy operations
     (resulting in an SCP to the default user's home directory?)
   * Right-arrow into a host to get a list of files (via SCP or SFTP?)
