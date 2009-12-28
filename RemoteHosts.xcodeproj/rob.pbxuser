@@ -1,7 +1,8 @@
 // !$*UTF8*$!
 {
 	0259C573FE90428111CA0C5A /* Project object */ = {
-		activeBuildConfigurationName = Development;
+		activeArchitecturePreference = i386;
+		activeBuildConfigurationName = Release;
 		activeSDKPreference = macosx10.5;
 		activeTarget = 8D1AC9600486D14A00FE50C9 /* RemoteHosts */;
 		codeSenseManager = D46346BD10E3C34C0046E655 /* Code sense */;
@@ -44,14 +45,18 @@
 					PBXSymbolsDataSource_ReferenceNameID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 283363984;
-			PBXWorkspaceStateSaveDate = 283363984;
+			PBXPerProjectTemplateStateSaveDate = 283728254;
+			PBXWorkspaceStateSaveDate = 283728254;
 		};
 		perUserProjectItems = {
-			D46346C010E3C3580046E655 = D46346C010E3C3580046E655 /* PBXBookmark */;
-			D46346C110E3C3580046E655 = D46346C110E3C3580046E655 /* PlistBookmark */;
-			D4922A0E10E3CABD00E49984 /* PlistBookmark */ = D4922A0E10E3CABD00E49984 /* PlistBookmark */;
-			D4922A1810E3CC6400E49984 /* PlistBookmark */ = D4922A1810E3CC6400E49984 /* PlistBookmark */;
+			D443C7AD10E934330048F122 /* PBXTextBookmark */ = D443C7AD10E934330048F122 /* PBXTextBookmark */;
+			D443C7AE10E934330048F122 /* PBXTextBookmark */ = D443C7AE10E934330048F122 /* PBXTextBookmark */;
+			D443C7B010E934330048F122 /* PlistBookmark */ = D443C7B010E934330048F122 /* PlistBookmark */;
+			D45268FA10E9585400B1FA75 /* PBXTextBookmark */ = D45268FA10E9585400B1FA75 /* PBXTextBookmark */;
+			D45268FC10E9585400B1FA75 /* PBXTextBookmark */ = D45268FC10E9585400B1FA75 /* PBXTextBookmark */;
+			D464A2A510E9599A006C9CC0 /* PBXTextBookmark */ = D464A2A510E9599A006C9CC0 /* PBXTextBookmark */;
+			D4922AE110E5BFBF00E49984 /* PBXTextBookmark */ = D4922AE110E5BFBF00E49984 /* PBXTextBookmark */;
+			D4922AE210E5BFBF00E49984 /* PBXTextBookmark */ = D4922AE210E5BFBF00E49984 /* PBXTextBookmark */;
 		};
 		sourceControlManager = D46346BC10E3C34C0046E655 /* Source Control */;
 		userBuildSettings = {
@@ -60,11 +65,18 @@
 	8D1AC9600486D14A00FE50C9 /* RemoteHosts */ = {
 		activeExec = 0;
 	};
+	BBF5817A0B1D9D84003CFF55 /* RemoteHostsAction.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {743, 410}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 341}";
+		};
+	};
 	BBF5817B0B1D9D84003CFF55 /* RemoteHostsAction.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {743, 936}}";
-			sepNavSelRange = "{0, 0}";
-			sepNavVisRange = "{459, 937}";
+			sepNavIntBoundsRect = "{{0, 0}, {747, 1729}}";
+			sepNavSelRange = "{2603, 0}";
+			sepNavVisRange = "{2389, 1111}";
 		};
 	};
 	BBF581820B1D9DC3003CFF55 /* RemoteHostsSource.h */ = {
@@ -76,10 +88,61 @@
 	};
 	BBF581830B1D9DC3003CFF55 /* RemoteHostsSource.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {803, 1092}}";
-			sepNavSelRange = "{1531, 0}";
-			sepNavVisRange = "{624, 1500}";
+			sepNavIntBoundsRect = "{{0, 0}, {761, 1768}}";
+			sepNavSelRange = "{2018, 0}";
+			sepNavVisRange = "{382, 1247}";
 		};
+	};
+	D443C7AD10E934330048F122 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E1EAB045068128A200774DFF /* RemoteHosts.m */;
+		name = "RemoteHosts.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 144;
+		vrLoc = 0;
+	};
+	D443C7AE10E934330048F122 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E1EAB047068128A800774DFF /* RemoteHosts.h */;
+		name = "RemoteHosts.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 157;
+		vrLoc = 0;
+	};
+	D443C7B010E934330048F122 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D1AC9730486D14A00FE50C9 /* Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = /Users/rob/Coding/RemoteHosts/Info.plist;
+		rLen = 0;
+		rLoc = 9223372036854775808;
+	};
+	D45268FA10E9585400B1FA75 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = BBF5817A0B1D9D84003CFF55 /* RemoteHostsAction.h */;
+		name = "RemoteHostsAction.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 341;
+		vrLoc = 0;
+	};
+	D45268FC10E9585400B1FA75 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = BBF5817B0B1D9D84003CFF55 /* RemoteHostsAction.m */;
+		name = "RemoteHostsAction.m: 97";
+		rLen = 0;
+		rLoc = 2603;
+		rType = 0;
+		vrLen = 1210;
+		vrLoc = 2389;
 	};
 	D46346BC10E3C34C0046E655 /* Source Control */ = {
 		isa = PBXSourceControlManager;
@@ -95,41 +158,48 @@
 		isa = PBXCodeSenseManager;
 		indexTemplatePath = "";
 	};
-	D46346C010E3C3580046E655 /* PBXBookmark */ = {
-		isa = PBXBookmark;
-		fRef = 8D1AC9730486D14A00FE50C9 /* Info.plist */;
-	};
-	D46346C110E3C3580046E655 /* PlistBookmark */ = {
-		isa = PlistBookmark;
-		fRef = 8D1AC9730486D14A00FE50C9 /* Info.plist */;
-		fallbackIsa = PBXBookmark;
-		isK = 0;
-		kPath = (
-		);
-		name = /Users/rob/Coding/RemoteHosts/Info.plist;
+	D464A2A510E9599A006C9CC0 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = BBF5817B0B1D9D84003CFF55 /* RemoteHostsAction.m */;
+		name = "RemoteHostsAction.m: 97";
 		rLen = 0;
-		rLoc = 9223372036854775808;
+		rLoc = 2603;
+		rType = 0;
+		vrLen = 1111;
+		vrLoc = 2389;
 	};
-	D4922A0E10E3CABD00E49984 /* PlistBookmark */ = {
-		isa = PlistBookmark;
-		fRef = 8D1AC9730486D14A00FE50C9 /* Info.plist */;
-		fallbackIsa = PBXBookmark;
-		isK = 0;
-		kPath = (
-		);
-		name = /Users/rob/Coding/RemoteHosts/Info.plist;
+	D4922AE110E5BFBF00E49984 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = BBF581820B1D9DC3003CFF55 /* RemoteHostsSource.h */;
+		name = "RemoteHostsSource.h: 17";
 		rLen = 0;
-		rLoc = 9223372036854775807;
+		rLoc = 290;
+		rType = 0;
+		vrLen = 290;
+		vrLoc = 0;
 	};
-	D4922A1810E3CC6400E49984 /* PlistBookmark */ = {
-		isa = PlistBookmark;
-		fRef = 8D1AC9730486D14A00FE50C9 /* Info.plist */;
-		fallbackIsa = PBXBookmark;
-		isK = 0;
-		kPath = (
-		);
-		name = /Users/rob/Coding/RemoteHosts/Info.plist;
+	D4922AE210E5BFBF00E49984 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = BBF581830B1D9DC3003CFF55 /* RemoteHostsSource.m */;
+		name = "RemoteHostsSource.m: 65";
 		rLen = 0;
-		rLoc = 9223372036854775807;
+		rLoc = 2018;
+		rType = 0;
+		vrLen = 1247;
+		vrLoc = 382;
+	};
+	E1EAB045068128A200774DFF /* RemoteHosts.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {743, 422}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 144}";
+		};
+	};
+	E1EAB047068128A800774DFF /* RemoteHosts.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {743, 422}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 157}";
+		};
 	};
 }
