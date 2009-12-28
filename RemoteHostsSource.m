@@ -46,14 +46,14 @@
     // read the entire file in as a string
     NSString *hostsSource = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:e];
     hostsSource = [hostsSource stringByReplacing:@"\n" with:@"\r"];
-	NSArray *lines = [hostsSource componentsSeparatedByString:@"\r"];
+    NSArray *lines = [hostsSource componentsSeparatedByString:@"\r"];
     
     // read in hosts, one per line
     QSObject *newObject;
-	NSString *line;
+    NSString *line;
     int i;
-	for (i = 0; i<[lines count]; i++) {
-		line = [lines objectAtIndex:i];
+    for (i = 0; i<[lines count]; i++) {
+        line = [lines objectAtIndex:i];
         // skip empty lines
         if ([line length] == 0) {
             continue;
@@ -62,18 +62,17 @@
         // hostname or FQDN should be the first thing on the line
         NSArray *lineParts = [line componentsSeparatedByString:@" "];
         NSString *host = [lineParts objectAtIndex:0];
-        NSString *objectText = [NSString stringWithFormat:@"%@ (remote host)", host];
         // build a QSObject
-		newObject = [QSObject objectWithName:host];
-        [newObject setObject:objectText forType:QSRemoteHostsType];
+        newObject = [QSObject objectWithName:host];
+        [newObject setObject:host forType:QSRemoteHostsType];
         [newObject setIcon:[QSResourceManager imageNamed:@"com.apple.mac"]];
         [newObject setIdentifier:host];
         //[newObject setPrimaryType:QSRemoteHostsType];
         
         // if the object is OK, add it to the list
-		if (newObject)
-			[objects addObject:newObject];
-	}
+        if (newObject)
+            [objects addObject:newObject];
+    }
     
     return objects;
     
