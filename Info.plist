@@ -15,7 +15,7 @@
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleVersion</key>
-	<string>78</string>
+	<string>9E</string>
 	<key>NSPrincipalClass</key>
 	<string>RemoteHosts</string>
 	<key>QSActions</key>
@@ -37,7 +37,7 @@
 			<key>name</key>
 			<string>SSH to host</string>
 			<key>precedence</key>
-			<string>4</string>
+			<string>2</string>
 			<key>validatesObjects</key>
 			<false/>
 		</dict>
@@ -58,7 +58,7 @@
 			<key>name</key>
 			<string>SSH to host as root</string>
 			<key>precedence</key>
-			<string>2</string>
+			<string>1</string>
 			<key>validatesObjects</key>
 			<false/>
 		</dict>
@@ -85,7 +85,7 @@
 			<key>name</key>
 			<string>SSH to host as…</string>
 			<key>precedence</key>
-			<string>2</string>
+			<string>1</string>
 			<key>validatesObjects</key>
 			<false/>
 		</dict>
@@ -106,7 +106,7 @@
 			<key>name</key>
 			<string>Telnet to host</string>
 			<key>precedence</key>
-			<string>2</string>
+			<string>0</string>
 			<key>validatesObjects</key>
 			<false/>
 		</dict>
@@ -133,7 +133,7 @@
 			<key>name</key>
 			<string>Telnet to host on port…</string>
 			<key>precedence</key>
-			<string>2</string>
+			<string>0</string>
 			<key>validatesObjects</key>
 			<false/>
 		</dict>
@@ -150,11 +150,11 @@
 			<key>displaysResult</key>
 			<true/>
 			<key>icon</key>
-			<string>com.apple.Terminal</string>
+			<string>ToolbarInfo</string>
 			<key>name</key>
 			<string>Get IP Address</string>
 			<key>precedence</key>
-			<string>2</string>
+			<string>0</string>
 			<key>validatesObjects</key>
 			<false/>
 		</dict>
@@ -171,6 +171,8 @@
 		</array>
 		<key>description</key>
 		<string>Provides actions that can be taken on computers</string>
+		<key>extendedDescription</key>
+		<string>TBD</string>
 		<key>icon</key>
 		<string>com.apple.xserve</string>
 		<key>qsversion</key>
