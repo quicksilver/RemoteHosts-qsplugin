@@ -7,6 +7,8 @@
 
 #import "RemoteHostsAction.h"
 
+//# define kConnectUsingSSHuser @"ConnectUsingSSHuser"
+
 @implementation QSRemoteHostsAction
 
 - (int *)launchConnection:(NSString *)SSHinetloc
@@ -54,7 +56,6 @@
     return nil;
 }
 
-// TODO make the third pane come up in text entry mode by default
 - (QSObject *)connectAsUser:(QSObject *)dObject withUserName:(QSObject *)userName
 {
     // launch SSH with a user provided username
@@ -81,6 +82,19 @@
     } else {
         return [QSObject objectWithString:[host address]];
     }
+}
+
+// declaring this here will cause the third pane to pop up in text-entry mode by default
+- (NSArray *)validIndirectObjectsForAction:(NSString *)action directObject:(QSObject *)dObject{
+
+    // only for certain actions (make sure to #define them above)
+//	if ([action isEqualToString:kConnectUsingSSHuser]){
+//		return [NSArray arrayWithObject: [QSObject textProxyObjectWithDefaultValue:@""]];
+//	}
+//	return nil;
+    
+    // unconditionally (should be fine if all actions expect text in the third pane, right?)
+    return [NSArray arrayWithObject: [QSObject textProxyObjectWithDefaultValue:@""]];
 }
 
 @end

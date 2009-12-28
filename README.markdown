@@ -17,7 +17,6 @@ I have over 100 systems that I connect to via SSH on a regular basis -- sometime
 
 ### Known Issues and To Do Items ###
 
-  * The third pane doesn't come up in text-entry mode by default.
   * The "comma trick" doesn't work (for connecting to several hosts at once).
   * There's no interface for configuring a custom catalog entry (to pull hosts from different files) although you can add them, and such entries will work if you edit them in `Catalog.plist` by hand.
   * Icons appear when items are first indexed, but then seem to get lost soon after. I'm also not 100% sure that remote hosts in the catalog are ever updated automatically.
