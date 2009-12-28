@@ -32,14 +32,13 @@
     // launch SSH with system defaults
     // equivalent to running `ssh hostname` on the command-line
     QSObject *result;
-    NSString *dWithSSH;
     
     for(NSString *remoteHost in [dObject arrayForType:QSRemoteHostsType])
     {
         //NSLog(@"Connection for %@", remoteHost);
-        dWithSSH = [NSString stringWithFormat:@"ssh://%@",remoteHost];
         
-        [self launchConnection:dWithSSH];
+        // launch an SSH connection
+        [self launchConnection:[NSString stringWithFormat:@"ssh://%@",remoteHost]];
     
     }
     return nil;
@@ -106,6 +105,12 @@
     // look up the IP address for this host and return it to the Quicksilver interface
     NSString *hostName = [dObject stringValue];
     NSHost *host = [NSHost hostWithName:hostName];
+    
+    // this action doesn't support the comma-trick, but we'll check for attempts to use it so the error can be more useful
+    if([[dObject stringValue] isEqualToString:@"combined objects"])
+    {
+        return [QSObject objectWithString:@"Multiple hosts unsupported"];
+    }
     
     // if there is no such host, return an error
     if (!host) {
