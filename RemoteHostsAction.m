@@ -70,6 +70,34 @@
     return nil;
 }
 
+- (QSObject *)connectWithTelnet:(QSObject *)dObject
+{
+    // launch Telnet connection
+    // equivalent to running `telnet hostname` on the command-line
+    QSObject *result;
+    NSString *dWithTelnet;
+    
+    dWithTelnet = [NSString stringWithFormat:@"telnet://%@",[dObject stringValue]];
+    
+    [self launchConnection:dWithTelnet];
+    
+    return nil;
+}
+
+- (QSObject *)connectToPortWithTelnet:(QSObject *)dObject withPortNumber:(QSObject *)port
+{
+    // launch Telnet connection to a specific port
+    // equivalent to running `telnet hostname port` on the command-line
+    QSObject *result;
+    NSString *dWithTelnet;
+    
+    dWithTelnet = [NSString stringWithFormat:@"telnet://%@:%@",[dObject stringValue],[port stringValue]];
+    
+    [self launchConnection:dWithTelnet];
+    
+    return nil;
+}
+
 - (QSObject *)getIPForHost:(QSObject *)dObject
 {
     // look up the IP address for this host and return it to the Quicksilver interface

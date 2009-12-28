@@ -15,7 +15,7 @@
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleVersion</key>
-	<string>76</string>
+	<string>78</string>
 	<key>NSPrincipalClass</key>
 	<string>RemoteHosts</string>
 	<key>QSActions</key>
@@ -35,7 +35,7 @@
 			<key>icon</key>
 			<string>com.apple.Terminal</string>
 			<key>name</key>
-			<string>Connect (SSH)</string>
+			<string>SSH to host</string>
 			<key>precedence</key>
 			<string>4</string>
 			<key>validatesObjects</key>
@@ -56,7 +56,7 @@
 			<key>icon</key>
 			<string>com.apple.Terminal</string>
 			<key>name</key>
-			<string>Connect as root (SSH)</string>
+			<string>SSH to host as root</string>
 			<key>precedence</key>
 			<string>2</string>
 			<key>validatesObjects</key>
@@ -83,7 +83,55 @@
 				<string>NSString</string>
 			</array>
 			<key>name</key>
-			<string>Connect as… (SSH)</string>
+			<string>SSH to host as…</string>
+			<key>precedence</key>
+			<string>2</string>
+			<key>validatesObjects</key>
+			<false/>
+		</dict>
+		<key>ConnectUsingTelnet</key>
+		<dict>
+			<key>actionClass</key>
+			<string>QSRemoteHostsAction</string>
+			<key>actionSelector</key>
+			<string>connectWithTelnet:</string>
+			<key>directTypes</key>
+			<array>
+				<string>QSRemoteHostsType</string>
+			</array>
+			<key>displaysResult</key>
+			<false/>
+			<key>icon</key>
+			<string>com.apple.Terminal</string>
+			<key>name</key>
+			<string>Telnet to host</string>
+			<key>precedence</key>
+			<string>2</string>
+			<key>validatesObjects</key>
+			<false/>
+		</dict>
+		<key>ConnectUsingTelnetPort</key>
+		<dict>
+			<key>actionClass</key>
+			<string>QSRemoteHostsAction</string>
+			<key>actionSelector</key>
+			<string>connectToPortWithTelnet:withPortNumber:</string>
+			<key>directTypes</key>
+			<array>
+				<string>QSRemoteHostsType</string>
+			</array>
+			<key>displaysResult</key>
+			<false/>
+			<key>icon</key>
+			<string>com.apple.Terminal</string>
+			<key>indirectOptional</key>
+			<false/>
+			<key>indirectTypes</key>
+			<array>
+				<string>NSString</string>
+			</array>
+			<key>name</key>
+			<string>Telnet to host on port…</string>
 			<key>precedence</key>
 			<string>2</string>
 			<key>validatesObjects</key>
@@ -105,6 +153,8 @@
 			<string>com.apple.Terminal</string>
 			<key>name</key>
 			<string>Get IP Address</string>
+			<key>precedence</key>
+			<string>2</string>
 			<key>validatesObjects</key>
 			<false/>
 		</dict>
