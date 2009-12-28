@@ -15,7 +15,7 @@
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleVersion</key>
-	<string>6E</string>
+	<string>73</string>
 	<key>NSPrincipalClass</key>
 	<string>RemoteHosts</string>
 	<key>QSActions</key>
@@ -36,6 +36,8 @@
 			<string>com.apple.Terminal</string>
 			<key>name</key>
 			<string>Connect (SSH)</string>
+			<key>precedence</key>
+			<string>4</string>
 			<key>validatesObjects</key>
 			<false/>
 		</dict>
@@ -55,6 +57,8 @@
 			<string>com.apple.Terminal</string>
 			<key>name</key>
 			<string>Connect as root (SSH)</string>
+			<key>precedence</key>
+			<string>2</string>
 			<key>validatesObjects</key>
 			<false/>
 		</dict>
@@ -80,6 +84,8 @@
 			</array>
 			<key>name</key>
 			<string>Connect as… (SSH)</string>
+			<key>precedence</key>
+			<string>2</string>
 			<key>validatesObjects</key>
 			<false/>
 		</dict>
@@ -165,20 +171,6 @@
 		<dict>
 			<key>QSRemoteHostsSource</key>
 			<string>QSRemoteHostsSource</string>
-		</dict>
-		<key>QSPreferencePanes</key>
-		<dict>
-			<key>RemoteHosts_PrefPane</key>
-			<dict>
-				<key>class</key>
-				<string>QSPreferencePane</string>
-				<key>description</key>
-				<string>Preferences</string>
-				<key>icon</key>
-				<string></string>
-				<key>name</key>
-				<string>Remote Hosts</string>
-			</dict>
 		</dict>
 	</dict>
 	<key>QSRequirementsTemplate</key>
