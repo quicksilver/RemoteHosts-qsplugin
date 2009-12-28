@@ -10,6 +10,7 @@
 #import "RemoteHostsAction.h"
 
 #define kRemoteHostsAction @"RemoteHostsAction"
+#define QSRemoteHostsType @"QSRemoteHostsType"
 
 @interface QSRemoteHostsAction : QSActionProvider
 {

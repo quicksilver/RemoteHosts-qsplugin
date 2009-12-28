@@ -7,7 +7,7 @@
 
 #import "RemoteHostsAction.h"
 
-//# define kConnectUsingSSHuser @"ConnectUsingSSHuser"
+# define kConnectUsingSSHuser @"ConnectUsingSSHuser"
 
 @implementation QSRemoteHostsAction
 
@@ -27,7 +27,6 @@
     return nil;
 }
 
-// TODO look for "combined objects" (sent via the comma trick) and handle them
 - (QSObject *)connectAsDefault:(QSObject *)dObject
 {
     // launch SSH with system defaults
@@ -35,10 +34,14 @@
     QSObject *result;
     NSString *dWithSSH;
     
-    dWithSSH = [NSString stringWithFormat:@"ssh://%@",[dObject stringValue]];
+    for(NSString *remoteHost in [dObject arrayForType:QSRemoteHostsType])
+    {
+        //NSLog(@"Connection for %@", remoteHost);
+        dWithSSH = [NSString stringWithFormat:@"ssh://%@",remoteHost];
+        
+        [self launchConnection:dWithSSH];
     
-    [self launchConnection:dWithSSH];
-    
+    }
     return nil;
 }
 
@@ -113,16 +116,18 @@
 }
 
 // declaring this here will cause the third pane to pop up in text-entry mode by default
-- (NSArray *)validIndirectObjectsForAction:(NSString *)action directObject:(QSObject *)dObject{
+- (NSArray *)validIndirectObjectsForAction:(NSString *)action directObject:(QSObject *)dObject
+{
 
     // only for certain actions (make sure to #define them above)
-//	if ([action isEqualToString:kConnectUsingSSHuser]){
-//		return [NSArray arrayWithObject: [QSObject textProxyObjectWithDefaultValue:@""]];
-//	}
-//	return nil;
+    if ([action isEqualToString:kConnectUsingSSHuser]){
+        return [NSArray arrayWithObject: [QSObject textProxyObjectWithDefaultValue:NSUserName()]];
+    }
+    // text-entry mode with an empty string
+    return [NSArray arrayWithObject: [QSObject textProxyObjectWithDefaultValue:@""]];
     
     // unconditionally (should be fine if all actions expect text in the third pane, right?)
-    return [NSArray arrayWithObject: [QSObject textProxyObjectWithDefaultValue:@""]];
+    //return [NSArray arrayWithObject: [QSObject textProxyObjectWithDefaultValue:@""]];
 }
 
 @end
