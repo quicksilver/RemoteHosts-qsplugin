@@ -15,7 +15,7 @@
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleVersion</key>
-	<string>BB</string>
+	<string>BE</string>
 	<key>NSPrincipalClass</key>
 	<string>RemoteHosts</string>
 	<key>QSActions</key>
@@ -137,6 +137,27 @@
 			<key>validatesObjects</key>
 			<false/>
 		</dict>
+		<key>ConnectUsingVNC</key>
+		<dict>
+			<key>actionClass</key>
+			<string>QSRemoteHostsAction</string>
+			<key>actionSelector</key>
+			<string>connectWithVNC:</string>
+			<key>directTypes</key>
+			<array>
+				<string>QSRemoteHostsType</string>
+			</array>
+			<key>displaysResult</key>
+			<false/>
+			<key>icon</key>
+			<string>com.apple.ScreenSharing</string>
+			<key>name</key>
+			<string>Screen Sharing (VNC)</string>
+			<key>precedence</key>
+			<string>0</string>
+			<key>validatesObjects</key>
+			<false/>
+		</dict>
 		<key>GetIPAddress</key>
 		<dict>
 			<key>actionClass</key>
@@ -179,7 +200,8 @@
 &lt;li&gt;SSH to host as root&lt;/li&gt;
 &lt;li&gt;SSH to host as… (username in 3rd pane)&lt;/li&gt;
 &lt;li&gt;Telnet to host&lt;/li&gt;
-&lt;li&gt;Telnet to host on port…&lt;/li&gt;
+&lt;li&gt;Telnet to host on port… (port number in 3rd pane)&lt;/li&gt;
+&lt;li&gt;Screen Sharing (VNC)&lt;/li&gt;
 &lt;li&gt;Get IP Address&lt;/li&gt;
 &lt;/ul&gt;
 

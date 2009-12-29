@@ -11,18 +11,18 @@
 
 @implementation QSRemoteHostsAction
 
-- (int *)launchConnection:(NSString *)SSHinetloc
+- (int *)launchConnection:(NSString *)inetloc
 {
     /*
-     This is a convenience method for the three actions below.
-     The process of connecting is identical for all three, once the location
-     string has ben sorted out.
+     This is a convenience method for the actions below.
+     The process of connecting is identical, once the location
+     string has been sorted out.
     */
-    NSURL *url = [NSURL URLWithString:SSHinetloc];
+    NSURL *url = [NSURL URLWithString:inetloc];
     if (url)
         [[NSWorkspace sharedWorkspace] openURL:url];
     else
-        NSLog(@"error with url: %@", SSHinetloc);
+        NSLog(@"error with location: %@", inetloc);
     
     return nil;
 }
@@ -103,6 +103,20 @@
         
         // launch a Telnet connection
         [self launchConnection:[NSString stringWithFormat:@"telnet://%@:%@",remoteHost,[port stringValue]]];
+    
+    }
+    return nil;
+}
+
+- (QSObject *)connectWithVNC:(QSObject *)dObject
+{
+    // launch Screen Sharing and connect to host
+    
+    for(NSString *remoteHost in [dObject arrayForType:QSRemoteHostsType])
+    {
+        //NSLog(@"Connection for %@", remoteHost);
+        
+        [self launchConnection:[NSString stringWithFormat:@"vnc://%@",remoteHost]];
     
     }
     return nil;

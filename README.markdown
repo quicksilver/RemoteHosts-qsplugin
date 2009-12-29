@@ -6,7 +6,8 @@ Given a text file with a list of machine names in it (either hostname or Fully Q
   * SSH to host as root
   * SSH to host as… (username in 3rd pane)
   * Telnet to host
-  * Telnet to host on port…
+  * Telnet to host on port… (port number in 3rd pane)
+  * Screen Sharing (VNC)
   * Get IP Address
 
 The plug-in will scan `~/.hosts` for a list of machines by default. The file is treated as UTF-8. I'm not sure what will happen if it's encoded otherwise. The file should contain one host per line. The hostname or FQDN should be the first thing on each line, but other metadata is allowed (separated by whitespace). Additional metadata is currently ignored by the plug-in. An example might look like this:
@@ -30,7 +31,6 @@ I've kept a list of systems I use in `~/.hosts` for years to allow shell complet
 
   * There's no interface for configuring a custom catalog entry (to pull hosts from different files) although you can add them, and such entries will work if you edit them in `Catalog.plist` by hand.
   * Icons appear when items are first indexed, but then seem to get lost soon after.
-  * The Remote Hosts catalog entries are rescanned on every update for now. Not a huge deal.
   * The actions won't apply to strings typed by hand or pasted (so you can type a hostname by hand if it wasn't scanned in from a file). I wanted to give the actions some default priority to make them easier to access in the most common use cases. If I supported strings and assigned these priorities, the remote host actions would end up being higher than other defaults for things typed by hand, such as "Large Type". If enough people ask, I may add arbitrary string support and just set the priorities for all to 0.
 
 ### Possible Future Actions ###
@@ -39,7 +39,6 @@ I've kept a list of systems I use in `~/.hosts` for years to allow shell complet
   * Ping
   * Scan with nmap
   * Connect with FTP
-  * Connect with VNC
   * Etc.
 
 ### Pie-in-the-Sky Stuff ###
