@@ -7,7 +7,6 @@
 
 #import <QSCore/QSObject.h>
 #import <QSCore/QSActionProvider.h>
-#import "RemoteHostsAction.h"
 
 #define kRemoteHostsAction @"RemoteHostsAction"
 #define QSRemoteHostsType @"QSRemoteHostsType"

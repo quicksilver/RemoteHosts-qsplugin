@@ -4,9 +4,9 @@ Given a text file with a list of machine names in it (either hostname or Fully Q
 
   * SSH to host
   * SSH to host as root
-  * SSH to host as… (username in 3rd pane)
+  * SSH to host as… [username in 3rd pane]
   * Telnet to host
-  * Telnet to host on port… (port number in 3rd pane)
+  * Telnet to host on port… [port number in 3rd pane]
   * Screen Sharing (VNC)
   * Get IP Address
 
