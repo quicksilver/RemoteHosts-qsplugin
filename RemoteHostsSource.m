@@ -10,19 +10,25 @@
 
 
 @implementation QSRemoteHostsSource
+// if this returns FALSE, the source will be rescanned
+// if it returns TRUE, the source is left alone
+// unconditional returns will cause it to either be scanned every time, or never
+// TODO add logic so this only gets rescanned if the source file is updated
 - (BOOL)indexIsValidFromDate:(NSDate *)indexDate forEntry:(NSDictionary *)theEntry{
-    return YES;
+    return NO;
 }
 
+// show this on the drop-down for adding custom catalog entries?
 - (BOOL)isVisibleSource
 {
-    return YES;
+    return NO;
 }
 
-- (NSImage *) iconForEntry:(NSDictionary *)dict
-{
-    return [QSResourceManager imageNamed:@"com.apple.mac"];
-}
+// this doesn't seem to do anything (setIcon is used on each object as it's created)
+// - (NSImage *) iconForEntry:(NSDictionary *)dict
+// {
+//     return [QSResourceManager imageNamed:@"com.apple.mac"];
+// }
 
 // Return a unique identifier for an object (if you haven't assigned one before)
 //- (NSString *)identifierForObject:(id <QSObject>)object
@@ -81,6 +87,7 @@
     
 }
 
+// this method gets the path for a file to scan from an Info.plist
 - (NSString *)fullPathForSettings:(NSDictionary *)settings
 {
     if (![settings objectForKey:kItemPath]) return nil;
