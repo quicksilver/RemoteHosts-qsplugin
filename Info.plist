@@ -15,7 +15,7 @@
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleVersion</key>
-	<string>9E</string>
+	<string>B1</string>
 	<key>NSPrincipalClass</key>
 	<string>RemoteHosts</string>
 	<key>QSActions</key>
@@ -172,7 +172,25 @@
 		<key>description</key>
 		<string>Provides actions that can be taken on computers</string>
 		<key>extendedDescription</key>
-		<string>TBD</string>
+		<string>&lt;p&gt;Given a text file with a list of machine names in it (either hostname or Fully Qualified Domain Name), this plug-in indexes them as "remote host" objects and provides the following actions:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;SSH to host&lt;/li&gt;
+&lt;li&gt;SSH to host as root&lt;/li&gt;
+&lt;li&gt;SSH to host as… (username in 3rd pane)&lt;/li&gt;
+&lt;li&gt;Telnet to host&lt;/li&gt;
+&lt;li&gt;Telnet to host on port…&lt;/li&gt;
+&lt;li&gt;Get IP Address&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The plug-in will scan &lt;code&gt;~/.hosts&lt;/code&gt; for a list of machines by default. The file is treated as UTF-8. I'm not sure what will happen if it's encoded otherwise. The file should contain one host per line. The hostname or FQDN should be the first thing on each line, but other metadata is allowed (separated by whitespace). Additional metadata is currently ignored by the plug-in. An example might look like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;server1.example.com linux
+server2 solaris
+windows.example.com skip
+ahostiuse
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;After installation, you may want to check the precedence of the actions and make sure they're to your liking. The actions only apply to "remote hosts" in the catalog, so moving them up rather high on the list shouldn't interfere with other tasks.&lt;/p&gt;</string>
 		<key>icon</key>
 		<string>com.apple.xserve</string>
 		<key>qsversion</key>
