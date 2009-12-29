@@ -62,11 +62,14 @@
         // hostname or FQDN should be the first thing on the line
         NSArray *lineParts = [line componentsSeparatedByString:@" "];
         NSString *host = [lineParts objectAtIndex:0];
+        NSString *label = [NSString stringWithFormat:@"%@ (remote host)", host];
+        NSString *ident = [NSString stringWithFormat:@"remote-host-%@", host];
         // build a QSObject
         newObject = [QSObject objectWithName:host];
+        [newObject setIdentifier:ident];
         [newObject setObject:host forType:QSRemoteHostsType];
         [newObject setIcon:[QSResourceManager imageNamed:@"com.apple.mac"]];
-        [newObject setIdentifier:host];
+        [newObject setLabel:label];
         //[newObject setPrimaryType:QSRemoteHostsType];
         
         // if the object is OK, add it to the list
@@ -78,44 +81,16 @@
     
 }
 
-//- (NSArray *)linesFromString:(NSString *)string atPath:(NSString *)path lineType:(NSString *)lineType
-//{
-//	NSMutableArray *array = [NSMutableArray arrayWithCapacity:1];
-//	QSObject *newObject;
-//	string = [string stringByReplacing:@"\n" with:@"\r"];
-//	NSArray *lines = [string componentsSeparatedByString:@"\r"];
-//	NSString *line;
-//    int i;
-//	for (i = 0; i<[lines count]; i++) {
-//		line = [lines objectAtIndex:i];
-//		if (lineType)
-//			newObject = [QSObject objectWithType:lineType value:line name:line];
-//		else
-//			newObject = [QSObject objectWithString:line];
-//        
-//		[newObject setDetails:nil];
-//        
-//		if (path) {
-//			[newObject setObject:[NSDictionary dictionaryWithObjectsAndKeys:path, @"path", [NSNumber numberWithInt:i+1] , @"line", nil]
-//						 forType:@"QSLineReferenceType"];
-//		}
-//		if (newObject)
-//			[array addObject:newObject];
-//	}
-//    return array;
-//}
-
-
 - (NSString *)fullPathForSettings:(NSDictionary *)settings
 {
-	if (![settings objectForKey:kItemPath]) return nil;
-	NSString *itemPath = [[settings objectForKey:kItemPath] stringByResolvingWildcardsInPath];
-	if (![itemPath isAbsolutePath]) {
-		NSString *bundlePath = [[QSReg bundleWithIdentifier:[settings objectForKey:kItemBaseBundle]] bundlePath];
-		if (!bundlePath) bundlePath = [[NSBundle mainBundle] bundlePath];
-		itemPath = [bundlePath stringByAppendingPathComponent:itemPath];
-	}
-	return itemPath;
+    if (![settings objectForKey:kItemPath]) return nil;
+    NSString *itemPath = [[settings objectForKey:kItemPath] stringByResolvingWildcardsInPath];
+    if (![itemPath isAbsolutePath]) {
+        NSString *bundlePath = [[QSReg bundleWithIdentifier:[settings objectForKey:kItemBaseBundle]] bundlePath];
+        if (!bundlePath) bundlePath = [[NSBundle mainBundle] bundlePath];
+        itemPath = [bundlePath stringByAppendingPathComponent:itemPath];
+    }
+    return itemPath;
 }
 
 // Object Handler Methods
@@ -125,9 +100,9 @@
     [object setIcon:nil]; // An icon that is either already in memory or easy to load
 }
 - (BOOL)loadIconForObject:(QSObject *)object{
-	return NO;
+    return NO;
     id data=[object objectForType:kRemoteHostsType];
-	[object setIcon:nil];
+    [object setIcon:nil];
     return YES;
 }
 */
