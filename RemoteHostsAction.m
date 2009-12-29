@@ -27,11 +27,11 @@
     return nil;
 }
 
+// TODO create a method to take a QSObject and return an array of connection URLs
 - (QSObject *)connectAsDefault:(QSObject *)dObject
 {
     // launch SSH with system defaults
     // equivalent to running `ssh hostname` on the command-line
-    QSObject *result;
     
     for(NSString *remoteHost in [dObject arrayForType:QSRemoteHostsType])
     {
@@ -48,13 +48,15 @@
 {
     // launch SSH with a username of "root"
     // equivalent to running `ssh -l root hostname` on the command-line
-    QSObject *result;
-    NSString *dWithSSH;
     
-    dWithSSH = [NSString stringWithFormat:@"ssh://root@%@",[dObject stringValue]];
+    for(NSString *remoteHost in [dObject arrayForType:QSRemoteHostsType])
+    {
+        //NSLog(@"Connection for %@", remoteHost);
+        
+        // launch an SSH connection
+        [self launchConnection:[NSString stringWithFormat:@"ssh://root@%@",remoteHost]];
     
-    [self launchConnection:dWithSSH];
-    
+    }
     return nil;
 }
 
@@ -62,13 +64,15 @@
 {
     // launch SSH with a user provided username
     // equivalent to running `ssh -l username hostname` on the command-line
-    QSObject *result;
-    NSString *dWithSSH;
     
-    dWithSSH = [NSString stringWithFormat:@"ssh://%@@%@",[userName stringValue],[dObject stringValue]];
+    for(NSString *remoteHost in [dObject arrayForType:QSRemoteHostsType])
+    {
+        //NSLog(@"Connection for %@", remoteHost);
+        
+        // launch an SSH connection
+        [self launchConnection:[NSString stringWithFormat:@"ssh://%@@%@",[userName stringValue],remoteHost]];
     
-    [self launchConnection:dWithSSH];
-    
+    }
     return nil;
 }
 
@@ -76,13 +80,15 @@
 {
     // launch Telnet connection
     // equivalent to running `telnet hostname` on the command-line
-    QSObject *result;
-    NSString *dWithTelnet;
     
-    dWithTelnet = [NSString stringWithFormat:@"telnet://%@",[dObject stringValue]];
+    for(NSString *remoteHost in [dObject arrayForType:QSRemoteHostsType])
+    {
+        //NSLog(@"Connection for %@", remoteHost);
+        
+        // launch a Telnet connection
+        [self launchConnection:[NSString stringWithFormat:@"telnet://%@",remoteHost]];
     
-    [self launchConnection:dWithTelnet];
-    
+    }
     return nil;
 }
 
@@ -90,13 +96,15 @@
 {
     // launch Telnet connection to a specific port
     // equivalent to running `telnet hostname port` on the command-line
-    QSObject *result;
-    NSString *dWithTelnet;
     
-    dWithTelnet = [NSString stringWithFormat:@"telnet://%@:%@",[dObject stringValue],[port stringValue]];
+    for(NSString *remoteHost in [dObject arrayForType:QSRemoteHostsType])
+    {
+        //NSLog(@"Connection for %@", remoteHost);
+        
+        // launch a Telnet connection
+        [self launchConnection:[NSString stringWithFormat:@"telnet://%@:%@",remoteHost,[port stringValue]]];
     
-    [self launchConnection:dWithTelnet];
-    
+    }
     return nil;
 }
 
