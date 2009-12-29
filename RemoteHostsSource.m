@@ -13,11 +13,22 @@
 // if this returns FALSE, the source will be rescanned
 // if it returns TRUE, the source is left alone
 // unconditional returns will cause it to either be scanned every time, or never
-// TODO add logic so this only gets rescanned if the source file is updated
-- (BOOL)indexIsValidFromDate:(NSDate *)indexDate forEntry:(NSDictionary *)theEntry{
-    return NO;
+- (BOOL)indexIsValidFromDate:(NSDate *)indexDate forEntry:(NSDictionary *)theEntry
+{
+    // use the plist settings to determine which file to check
+    NSMutableDictionary *settings = [theEntry objectForKey:kItemSettings];
+    NSString *sourceFile = [self fullPathForSettings:settings];
+    // get the last modified date on the source file
+    NSFileManager *manager = [NSFileManager defaultManager];
+    if (![manager fileExistsAtPath:sourceFile isDirectory:NULL]) return YES;
+    NSDate *modDate = [[manager attributesOfItemAtPath:sourceFile error:NULL] fileModificationDate];
+    // compare dates and return whether or not the entry should be rescanned
+    if ([modDate compare:indexDate] == NSOrderedDescending) return NO;
+    // if we fall through to this point, don't rescan by default
+    return YES;
 }
 
+// TODO create interface for adding custom catalog entries
 // show this on the drop-down for adding custom catalog entries?
 - (BOOL)isVisibleSource
 {
@@ -41,7 +52,7 @@
     // use the plist settings to determine which file to load from
     NSMutableDictionary *settings = [theEntry objectForKey:kItemSettings];
     NSString *path = [self fullPathForSettings:settings];
-    NSLog(@"Remote hosts loaded from: %@", path);
+    NSLog(@"Loading remote hosts from: %@", path);
     
     // a list of objects that will get returned (and added to the Catalog)
     NSMutableArray *objects=[NSMutableArray arrayWithCapacity:1];
@@ -51,6 +62,13 @@
     
     // read the entire file in as a string
     NSString *hostsSource = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:e];
+    // the previous line seems to crash Quicksilver on errors,
+    // so this error handling code won't help, but it should be here anyway
+    if(!hostsSource) {
+        // there was an error reading the file
+        NSLog(@"Remote hosts could not be loaded: %@", [*e localizedFailureReason]);
+        return nil;
+    }
     hostsSource = [hostsSource stringByReplacing:@"\n" with:@"\r"];
     NSArray *lines = [hostsSource componentsSeparatedByString:@"\r"];
     
