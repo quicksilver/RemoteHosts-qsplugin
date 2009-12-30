@@ -43,7 +43,7 @@ I've kept a list of systems I use in `~/.hosts` for years to allow shell complet
 
 ### Pie-in-the-Sky Stuff ###
 
-  * Optionally use a the output from a command as the source instead of a file
+  * Optionally use the output from a command as the source instead of a file
     (so you could pull a list of hostnames from LDAP, DNS, etc. in real-time)
   * Make each host object a target for file copy operations
     (resulting in an SCP to the default user's home directory?)

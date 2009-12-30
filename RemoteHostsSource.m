@@ -58,15 +58,16 @@
     NSMutableArray *objects=[NSMutableArray arrayWithCapacity:1];
     
     // somewhere to dump errors… I guess?
-    NSError **e;
+    // NSError **e;
     
     // read the entire file in as a string
-    NSString *hostsSource = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:e];
+    NSString *hostsSource = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:NULL];
     // the previous line seems to crash Quicksilver on errors,
     // so this error handling code won't help, but it should be here anyway
     if(!hostsSource) {
         // there was an error reading the file
-        NSLog(@"Remote hosts could not be loaded: %@", [*e localizedFailureReason]);
+        // NSLog(@"Remote hosts could not be loaded: %@", [*e localizedFailureReason]);
+        NSLog(@"Unable to open file for remote hosts: %@", path);
         return nil;
     }
     hostsSource = [hostsSource stringByReplacing:@"\n" with:@"\r"];
