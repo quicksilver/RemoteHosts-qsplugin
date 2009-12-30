@@ -73,10 +73,7 @@
     
     // read in hosts, one per line
     QSObject *newObject;
-    NSString *line;
-    int i;
-    for (i = 0; i<[lines count]; i++) {
-        line = [lines objectAtIndex:i];
+    for (NSString *line in lines) {
         // skip empty lines
         if ([line length] == 0) {
             continue;
