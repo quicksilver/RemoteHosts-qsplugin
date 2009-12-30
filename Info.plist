@@ -15,7 +15,7 @@
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleVersion</key>
-	<string>C4</string>
+	<string>CC</string>
 	<key>NSPrincipalClass</key>
 	<string>RemoteHosts</string>
 	<key>QSActions</key>
@@ -193,14 +193,16 @@
 		<key>description</key>
 		<string>Provides actions that can be taken on computers</string>
 		<key>extendedDescription</key>
-		<string>&lt;p&gt;Given a text file with a list of machine names in it (either hostname or Fully Qualified Domain Name), this plug-in indexes them as "remote host" objects and provides the following actions:&lt;/p&gt;
+		<string>&lt;h3&gt;A Quicksilver plug-in for dealing with a large number of computers&lt;/h3&gt;
+
+&lt;p&gt;Given a text file with a list of machine names in it (either hostname or Fully Qualified Domain Name), this plug-in indexes them as "remote host" objects and provides the following actions:&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;SSH to host&lt;/li&gt;
 &lt;li&gt;SSH to host as root&lt;/li&gt;
-&lt;li&gt;SSH to host as… (username in 3rd pane)&lt;/li&gt;
+&lt;li&gt;SSH to host as… [username in 3rd pane]&lt;/li&gt;
 &lt;li&gt;Telnet to host&lt;/li&gt;
-&lt;li&gt;Telnet to host on port… (port number in 3rd pane)&lt;/li&gt;
+&lt;li&gt;Telnet to host on port… [port number in 3rd pane]&lt;/li&gt;
 &lt;li&gt;Screen Sharing (VNC)&lt;/li&gt;
 &lt;li&gt;Get IP Address&lt;/li&gt;
 &lt;/ul&gt;
@@ -212,7 +214,18 @@ server2 solaris
 windows.example.com skip
 ahostiuse
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;After installation, you may want to check the precedence of the actions and make sure they're to your liking. The actions only apply to "remote hosts" in the catalog, so moving them up rather high on the list shouldn't interfere with other tasks.&lt;/p&gt;</string>
+
+&lt;h4&gt;Tips&lt;/h4&gt;
+
+&lt;p&gt;After installation, you may want to check the precedence of the actions and make sure they're to your liking. The actions only apply to "remote hosts" in the catalog, so moving them up rather high on the list shouldn't interfere with other tasks.&lt;/p&gt;
+
+&lt;p&gt;If you find yourself using "SSH to host as…" frequently, you may want to add something like this to your &lt;code&gt;~/.ssh/config&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Host server.domain
+  User someuser
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;See the &lt;code&gt;ssh_config(5)&lt;/code&gt; man page for details.&lt;/p&gt;</string>
 		<key>icon</key>
 		<string>com.apple.xserve</string>
 		<key>qsversion</key>

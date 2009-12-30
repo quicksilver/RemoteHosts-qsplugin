@@ -1,4 +1,4 @@
-## A Quicksilver plug-in for dealing with a large number of computers ###
+### A Quicksilver plug-in for dealing with a large number of computers ###
 
 Given a text file with a list of machine names in it (either hostname or Fully Qualified Domain Name), this plug-in indexes them as "remote host" objects and provides the following actions:
 
@@ -17,7 +17,16 @@ The plug-in will scan `~/.hosts` for a list of machines by default. The file is 
     windows.example.com skip
     ahostiuse
 
+#### Tips ####
+
 After installation, you may want to check the precedence of the actions and make sure they're to your liking. The actions only apply to "remote hosts" in the catalog, so moving them up rather high on the list shouldn't interfere with other tasks.
+
+If you find yourself using "SSH to host as…" frequently, you may want to add something like this to your `~/.ssh/config`:
+
+    Host server.domain
+      User someuser
+
+See the `ssh_config(5)` man page for details.
 
 ### Why? ###
 
