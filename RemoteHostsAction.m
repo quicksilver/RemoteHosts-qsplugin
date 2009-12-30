@@ -7,8 +7,6 @@
 
 #import "RemoteHostsAction.h"
 
-# define kConnectUsingSSHuser @"ConnectUsingSSHuser"
-
 @implementation QSRemoteHostsAction
 
 - (int *)launchConnection:(NSString *)inetloc
@@ -153,7 +151,7 @@
 {
 
     // only for certain actions (make sure to #define them above)
-    if ([action isEqualToString:kConnectUsingSSHuser]){
+    if ([action isEqualToString:@"ConnectUsingSSHuser"]){
         return [NSArray arrayWithObject: [QSObject textProxyObjectWithDefaultValue:NSUserName()]];
     }
     // text-entry mode with an empty string
