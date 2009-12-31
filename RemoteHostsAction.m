@@ -166,6 +166,8 @@
 // - (NSArray *)validActionsForDirectObject:(QSObject *)dObject indirectObject:(QSObject *)iObject
 // {
 //     NSString *hostString=[[dObject arrayForType:QSRemoteHostsType] lastObject];
+//     // use ostype to validate?
+//     NSString *ostype = [dObject objectForMeta:@"ostype"];
 //     
 //     NSMutableArray *newActions=[NSMutableArray arrayWithCapacity:1];
 //     if (hostString){

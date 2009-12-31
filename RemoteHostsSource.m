@@ -91,6 +91,14 @@
         // [newObject setIcon:[QSResourceManager imageNamed:@"com.apple.mac"]];
         [newObject setLabel:label];
         //[newObject setPrimaryType:QSRemoteHostsType];
+        // add some meta-data
+        if([lineParts count] > 1)
+        {
+            NSString *ostype = [lineParts objectAtIndex:1];
+            [newObject setObject:ostype forMeta:@"ostype"];
+        } else {
+            [newObject setObject:@"unknown" forMeta:@"ostype"];
+        }
         
         // if the object is OK, add it to the list
         if (newObject)
