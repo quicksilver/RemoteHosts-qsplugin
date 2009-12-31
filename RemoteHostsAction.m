@@ -150,7 +150,7 @@
 - (NSArray *)validIndirectObjectsForAction:(NSString *)action directObject:(QSObject *)dObject
 {
 
-    // only for certain actions (make sure to #define them above)
+    // set default text for certain actions
     if ([action isEqualToString:@"ConnectUsingSSHuser"]){
         return [NSArray arrayWithObject: [QSObject textProxyObjectWithDefaultValue:NSUserName()]];
     }
@@ -160,5 +160,21 @@
     // unconditionally (should be fine if all actions expect text in the third pane, right?)
     //return [NSArray arrayWithObject: [QSObject textProxyObjectWithDefaultValue:@""]];
 }
+
+// do some checking on the objects in the first pane
+// if an action has `validatesObjects` enabled in Info.plist, this method must return the action's name or it will never appear
+// - (NSArray *)validActionsForDirectObject:(QSObject *)dObject indirectObject:(QSObject *)iObject
+// {
+//     NSString *hostString=[[dObject arrayForType:QSRemoteHostsType] lastObject];
+//     
+//     NSMutableArray *newActions=[NSMutableArray arrayWithCapacity:1];
+//     if (hostString){
+//         [newActions addObject:@"ConnectUsingSSH"];
+//         [newActions addObject:@"ConnectUsingSSHroot"];
+//         [newActions addObject:@"ConnectUsingSSHuser"];
+//     }
+//     
+//     return newActions;
+// }
 
 @end

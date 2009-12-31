@@ -116,6 +116,7 @@
 
 // Object Handler Methods
 
+// TODO look into customizing icon based on OS type? (this assumes the os is in the file)
 - (void)setQuickIconForObject:(QSObject *)object
 {
     // An icon that is either already in memory or easy to load
