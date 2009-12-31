@@ -88,7 +88,7 @@
         newObject = [QSObject objectWithName:host];
         [newObject setIdentifier:ident];
         [newObject setObject:host forType:QSRemoteHostsType];
-        [newObject setIcon:[QSResourceManager imageNamed:@"com.apple.mac"]];
+        // [newObject setIcon:[QSResourceManager imageNamed:@"com.apple.mac"]];
         [newObject setLabel:label];
         //[newObject setPrimaryType:QSRemoteHostsType];
         
@@ -116,10 +116,12 @@
 
 // Object Handler Methods
 
-/*
-- (void)setQuickIconForObject:(QSObject *)object{
-    [object setIcon:nil]; // An icon that is either already in memory or easy to load
+- (void)setQuickIconForObject:(QSObject *)object
+{
+    // An icon that is either already in memory or easy to load
+    [object setIcon:[QSResourceManager imageNamed:@"com.apple.mac"]];
 }
+/*
 - (BOOL)loadIconForObject:(QSObject *)object{
     return NO;
     id data=[object objectForType:kRemoteHostsType];

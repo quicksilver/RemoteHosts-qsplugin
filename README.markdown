@@ -39,7 +39,6 @@ I've kept a list of systems I use in `~/.hosts` for years to allow shell complet
 ### Known Issues and To Do Items ###
 
   * There's no interface for configuring a custom catalog entry (to pull hosts from different files) although you can add them, and such entries will work if you edit them in `Catalog.plist` by hand.
-  * Icons appear when items are first indexed, but then seem to get lost soon after.
   * The actions won't apply to strings typed by hand or pasted (so you can type a hostname by hand if it wasn't scanned in from a file). I wanted to give the actions some default priority to make them easier to access in the most common use cases. If I supported strings and assigned these priorities, the remote host actions would end up being higher than other defaults for things typed by hand, such as "Large Type". If enough people ask, I may add arbitrary string support and just set the priorities for all to 0.
 
 ### Possible Future Actions ###
