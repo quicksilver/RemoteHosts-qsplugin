@@ -124,11 +124,19 @@
 
 // Object Handler Methods
 
-// TODO look into customizing icon based on OS type? (this assumes the os is in the file)
 - (void)setQuickIconForObject:(QSObject *)object
 {
     // An icon that is either already in memory or easy to load
-    [object setIcon:[QSResourceManager imageNamed:@"com.apple.mac"]];
+    NSString *icon;
+    NSString *ostype = [object objectForMeta:@"ostype"];
+    if([ostype isEqualToString:@"windows"])
+    {
+        // icon = @"public.generic-pc";
+        icon = @"GenericPCIcon";
+    } else {
+        icon = @"com.apple.mac";
+    }
+    [object setIcon:[QSResourceManager imageNamed:icon]];
 }
 /*
 - (BOOL)loadIconForObject:(QSObject *)object{
