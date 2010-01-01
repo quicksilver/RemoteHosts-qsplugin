@@ -8,6 +8,8 @@ Given a text file with a list of machine names in it (either hostname or Fully Q
   * Telnet to host
   * Telnet to host on port… [port number in 3rd pane]
   * Screen Sharing (VNC)
+  * Browse host with CIFS
+  * Mount share with CIFS… [share name in 3rd pane]
   * Get IP Address
 
 The plug-in will scan `~/.hosts` for a list of machines by default. The file is treated as UTF-8. I'm not sure what will happen if it's encoded otherwise. The file should contain one host per line. The hostname or FQDN should be the first thing on each line, but other metadata is allowed (separated by whitespace). Additional metadata is currently ignored by the plug-in. An example might look like this:

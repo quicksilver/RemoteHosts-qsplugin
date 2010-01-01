@@ -120,6 +120,30 @@
     return nil;
 }
 
+- (QSObject *)browseWithCIFS:(QSObject *)dObject
+{
+    // this action doesn't support the comma-trick, but we'll check for attempts to use it so the error can be more useful
+    if([[dObject stringValue] isEqualToString:@"combined objects"])
+    {
+        return [QSObject objectWithString:@"Multiple hosts unsupported"];
+    }
+    
+    NSString *remoteHost = [dObject name];
+    [self launchConnection:[NSString stringWithFormat:@"cifs://%@/",remoteHost]];
+}
+
+- (QSObject *)mountWithCIFS:(QSObject *)dObject withShareName:(QSObject *)share
+{
+    // this action doesn't support the comma-trick, but we'll check for attempts to use it so the error can be more useful
+    if([[dObject stringValue] isEqualToString:@"combined objects"])
+    {
+        return [QSObject objectWithString:@"Multiple hosts unsupported"];
+    }
+    
+    NSString *remoteHost = [dObject name];
+    [self launchConnection:[NSString stringWithFormat:@"cifs://%@/%@/",remoteHost, [share stringValue]]];
+}
+
 - (QSObject *)getIPForHost:(QSObject *)dObject
 {
     // look up the IP address for this host and return it to the Quicksilver interface
