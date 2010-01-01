@@ -165,12 +165,14 @@
 // if an action has `validatesObjects` enabled in Info.plist, this method must return the action's name or it will never appear
 // - (NSArray *)validActionsForDirectObject:(QSObject *)dObject indirectObject:(QSObject *)iObject
 // {
-//     NSString *hostString=[[dObject arrayForType:QSRemoteHostsType] lastObject];
-//     // use ostype to validate?
-//     NSString *ostype = [dObject objectForMeta:@"ostype"];
+//     //QSObject *host = [[dObject arrayForType:QSRemoteHostsType] lastObject];
+//     // use ostype to validate
+//     NSString *ostype = [host objectForMeta:@"ostype"];
+//     NSLog(@"OS type: %@", ostype);
 //     
 //     NSMutableArray *newActions=[NSMutableArray arrayWithCapacity:1];
-//     if (hostString){
+//     if (![ostype isEqualToString:@"windows"]) {
+//         NSLog(@"Not a Unix variant");
 //         [newActions addObject:@"ConnectUsingSSH"];
 //         [newActions addObject:@"ConnectUsingSSHroot"];
 //         [newActions addObject:@"ConnectUsingSSHuser"];
