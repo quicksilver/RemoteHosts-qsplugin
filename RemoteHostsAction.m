@@ -125,7 +125,9 @@
     // this action doesn't support the comma-trick, but we'll check for attempts to use it so the error can be more useful
     if([[dObject stringValue] isEqualToString:@"combined objects"])
     {
-        return [QSObject objectWithString:@"Multiple hosts unsupported"];
+        QSObject *resultObject = [QSObject objectWithString:@"Multiple hosts unsupported"];
+        [resultObject setIcon:[QSResourceManager imageNamed:@"AlertCautionIcon"]];
+        return resultObject;
     }
     
     NSString *remoteHost = [dObject name];
@@ -137,7 +139,9 @@
     // this action doesn't support the comma-trick, but we'll check for attempts to use it so the error can be more useful
     if([[dObject stringValue] isEqualToString:@"combined objects"])
     {
-        return [QSObject objectWithString:@"Multiple hosts unsupported"];
+        QSObject *resultObject = [QSObject objectWithString:@"Multiple hosts unsupported"];
+        [resultObject setIcon:[QSResourceManager imageNamed:@"AlertCautionIcon"]];
+        return resultObject;
     }
     
     NSString *remoteHost = [dObject name];
