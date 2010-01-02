@@ -21,7 +21,7 @@ The plug-in will scan `~/.hosts` for a list of machines by default. The file is 
 
 #### Tips ####
 
-After installation, you may want to check the precedence of the actions and make sure they're to your liking. The actions only apply to "remote hosts" in the catalog, so moving them up rather high on the list shouldn't interfere with other tasks.
+After installation, you may want to check the precedence of the actions and make sure they're to your liking. The actions only apply to "remote hosts" in the catalog, so moving them up rather high on the list shouldn't interfere with other tasks. You may also want to disable some of the ones you never think you'll use.
 
 If you find yourself using "SSH to host as…" frequently, you may want to add something like this to your `~/.ssh/config`:
 
@@ -29,6 +29,8 @@ If you find yourself using "SSH to host as…" frequently, you may want to add s
       User someuser
 
 See the `ssh_config(5)` man page for details.
+
+Finally, don't forget the "comma trick". You can select multiple hosts using the comma or ⌘A, then connect to them all at once.
 
 ### Why? ###
 
@@ -58,10 +60,6 @@ I've kept a list of systems I use in `~/.hosts` for years to allow shell complet
   * Make each host object a target for file copy operations
     (resulting in an SCP to the default user's home directory?)
   * Right-arrow into a host to get a list of files (via SCP or SFTP?)
-
-### Status ###
-
-The core functionality is working. The plug-in will scan hosts into the catalog (from `~/.hosts`) and allow you to SSH to them quickly. The "comma trick" is supported for connecting to several hosts at once.
 
 ### Credit ###
 
