@@ -149,23 +149,28 @@
     // look up the IP address for this host and return it to the Quicksilver interface
     NSString *hostName = [dObject name];
     NSHost *host = [NSHost hostWithName:hostName];
+    QSObject *ipObject = nil;
     
     // this action doesn't support the comma-trick, but we'll check for attempts to use it so the error can be more useful
     if([[dObject stringValue] isEqualToString:@"combined objects"])
     {
-        return [QSObject objectWithString:@"Multiple hosts unsupported"];
+        ipObject = [QSObject objectWithString:@"Multiple hosts unsupported"];
+        [ipObject setIcon:[QSResourceManager imageNamed:@"AlertCautionIcon"]];
+        return ipObject;
     }
     
     // if there is no such host, return an error
     if (!host) {
-        // NSLog(@"Failed to find host: %@", hostName);
-        return [QSObject objectWithString:@"Host not found"];
+        ipObject = [QSObject objectWithString:@"Host not found"];
+        [ipObject setIcon:[QSResourceManager imageNamed:@"AlertStopIcon"]];
+        return ipObject;
     } else {
         // using objectWithString here would cause Quicksilver to treat the IP as a URL
         // so we create the object with a few explicit details to make it act like text
         NSString *ip = [host address];
         QSObject *ipObject = [QSObject objectWithName:ip];
         [ipObject setObject:ip forType:QSTextType];
+        [ipObject setIcon:[QSResourceManager imageNamed:@"GenericNetworkIcon"]];
         return ipObject;
     }
 }
