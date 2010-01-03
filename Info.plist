@@ -15,11 +15,59 @@
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleVersion</key>
-	<string>E6</string>
+	<string>E9</string>
 	<key>NSPrincipalClass</key>
 	<string>RemoteHosts</string>
 	<key>QSActions</key>
 	<dict>
+		<key>AFPBrowse</key>
+		<dict>
+			<key>actionClass</key>
+			<string>QSRemoteHostsAction</string>
+			<key>actionSelector</key>
+			<string>browseWithAFP:</string>
+			<key>directTypes</key>
+			<array>
+				<string>QSRemoteHostsType</string>
+			</array>
+			<key>displaysResult</key>
+			<true/>
+			<key>icon</key>
+			<string>GenericFileServerIcon</string>
+			<key>name</key>
+			<string>Browse host with AFP</string>
+			<key>precedence</key>
+			<string>0</string>
+			<key>validatesObjects</key>
+			<false/>
+		</dict>
+		<key>AFPMount</key>
+		<dict>
+			<key>actionClass</key>
+			<string>QSRemoteHostsAction</string>
+			<key>actionSelector</key>
+			<string>mountWithAFP:withShareName:</string>
+			<key>directTypes</key>
+			<array>
+				<string>QSRemoteHostsType</string>
+			</array>
+			<key>displaysResult</key>
+			<true/>
+			<key>icon</key>
+			<string>GenericFileServerIcon</string>
+			<key>indirectOptional</key>
+			<false/>
+			<key>indirectTypes</key>
+			<array>
+				<string>NSString</string>
+			</array>
+			<key>name</key>
+			<string>Mount share with AFP…</string>
+			<key>precedence</key>
+			<string>0</string>
+			<key>validatesObjects</key>
+			<false/>
+		</dict>
 		<key>CIFSBrowse</key>
 		<dict>
 			<key>actionClass</key>
@@ -243,7 +291,7 @@
 		<key>extendedDescription</key>
 		<string>&lt;h3&gt;A Quicksilver plug-in for dealing with a large number of computers&lt;/h3&gt;
 
-&lt;p&gt;Given a text file with a list of machine names in it (either hostname or Fully Qualified Domain Name), this plug-in indexes them as "remote host" objects and provides the following actions:&lt;/p&gt;
+&lt;p&gt;Given a text file with a list of machine names in it (either hostname or Fully Qualified Domain Name), this plug-in indexes them as &quot;remote host&quot; objects and provides the following actions:&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;SSH to host&lt;/li&gt;
@@ -254,22 +302,25 @@
 &lt;li&gt;Screen Sharing (VNC)&lt;/li&gt;
 &lt;li&gt;Browse host with CIFS&lt;/li&gt;
 &lt;li&gt;Mount share with CIFS… [share name in 3rd pane]&lt;/li&gt;
+&lt;li&gt;Browse host with AFP&lt;/li&gt;
+&lt;li&gt;Mount share with AFP… [share name in 3rd pane]&lt;/li&gt;
 &lt;li&gt;Get IP Address&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;The plug-in will scan &lt;code&gt;~/.hosts&lt;/code&gt; for a list of machines by default. The file is treated as UTF-8. I'm not sure what will happen if it's encoded otherwise. The file should contain one host per line. The hostname or FQDN should be the first thing on each line, but other metadata is allowed (separated by whitespace). Additional metadata is currently ignored by the plug-in. An example might look like this:&lt;/p&gt;
+&lt;p&gt;The plug-in will scan &lt;code&gt;~/.hosts&lt;/code&gt; for a list of machines by default. The file is treated as UTF-8. It should contain one host per line. The hostname or FQDN should be the first thing on each line, but other metadata is allowed (separated by a space). The only meaningful metadata you can provide at this point is an OS type. An example might look like this:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;server1.example.com linux
 server2 solaris
-windows.example.com skip
+server3.example.com
+windows.example.com windows
 ahostiuse
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h4&gt;Tips&lt;/h4&gt;
 
-&lt;p&gt;After installation, you may want to check the precedence of the actions and make sure they're to your liking. The actions only apply to "remote hosts" in the catalog, so moving them up rather high on the list shouldn't interfere with other tasks. You may also want to disable some of the ones you never think you'll use.&lt;/p&gt;
+&lt;p&gt;After installation, you may want to check the precedence of the actions and make sure they&apos;re to your liking. The actions only apply to &quot;remote hosts&quot; in the catalog, so moving them up rather high on the list shouldn&apos;t interfere with other tasks. You may also want to disable some of the ones you never think you&apos;ll use.&lt;/p&gt;
 
-&lt;p&gt;If you find yourself using "SSH to host as…" frequently, you may want to add something like this to your &lt;code&gt;~/.ssh/config&lt;/code&gt;:&lt;/p&gt;
+&lt;p&gt;If you find yourself using &quot;SSH to host as…&quot; frequently, you may want to add something like this to your &lt;code&gt;~/.ssh/config&lt;/code&gt;:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;Host server.domain
   User someuser
@@ -277,7 +328,7 @@ ahostiuse
 
 &lt;p&gt;See the &lt;code&gt;ssh_config(5)&lt;/code&gt; man page for details.&lt;/p&gt;
 
-&lt;p&gt;Finally, don't forget the "comma trick". You can select multiple hosts using the comma or ⌘A, then connect to them all at once.&lt;/p&gt;</string>
+&lt;p&gt;Finally, don&apos;t forget the &quot;comma trick&quot;. You can select multiple hosts using the comma or ⌘A, then connect to them all at once.&lt;/p&gt;</string>
 		<key>icon</key>
 		<string>com.apple.xserve</string>
 		<key>qsversion</key>

@@ -10,13 +10,16 @@ Given a text file with a list of machine names in it (either hostname or Fully Q
   * Screen Sharing (VNC)
   * Browse host with CIFS
   * Mount share with CIFS… [share name in 3rd pane]
+  * Browse host with AFP
+  * Mount share with AFP… [share name in 3rd pane]
   * Get IP Address
 
-The plug-in will scan `~/.hosts` for a list of machines by default. The file is treated as UTF-8. I'm not sure what will happen if it's encoded otherwise. The file should contain one host per line. The hostname or FQDN should be the first thing on each line, but other metadata is allowed (separated by whitespace). Additional metadata is currently ignored by the plug-in. An example might look like this:
+The plug-in will scan `~/.hosts` for a list of machines by default. The file is treated as UTF-8. It should contain one host per line. The hostname or FQDN should be the first thing on each line, but other metadata is allowed (separated by a space). The only meaningful metadata you can provide at this point is an OS type. An example might look like this:
 
     server1.example.com linux
     server2 solaris
-    windows.example.com skip
+    server3.example.com
+    windows.example.com windows
     ahostiuse
 
 #### Tips ####

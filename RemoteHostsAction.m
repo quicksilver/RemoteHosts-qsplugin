@@ -12,7 +12,7 @@
 /* helper methods */
 // TODO create a method to take a QSObject and return an array of connection URLs
 
-- (int *)launchConnection:(NSString *)inetloc
+- (void)launchConnection:(NSString *)inetloc
 {
     /*
      This is a convenience method for the actions below.
@@ -24,8 +24,6 @@
         [[NSWorkspace sharedWorkspace] openURL:url];
     else
         NSLog(@"error with location: %@", inetloc);
-    
-    return nil;
 }
 
 - (QSObject *)sendWarningToUser:(NSString *)textForUser
@@ -170,6 +168,32 @@
     return nil;
 }
 
+- (QSObject *)browseWithAFP:(QSObject *)dObject
+{
+    // this action doesn't support the comma-trick, but we'll check for attempts to use it so the error can be more useful
+    if([[dObject stringValue] isEqualToString:@"combined objects"])
+    {
+        return [self sendWarningToUser:@"Multiple hosts unsupported"];
+    }
+    
+    NSString *remoteHost = [dObject name];
+    [self launchConnection:[NSString stringWithFormat:@"afp://%@/",remoteHost]];
+    return nil;
+}
+
+- (QSObject *)mountWithAFP:(QSObject *)dObject withShareName:(QSObject *)share
+{
+    // this action doesn't support the comma-trick, but we'll check for attempts to use it so the error can be more useful
+    if([[dObject stringValue] isEqualToString:@"combined objects"])
+    {
+        return [self sendWarningToUser:@"Multiple hosts unsupported"];
+    }
+    
+    NSString *remoteHost = [dObject name];
+    [self launchConnection:[NSString stringWithFormat:@"afp://%@/%@/",remoteHost, [share stringValue]]];
+    return nil;
+}
+
 - (QSObject *)getIPForHost:(QSObject *)dObject
 {
     // look up the IP address for this host and return it to the Quicksilver interface
@@ -203,8 +227,16 @@
 {
 
     // set default text for certain actions
-    if ([action isEqualToString:@"ConnectUsingSSHuser"]){
+    if ([action isEqualToString:@"ConnectUsingSSHuser"]) {
+        /* If you just conect with SSH and provide no options, it assumes the
+        username of the currently logged on user, so providing the current
+        username as a default here is really a waste of time. I know that.
+        Put this in the "because I can" category. What else should I use as a
+        default? :) */
         return [NSArray arrayWithObject: [QSObject textProxyObjectWithDefaultValue:NSUserName()]];
+    }
+    if([action isEqualToString:@"CIFSMount"] || [action isEqualToString:@"AFPMount"]) {
+        return [NSArray arrayWithObject: [QSObject textProxyObjectWithDefaultValue:@"share name"]];
     }
     // text-entry mode with an empty string
     return [NSArray arrayWithObject: [QSObject textProxyObjectWithDefaultValue:@""]];
