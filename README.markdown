@@ -53,8 +53,9 @@ I've kept a list of systems I use in `~/.hosts` for years to allow shell complet
   * Connect with MS Remote Desktop
   * Ping
   * Scan with nmap
-  * Connect with FTP
   * Etc.
+
+I've attempted to add the obvious NFS and FTP actions, but the "Internet Locations" for these protocols don't seem to work everywhere. If you use "Connect to Server…" in the Finder and type `nfs://server/share_name` or `ftp://server`, it works. But `open nfs://server/share_name` and `open ftp://server` from Terminal fail. This is essentially what the plugin is asking the system to do, so if `open` doesn't like it, we're out of luck. Sorry.
 
 ### Pie-in-the-Sky Stuff ###
 
