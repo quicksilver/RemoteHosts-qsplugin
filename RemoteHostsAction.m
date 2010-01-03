@@ -9,6 +9,9 @@
 
 @implementation QSRemoteHostsAction
 
+/* helper methods */
+// TODO create a method to take a QSObject and return an array of connection URLs
+
 - (int *)launchConnection:(NSString *)inetloc
 {
     /*
@@ -25,7 +28,28 @@
     return nil;
 }
 
-// TODO create a method to take a QSObject and return an array of connection URLs
+- (QSObject *)sendWarningToUser:(NSString *)textForUser
+{
+    /*
+     Display a warning to the user
+    */
+    QSObject *resultObject = [QSObject objectWithString:textForUser];
+    [resultObject setIcon:[QSResourceManager imageNamed:@"AlertCautionIcon"]];
+    return resultObject;
+}
+
+- (QSObject *)sendErrorToUser:(NSString *)textForUser
+{
+    /*
+     Display an error to the user
+    */
+    QSObject *resultObject = [QSObject objectWithString:textForUser];
+    [resultObject setIcon:[QSResourceManager imageNamed:@"AlertStopIcon"]];
+    return resultObject;
+}
+
+/* action methods */
+
 - (QSObject *)connectAsDefault:(QSObject *)dObject
 {
     // launch SSH with system defaults
@@ -125,13 +149,12 @@
     // this action doesn't support the comma-trick, but we'll check for attempts to use it so the error can be more useful
     if([[dObject stringValue] isEqualToString:@"combined objects"])
     {
-        QSObject *resultObject = [QSObject objectWithString:@"Multiple hosts unsupported"];
-        [resultObject setIcon:[QSResourceManager imageNamed:@"AlertCautionIcon"]];
-        return resultObject;
+        return [self sendWarningToUser:@"Multiple hosts unsupported"];
     }
     
     NSString *remoteHost = [dObject name];
     [self launchConnection:[NSString stringWithFormat:@"cifs://%@/",remoteHost]];
+    return nil;
 }
 
 - (QSObject *)mountWithCIFS:(QSObject *)dObject withShareName:(QSObject *)share
@@ -139,13 +162,12 @@
     // this action doesn't support the comma-trick, but we'll check for attempts to use it so the error can be more useful
     if([[dObject stringValue] isEqualToString:@"combined objects"])
     {
-        QSObject *resultObject = [QSObject objectWithString:@"Multiple hosts unsupported"];
-        [resultObject setIcon:[QSResourceManager imageNamed:@"AlertCautionIcon"]];
-        return resultObject;
+        return [self sendWarningToUser:@"Multiple hosts unsupported"];
     }
     
     NSString *remoteHost = [dObject name];
     [self launchConnection:[NSString stringWithFormat:@"cifs://%@/%@/",remoteHost, [share stringValue]]];
+    return nil;
 }
 
 - (QSObject *)getIPForHost:(QSObject *)dObject
@@ -153,21 +175,16 @@
     // look up the IP address for this host and return it to the Quicksilver interface
     NSString *hostName = [dObject name];
     NSHost *host = [NSHost hostWithName:hostName];
-    QSObject *ipObject = nil;
     
     // this action doesn't support the comma-trick, but we'll check for attempts to use it so the error can be more useful
     if([[dObject stringValue] isEqualToString:@"combined objects"])
     {
-        ipObject = [QSObject objectWithString:@"Multiple hosts unsupported"];
-        [ipObject setIcon:[QSResourceManager imageNamed:@"AlertCautionIcon"]];
-        return ipObject;
+        return [self sendWarningToUser:@"Multiple hosts unsupported"];
     }
     
     // if there is no such host, return an error
     if (!host) {
-        ipObject = [QSObject objectWithString:@"Host not found"];
-        [ipObject setIcon:[QSResourceManager imageNamed:@"AlertStopIcon"]];
-        return ipObject;
+        return [self sendErrorToUser:@"Host not found"];
     } else {
         // using objectWithString here would cause Quicksilver to treat the IP as a URL
         // so we create the object with a few explicit details to make it act like text
@@ -178,6 +195,8 @@
         return ipObject;
     }
 }
+
+/* methods called by Quicksilver as needed */
 
 // declaring this here will cause the third pane to pop up in text-entry mode by default
 - (NSArray *)validIndirectObjectsForAction:(NSString *)action directObject:(QSObject *)dObject
