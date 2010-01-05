@@ -9,8 +9,32 @@
 
 @implementation QSRemoteHostsAction
 
+- (id)init {
+    if ((self = [super init])) {
+        // define what each action will work with (for validation)
+        actionCapabilities = [[NSDictionary dictionaryWithObjectsAndKeys:
+            [NSArray arrayWithObjects:kUnixHosts, nil], @"AFPBrowse",
+            [NSArray arrayWithObjects:kUnixHosts, nil], @"AFPMount",
+            [NSArray arrayWithObjects:kWindowsHosts, kUnixHosts, nil], @"CIFSBrowse",
+            [NSArray arrayWithObjects:kWindowsHosts, kUnixHosts, nil], @"CIFSMount",
+            [NSArray arrayWithObjects:kUnixHosts, kMultipleHosts, nil], @"ConnectUsingSSH",
+            [NSArray arrayWithObjects:kUnixHosts, kMultipleHosts, nil], @"ConnectUsingSSHroot",
+            [NSArray arrayWithObjects:kUnixHosts, kMultipleHosts, nil], @"ConnectUsingSSHuser",
+            [NSArray arrayWithObjects:kUnixHosts, kMultipleHosts, nil], @"ConnectUsingTelnet",
+            [NSArray arrayWithObjects:kUnixHosts, kWindowsHosts, kMultipleHosts, nil], @"ConnectUsingTelnetPort",
+            [NSArray arrayWithObjects:kUnixHosts, kWindowsHosts, kMultipleHosts, nil], @"ConnectUsingVNC",
+            [NSArray arrayWithObjects:kUnixHosts, kWindowsHosts, nil], @"GetIPAddress",
+            nil
+        ] retain];
+        // store known actions
+        actionList = [[actionCapabilities allKeys] retain];
+    }
+    return self;
+}
+
 /* helper methods */
 // TODO create a method to take a QSObject and return an array of connection URLs
+// TODO use notification system for erors instead of returning them as objects?
 
 - (void)launchConnection:(NSString *)inetloc
 {
@@ -34,6 +58,14 @@
     QSObject *resultObject = [QSObject objectWithString:textForUser];
     [resultObject setIcon:[QSResourceManager imageNamed:@"AlertCautionIcon"]];
     return resultObject;
+    // dictionary with icon, title, text for notifications
+    // NSDictionary *notification = [NSDictionary dictionaryWithObjectsAndKeys:
+    //     @"title", @"Remote Host Warning",
+    //     @"text", textForUser,
+    //     @"icon", [QSResourceManager imageNamed:@"AlertCautionIcon"],
+    //     nil
+    // ];
+    // [QSSilverNotifier displayNotificationWithAttributes:notification];
 }
 
 - (QSObject *)sendErrorToUser:(NSString *)textForUser
@@ -144,12 +176,7 @@
 
 - (QSObject *)browseWithCIFS:(QSObject *)dObject
 {
-    // this action doesn't support the comma-trick, but we'll check for attempts to use it so the error can be more useful
-    if([[dObject stringValue] isEqualToString:@"combined objects"])
-    {
-        return [self sendWarningToUser:@"Multiple hosts unsupported"];
-    }
-    
+    // this action doesn't support the comma-trick
     NSString *remoteHost = [dObject name];
     [self launchConnection:[NSString stringWithFormat:@"cifs://%@/",remoteHost]];
     return nil;
@@ -157,12 +184,7 @@
 
 - (QSObject *)mountWithCIFS:(QSObject *)dObject withShareName:(QSObject *)share
 {
-    // this action doesn't support the comma-trick, but we'll check for attempts to use it so the error can be more useful
-    if([[dObject stringValue] isEqualToString:@"combined objects"])
-    {
-        return [self sendWarningToUser:@"Multiple hosts unsupported"];
-    }
-    
+    // this action doesn't support the comma-trick
     NSString *remoteHost = [dObject name];
     [self launchConnection:[NSString stringWithFormat:@"cifs://%@/%@/",remoteHost, [share stringValue]]];
     return nil;
@@ -170,12 +192,7 @@
 
 - (QSObject *)browseWithAFP:(QSObject *)dObject
 {
-    // this action doesn't support the comma-trick, but we'll check for attempts to use it so the error can be more useful
-    if([[dObject stringValue] isEqualToString:@"combined objects"])
-    {
-        return [self sendWarningToUser:@"Multiple hosts unsupported"];
-    }
-    
+    // this action doesn't support the comma-trick
     NSString *remoteHost = [dObject name];
     [self launchConnection:[NSString stringWithFormat:@"afp://%@/",remoteHost]];
     return nil;
@@ -183,12 +200,7 @@
 
 - (QSObject *)mountWithAFP:(QSObject *)dObject withShareName:(QSObject *)share
 {
-    // this action doesn't support the comma-trick, but we'll check for attempts to use it so the error can be more useful
-    if([[dObject stringValue] isEqualToString:@"combined objects"])
-    {
-        return [self sendWarningToUser:@"Multiple hosts unsupported"];
-    }
-    
+    // this action doesn't support the comma-trick
     NSString *remoteHost = [dObject name];
     [self launchConnection:[NSString stringWithFormat:@"afp://%@/%@/",remoteHost, [share stringValue]]];
     return nil;
@@ -200,11 +212,7 @@
     NSString *hostName = [dObject name];
     NSHost *host = [NSHost hostWithName:hostName];
     
-    // this action doesn't support the comma-trick, but we'll check for attempts to use it so the error can be more useful
-    if([[dObject stringValue] isEqualToString:@"combined objects"])
-    {
-        return [self sendWarningToUser:@"Multiple hosts unsupported"];
-    }
+    // this action doesn't support the comma-trick
     
     // if there is no such host, return an error
     if (!host) {
@@ -225,7 +233,6 @@
 // declaring this here will cause the third pane to pop up in text-entry mode by default
 - (NSArray *)validIndirectObjectsForAction:(NSString *)action directObject:(QSObject *)dObject
 {
-
     // set default text for certain actions
     if ([action isEqualToString:@"ConnectUsingSSHuser"]) {
         /* If you just conect with SSH and provide no options, it assumes the
@@ -247,22 +254,40 @@
 
 // do some checking on the objects in the first pane
 // if an action has `validatesObjects` enabled in Info.plist, this method must return the action's name or it will never appear
-// - (NSArray *)validActionsForDirectObject:(QSObject *)dObject indirectObject:(QSObject *)iObject
-// {
-//     //QSObject *host = [[dObject arrayForType:QSRemoteHostsType] lastObject];
-//     // use ostype to validate
-//     NSString *ostype = [host objectForMeta:@"ostype"];
-//     NSLog(@"OS type: %@", ostype);
-//     
-//     NSMutableArray *newActions=[NSMutableArray arrayWithCapacity:1];
-//     if (![ostype isEqualToString:@"windows"]) {
-//         NSLog(@"Not a Unix variant");
-//         [newActions addObject:@"ConnectUsingSSH"];
-//         [newActions addObject:@"ConnectUsingSSHroot"];
-//         [newActions addObject:@"ConnectUsingSSHuser"];
-//     }
-//     
-//     return newActions;
-// }
+- (NSArray *)validActionsForDirectObject:(QSObject *)dObject indirectObject:(QSObject *)iObject
+{
+    // actions to be returned
+    NSMutableArray *newActions=[NSMutableArray arrayWithCapacity:1];
+    
+    //QSObject *host = [[dObject arrayForType:QSRemoteHostsType] lastObject];
+    // use ostype to validate
+    // NSString *ostype = [host objectForMeta:@"ostype"];
+    // NSLog(@"OS type: %@", ostype);
+    // 
+    // if (![ostype isEqualToString:@"windows"]) {
+    //     NSLog(@"Not a Unix variant");
+    //     [newActions addObject:@"ConnectUsingSSH"];
+    //     [newActions addObject:@"ConnectUsingSSHroot"];
+    //     [newActions addObject:@"ConnectUsingSSHuser"];
+    // }
+    
+    // check to see if multiple objects have been sent using the comma trick
+    // only return actions that support that
+    if ([[dObject stringValue] isEqualToString:@"combined objects"])
+    {
+        for (NSString *action in actionList)
+        {
+            // if this action supports the comma trick, return it
+            NSArray *capabilities = [actionCapabilities valueForKey:action];
+            if ([capabilities containsObject:[NSString stringWithString:kMultipleHosts]]) {
+                [newActions addObject:action];
+            }
+        }
+        return newActions;
+    }
+    
+    // return all known actions by default
+    return actionList;
+}
 
 @end
