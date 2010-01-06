@@ -146,7 +146,7 @@
 }
 
 // TODO FTP actions will work after all. Add them.
-// Add HTTP, HTTPS + port actions?
+// TODO Add HTTP, HTTPS + port actions
 
 - (QSObject *)connectToPortWithTelnet:(QSObject *)dObject withPortNumber:(QSObject *)port
 {

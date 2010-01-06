@@ -35,7 +35,8 @@
     return NO;
 }
 
-// this doesn't seem to do anything (setIcon is used on each object as it's created)
+// this is set in the Info.plist
+// not sure if this method is to conditioanlly override it or what
 // - (NSImage *) iconForEntry:(NSDictionary *)dict
 // {
 //     return [QSResourceManager imageNamed:@"com.apple.mac"];
@@ -94,14 +95,19 @@
         // add some metadata
         if([lineParts count] > 1)
         {
-            [newObject setObject:[lineParts objectAtIndex:1] forMeta:@"ostype"];
-            // check for LOM info
-            if([lineParts count] > 2)
+            NSRange allButFirst;
+            allButFirst.location = 1;
+            allButFirst.length = [lineParts count] - 1;
+            for (NSString *metadata in [lineParts subarrayWithRange:allButFirst])
             {
-                [newObject setObject:[lineParts objectAtIndex:2] forMeta:@"lom"];
+                // metadata should look like 'key:value'
+                // if we find something like this, add it
+                NSArray *dataParts = [metadata componentsSeparatedByString:@":"];
+                if ([dataParts count] == 2)
+                {
+                    [newObject setObject:[dataParts objectAtIndex:1] forMeta:[dataParts objectAtIndex:0]];
+                }
             }
-        } else {
-            [newObject setObject:@"unknown" forMeta:@"ostype"];
         }
         
         // if the object is OK, add it to the list
@@ -131,14 +137,20 @@
 - (void)setQuickIconForObject:(QSObject *)object
 {
     // An icon that is either already in memory or easy to load
-    NSString *icon;
-    NSString *ostype = [object objectForMeta:@"ostype"];
-    if([ostype isEqualToString:@"windows"])
+    
+    // check for an icon in metadata
+    NSString *icon = [object objectForMeta:@"icon"];
+    if (!icon)
     {
-        // icon = @"public.generic-pc";
-        icon = @"GenericPCIcon";
-    } else {
-        icon = @"com.apple.mac";
+        // no icon specified, so pick one based on OS type
+        NSString *ostype = [object objectForMeta:@"ostype"];
+        if([ostype isEqualToString:@"windows"])
+        {
+            // icon = @"public.generic-pc";
+            icon = @"GenericPCIcon";
+        } else {
+            icon = @"com.apple.mac";
+        }
     }
     [object setIcon:[QSResourceManager imageNamed:icon]];
 }
