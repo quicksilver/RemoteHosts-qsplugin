@@ -15,7 +15,7 @@
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleVersion</key>
-	<string>105</string>
+	<string>114</string>
 	<key>NSPrincipalClass</key>
 	<string>RemoteHosts</string>
 	<key>QSActions</key>
@@ -270,6 +270,27 @@
 			<string>ToolbarInfo</string>
 			<key>name</key>
 			<string>Get IP Address</string>
+			<key>precedence</key>
+			<string>0</string>
+			<key>validatesObjects</key>
+			<true/>
+		</dict>
+		<key>LightsOutManagement</key>
+		<dict>
+			<key>actionClass</key>
+			<string>QSRemoteHostsAction</string>
+			<key>actionSelector</key>
+			<string>getLOMForHost:</string>
+			<key>directTypes</key>
+			<array>
+				<string>QSRemoteHostsType</string>
+			</array>
+			<key>displaysResult</key>
+			<true/>
+			<key>icon</key>
+			<string>ToolbarUtilitiesFolderIcon</string>
+			<key>name</key>
+			<string>Lights-Out Management</string>
 			<key>precedence</key>
 			<string>0</string>
 			<key>validatesObjects</key>

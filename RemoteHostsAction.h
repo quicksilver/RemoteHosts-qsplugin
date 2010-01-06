@@ -15,6 +15,7 @@
 #define kMultipleHosts @"works with multiple objects"
 #define kWindowsHosts @"works with windows"
 #define kUnixHosts @"works with unix"
+#define kHostsWithLOM @"hosts with Lights-Out Management"
 
 @interface QSRemoteHostsAction : QSActionProvider
 {

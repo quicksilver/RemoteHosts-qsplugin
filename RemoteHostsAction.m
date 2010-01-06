@@ -24,6 +24,7 @@
             [NSArray arrayWithObjects:kUnixHosts, kWindowsHosts, kMultipleHosts, nil], @"ConnectUsingTelnetPort",
             [NSArray arrayWithObjects:kUnixHosts, kWindowsHosts, kMultipleHosts, nil], @"ConnectUsingVNC",
             [NSArray arrayWithObjects:kUnixHosts, kWindowsHosts, nil], @"GetIPAddress",
+            [NSArray arrayWithObjects:kHostsWithLOM, nil], @"LightsOutManagement",
             nil
         ] retain];
         // store known actions
@@ -144,6 +145,9 @@
     return nil;
 }
 
+// TODO FTP actions will work after all. Add them.
+// Add HTTP, HTTPS + port actions?
+
 - (QSObject *)connectToPortWithTelnet:(QSObject *)dObject withPortNumber:(QSObject *)port
 {
     // launch Telnet connection to a specific port
@@ -228,6 +232,25 @@
     }
 }
 
+- (QSObject *)getLOMForHost:(QSObject *)dObject
+{
+    // look up the LOM address for this host and return it to the Quicksilver interface
+    NSString *host = [dObject name];
+    NSString *hostName = [[host componentsSeparatedByString:@"."] objectAtIndex:0];
+    NSString *label = [NSString stringWithFormat:@"%@ (LOM)", hostName];
+    // using objectWithString here would cause Quicksilver to treat the address as a URL
+    // so we create the object with a few explicit details to make it act like text
+    NSString *lom = [dObject objectForMeta:@"lom"];
+    NSString *ident = [NSString stringWithFormat:@"remote-host-%@", lom];
+    QSObject *lomObject = [QSObject objectWithName:lom];
+    [lomObject setIdentifier:ident];
+    [lomObject setObject:lom forType:QSRemoteHostsType];
+    [lomObject setIcon:[QSResourceManager imageNamed:@"com.apple.xserve"]];
+    [lomObject setLabel:label];
+    [lomObject setObject:@"lom" forMeta:@"ostype"];
+    return lomObject;
+}
+
 /* methods called by Quicksilver as needed */
 
 // declaring this here will cause the third pane to pop up in text-entry mode by default
@@ -259,35 +282,56 @@
     // actions to be returned
     NSMutableArray *newActions=[NSMutableArray arrayWithCapacity:1];
     
-    //QSObject *host = [[dObject arrayForType:QSRemoteHostsType] lastObject];
-    // use ostype to validate
-    // NSString *ostype = [host objectForMeta:@"ostype"];
-    // NSLog(@"OS type: %@", ostype);
-    // 
-    // if (![ostype isEqualToString:@"windows"]) {
-    //     NSLog(@"Not a Unix variant");
-    //     [newActions addObject:@"ConnectUsingSSH"];
-    //     [newActions addObject:@"ConnectUsingSSHroot"];
-    //     [newActions addObject:@"ConnectUsingSSHuser"];
-    // }
+    /*  The general idea here is to loop through all actions and if
+        we find a reason — any reason — to allow it, add it to the array
+        and bail out with a call to `continue`. This has two advantages:
+        1. If there are 10 reasons to allow an action, it only gets added
+           to the array once, not 10 times
+        2. We can skip a lot of validation steps and speed up the process
+        
+        With that in mind, the tests most likely to match should be first.
+    */
     
-    // check to see if multiple objects have been sent using the comma trick
-    // only return actions that support that
-    if ([[dObject stringValue] isEqualToString:@"combined objects"])
+    for (NSString *action in actionList)
     {
-        for (NSString *action in actionList)
+        NSArray *capabilities = [actionCapabilities valueForKey:action];
+        
+        // comma trick support is all or nothing
+        // other checks are only attempted on single objects
+        if ([[dObject stringValue] isEqualToString:@"combined objects"])
         {
-            // if this action supports the comma trick, return it
-            NSArray *capabilities = [actionCapabilities valueForKey:action];
-            if ([capabilities containsObject:[NSString stringWithString:kMultipleHosts]]) {
+            if ([capabilities containsObject:[NSString stringWithString:kMultipleHosts]])
+            {
                 [newActions addObject:action];
+                continue;
+            }
+        } else {
+            // checks based on OS type
+            NSString *ostype = [dObject objectForMeta:@"ostype"];
+            if (![ostype isEqualToString:@"windows"]
+                && [capabilities containsObject:[NSString stringWithString:kUnixHosts]])
+            {
+                [newActions addObject:action];
+                continue;
+            }
+            if ([ostype isEqualToString:@"windows"]
+                && [capabilities containsObject:[NSString stringWithString:kWindowsHosts]])
+            {
+                [newActions addObject:action];
+                continue;
+            }
+            
+            // Lights-Out Management support
+            NSString *lom = [dObject objectForMeta:@"lom"];
+            if (lom && [capabilities containsObject:[NSString stringWithString:kHostsWithLOM]])
+            {
+                [newActions addObject:@"LightsOutManagement"];
+                continue;
             }
         }
-        return newActions;
     }
     
-    // return all known actions by default
-    return actionList;
+    return newActions;
 }
 
 @end

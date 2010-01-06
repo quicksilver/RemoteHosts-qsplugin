@@ -91,11 +91,15 @@
         // [newObject setIcon:[QSResourceManager imageNamed:@"com.apple.mac"]];
         [newObject setLabel:label];
         //[newObject setPrimaryType:QSRemoteHostsType];
-        // add some meta-data
+        // add some metadata
         if([lineParts count] > 1)
         {
-            NSString *ostype = [lineParts objectAtIndex:1];
-            [newObject setObject:ostype forMeta:@"ostype"];
+            [newObject setObject:[lineParts objectAtIndex:1] forMeta:@"ostype"];
+            // check for LOM info
+            if([lineParts count] > 2)
+            {
+                [newObject setObject:[lineParts objectAtIndex:2] forMeta:@"lom"];
+            }
         } else {
             [newObject setObject:@"unknown" forMeta:@"ostype"];
         }
