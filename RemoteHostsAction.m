@@ -22,6 +22,9 @@
             [NSArray arrayWithObjects:kUnixHosts, kMultipleHosts, nil], @"ConnectUsingSSHuser",
             [NSArray arrayWithObjects:kUnixHosts, kMultipleHosts, nil], @"ConnectUsingTelnet",
             [NSArray arrayWithObjects:kUnixHosts, kWindowsHosts, kMultipleHosts, nil], @"ConnectUsingTelnetPort",
+            [NSArray arrayWithObjects:kUnixHosts, kWindowsHosts, kMultipleHosts, nil], @"ConnectUsingFTP",
+            [NSArray arrayWithObjects:kUnixHosts, kWindowsHosts, kMultipleHosts, nil], @"ConnectUsingHTTP",
+            [NSArray arrayWithObjects:kUnixHosts, kWindowsHosts, kMultipleHosts, nil], @"ConnectUsingHTTPS",
             [NSArray arrayWithObjects:kUnixHosts, kWindowsHosts, kMultipleHosts, nil], @"ConnectUsingVNC",
             [NSArray arrayWithObjects:kUnixHosts, kWindowsHosts, nil], @"GetIPAddress",
             [NSArray arrayWithObjects:kHostsWithLOM, nil], @"LightsOutManagement",
@@ -145,8 +148,7 @@
     return nil;
 }
 
-// TODO FTP actions will work after all. Add them.
-// TODO Add HTTP, HTTPS + port actions
+// TODO Add HTTP:port & HTTPS:port actions?
 
 - (QSObject *)connectToPortWithTelnet:(QSObject *)dObject withPortNumber:(QSObject *)port
 {
@@ -159,6 +161,48 @@
         
         // launch a Telnet connection
         [self launchConnection:[NSString stringWithFormat:@"telnet://%@:%@",remoteHost,[port stringValue]]];
+    
+    }
+    return nil;
+}
+
+- (QSObject *)connectWithFTP:(QSObject *)dObject
+{
+    // launch an FTP connection in Finder
+    
+    for(NSString *remoteHost in [dObject arrayForType:QSRemoteHostsType])
+    {
+        //NSLog(@"Connection for %@", remoteHost);
+        
+        [self launchConnection:[NSString stringWithFormat:@"ftp://%@/",remoteHost]];
+    
+    }
+    return nil;
+}
+
+- (QSObject *)connectWithHTTP:(QSObject *)dObject
+{
+    // launch an HTTP connection in the default browser
+    
+    for(NSString *remoteHost in [dObject arrayForType:QSRemoteHostsType])
+    {
+        //NSLog(@"Connection for %@", remoteHost);
+        
+        [self launchConnection:[NSString stringWithFormat:@"http://%@/",remoteHost]];
+    
+    }
+    return nil;
+}
+
+- (QSObject *)connectWithHTTPS:(QSObject *)dObject
+{
+    // launch an HTTP connection in the default browser
+    
+    for(NSString *remoteHost in [dObject arrayForType:QSRemoteHostsType])
+    {
+        //NSLog(@"Connection for %@", remoteHost);
+        
+        [self launchConnection:[NSString stringWithFormat:@"https://%@/",remoteHost]];
     
     }
     return nil;

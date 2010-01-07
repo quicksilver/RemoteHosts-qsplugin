@@ -15,7 +15,7 @@
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleVersion</key>
-	<string>116</string>
+	<string>11B</string>
 	<key>NSPrincipalClass</key>
 	<string>RemoteHosts</string>
 	<key>QSActions</key>
@@ -35,7 +35,7 @@
 			<key>icon</key>
 			<string>GenericFileServerIcon</string>
 			<key>name</key>
-			<string>Browse host with AFP</string>
+			<string>Browse with AFP</string>
 			<key>precedence</key>
 			<string>0</string>
 			<key>validatesObjects</key>
@@ -83,7 +83,7 @@
 			<key>icon</key>
 			<string>GenericFileServerIcon</string>
 			<key>name</key>
-			<string>Browse host with CIFS</string>
+			<string>Browse with CIFS</string>
 			<key>precedence</key>
 			<string>0</string>
 			<key>validatesObjects</key>
@@ -116,6 +116,69 @@
 			<key>validatesObjects</key>
 			<true/>
 		</dict>
+		<key>ConnectUsingFTP</key>
+		<dict>
+			<key>actionClass</key>
+			<string>QSRemoteHostsAction</string>
+			<key>actionSelector</key>
+			<string>connectWithFTP:</string>
+			<key>directTypes</key>
+			<array>
+				<string>QSRemoteHostsType</string>
+			</array>
+			<key>displaysResult</key>
+			<false/>
+			<key>icon</key>
+			<string>InternetLocationFTP</string>
+			<key>name</key>
+			<string>FTP</string>
+			<key>precedence</key>
+			<string>0</string>
+			<key>validatesObjects</key>
+			<true/>
+		</dict>
+		<key>ConnectUsingHTTP</key>
+		<dict>
+			<key>actionClass</key>
+			<string>QSRemoteHostsAction</string>
+			<key>actionSelector</key>
+			<string>connectWithHTTP:</string>
+			<key>directTypes</key>
+			<array>
+				<string>QSRemoteHostsType</string>
+			</array>
+			<key>displaysResult</key>
+			<false/>
+			<key>icon</key>
+			<string>BookmarkIcon</string>
+			<key>name</key>
+			<string>HTTP</string>
+			<key>precedence</key>
+			<string>0</string>
+			<key>validatesObjects</key>
+			<true/>
+		</dict>
+		<key>ConnectUsingHTTPS</key>
+		<dict>
+			<key>actionClass</key>
+			<string>QSRemoteHostsAction</string>
+			<key>actionSelector</key>
+			<string>connectWithHTTPS:</string>
+			<key>directTypes</key>
+			<array>
+				<string>QSRemoteHostsType</string>
+			</array>
+			<key>displaysResult</key>
+			<false/>
+			<key>icon</key>
+			<string>BookmarkIcon</string>
+			<key>name</key>
+			<string>HTTPS</string>
+			<key>precedence</key>
+			<string>0</string>
+			<key>validatesObjects</key>
+			<true/>
+		</dict>
 		<key>ConnectUsingSSH</key>
 		<dict>
 			<key>actionClass</key>
@@ -131,7 +194,7 @@
 			<key>icon</key>
 			<string>com.apple.Terminal</string>
 			<key>name</key>
-			<string>SSH to host</string>
+			<string>SSH</string>
 			<key>precedence</key>
 			<string>2</string>
 			<key>validatesObjects</key>
@@ -152,7 +215,7 @@
 			<key>icon</key>
 			<string>com.apple.Terminal</string>
 			<key>name</key>
-			<string>SSH to host as root</string>
+			<string>SSH as root</string>
 			<key>precedence</key>
 			<string>1</string>
 			<key>validatesObjects</key>
@@ -179,7 +242,7 @@
 				<string>NSString</string>
 			</array>
 			<key>name</key>
-			<string>SSH to host as…</string>
+			<string>SSH as…</string>
 			<key>precedence</key>
 			<string>1</string>
 			<key>validatesObjects</key>
@@ -200,7 +263,7 @@
 			<key>icon</key>
 			<string>com.apple.Terminal</string>
 			<key>name</key>
-			<string>Telnet to host</string>
+			<string>Telnet</string>
 			<key>precedence</key>
 			<string>0</string>
 			<key>validatesObjects</key>
@@ -227,7 +290,7 @@
 				<string>NSString</string>
 			</array>
 			<key>name</key>
-			<string>Telnet to host on port…</string>
+			<string>Telnet to port…</string>
 			<key>precedence</key>
 			<string>0</string>
 			<key>validatesObjects</key>
@@ -312,7 +375,7 @@
 		<key>extendedDescription</key>
 		<string>&lt;h3&gt;A Quicksilver plug-in for dealing with a large number of computers&lt;/h3&gt;
 
-&lt;p&gt;Given a text file with a list of machine names in it (either hostname or Fully Qualified Domain Name), this plug-in indexes them as &quot;remote host&quot; objects and provides the following actions:&lt;/p&gt;
+&lt;p&gt;Given a text file with a list of machine names in it (either hostname or Fully Qualified Domain Name), this plug-in indexes them as "remote host" objects and provides the following actions:&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;SSH to host&lt;/li&gt;
@@ -340,23 +403,23 @@ windows.example.com ostype:windows
 ahostiuse ostype:solaris
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;You may already have a file like this for completion in your shell. If you have existing metadata in this file, it shouldn&apos;t break anything, but it won&apos;t necessarily be useful in Quicksilver.&lt;/p&gt;
+&lt;p&gt;You may already have a file like this for completion in your shell. If you have existing metadata in this file, it shouldn't break anything, but it won't necessarily be useful in Quicksilver.&lt;/p&gt;
 
-&lt;p&gt;The plug-in scans for items on each host&apos;s line that look like this: &lt;code&gt;key:value&lt;/code&gt;. All such data will be stored along with the host in Quicksilver&apos;s catalog, but there are currently only three that will affect its behavior.&lt;/p&gt;
+&lt;p&gt;The plug-in scans for items on each host's line that look like this: &lt;code&gt;key:value&lt;/code&gt;. All such data will be stored along with the host in Quicksilver's catalog, but there are currently only three that will affect its behavior.&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;ostype: OS type should be a short, generic word, like &quot;solaris&quot;, &quot;linux&quot;, &quot;windows&quot;, etc. Currently, the only real distinction is between &quot;windows&quot; and everything else. Windows hosts get a different default icon and certain actions don&apos;t appear. Default icons for additional OS types may be added in the future.&lt;/li&gt;
-&lt;li&gt;icon: You can specify an icon to use for a host if you don&apos;t like its default.&lt;/li&gt;
-&lt;li&gt;lom: The Lights-Out Management address will only apply to fancy, rack-mounted servers that provide some sort of network-based LOM. If you don&apos;t know what this means, you probably don&apos;t need to worry about it. The information itself should be an IP address, hostname, or FQDN for the system&apos;s LOM interface.&lt;/li&gt;
+&lt;li&gt;ostype: OS type should be a short, generic word, like "solaris", "linux", "windows", etc. Currently, the only real distinction is between "windows" and everything else. Windows hosts get a different default icon and certain actions don't appear. Default icons for additional OS types may be added in the future.&lt;/li&gt;
+&lt;li&gt;icon: You can specify an icon to use for a host if you don't like its default.&lt;/li&gt;
+&lt;li&gt;lom: The Lights-Out Management address will only apply to fancy, rack-mounted servers that provide some sort of network-based LOM. If you don't know what this means, you probably don't need to worry about it. The information itself should be an IP address, hostname, or FQDN for the system's LOM interface.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h4&gt;Tips&lt;/h4&gt;
 
-&lt;p&gt;After installation, you may want to check the precedence of the actions and make sure they&apos;re to your liking. The actions only apply to &quot;remote hosts&quot; in the catalog, so moving them up rather high on the list shouldn&apos;t interfere with other tasks. You may also want to disable some of the ones you never think you&apos;ll use.&lt;/p&gt;
+&lt;p&gt;After installation, you may want to check the precedence of the actions and make sure they're to your liking. The actions only apply to "remote hosts" in the catalog, so moving them up rather high on the list shouldn't interfere with other tasks. You may also want to disable some of the ones you never think you'll use.&lt;/p&gt;
 
 &lt;p&gt;For more than a few machines, you should use a script to generate a &lt;code&gt;.hosts&lt;/code&gt; file from DNS, LDAP, a database, or some other authoritative source if possible, rather than managing it by hand. You might also schedule a job to update the file on a regular basis.&lt;/p&gt;
 
-&lt;p&gt;If you find yourself using &quot;SSH to host as…&quot; frequently, you may want to add something like this to your &lt;code&gt;~/.ssh/config&lt;/code&gt;:&lt;/p&gt;
+&lt;p&gt;If you find yourself using "SSH to host as…" frequently, you may want to add something like this to your &lt;code&gt;~/.ssh/config&lt;/code&gt;:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;Host server.domain
   User someuser
@@ -364,7 +427,7 @@ ahostiuse ostype:solaris
 
 &lt;p&gt;See the &lt;code&gt;ssh_config(5)&lt;/code&gt; man page for details.&lt;/p&gt;
 
-&lt;p&gt;Finally, don&apos;t forget the &quot;comma trick&quot;. You can select multiple hosts using the comma or ⌘A, then connect to them all at once.&lt;/p&gt;</string>
+&lt;p&gt;Finally, don't forget the "comma trick". You can select multiple hosts using the comma or ⌘A, then connect to them all at once.&lt;/p&gt;</string>
 		<key>icon</key>
 		<string>com.apple.xserve</string>
 		<key>qsversion</key>
