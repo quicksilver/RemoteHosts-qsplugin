@@ -15,7 +15,7 @@
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleVersion</key>
-	<string>121</string>
+	<string>122</string>
 	<key>NSPrincipalClass</key>
 	<string>RemoteHosts</string>
 	<key>QSActions</key>
@@ -375,21 +375,24 @@
 		<key>extendedDescription</key>
 		<string>&lt;h3&gt;A Quicksilver plug-in for dealing with a large number of computers&lt;/h3&gt;
 
-&lt;p&gt;Given a text file with a list of machine names in it (either hostname or Fully Qualified Domain Name), this plug-in indexes them as "remote host" objects and provides the following actions:&lt;/p&gt;
+&lt;p&gt;Given a text file with a list of machines in it (either hostname, Fully Qualified Domain Name, or IP address), this plug-in indexes them as "remote host" objects and provides the following actions:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;SSH to host&lt;/li&gt;
-&lt;li&gt;SSH to host as root&lt;/li&gt;
-&lt;li&gt;SSH to host as… [username in 3rd pane]&lt;/li&gt;
-&lt;li&gt;Telnet to host&lt;/li&gt;
-&lt;li&gt;Telnet to host on port… [port number in 3rd pane]&lt;/li&gt;
+&lt;li&gt;SSH&lt;/li&gt;
+&lt;li&gt;SSH as root&lt;/li&gt;
+&lt;li&gt;SSH as… [username in 3rd pane]&lt;/li&gt;
+&lt;li&gt;Telnet&lt;/li&gt;
+&lt;li&gt;Telnet to port… [port number in 3rd pane]&lt;/li&gt;
+&lt;li&gt;FTP&lt;/li&gt;
+&lt;li&gt;HTTP&lt;/li&gt;
+&lt;li&gt;HTTPS&lt;/li&gt;
 &lt;li&gt;Screen Sharing (VNC)&lt;/li&gt;
-&lt;li&gt;Browse host with CIFS&lt;/li&gt;
+&lt;li&gt;Browse with CIFS&lt;/li&gt;
 &lt;li&gt;Mount share with CIFS… [share name in 3rd pane]&lt;/li&gt;
-&lt;li&gt;Browse host with AFP&lt;/li&gt;
+&lt;li&gt;Browse with AFP&lt;/li&gt;
 &lt;li&gt;Mount share with AFP… [share name in 3rd pane]&lt;/li&gt;
-&lt;li&gt;Get IP Address&lt;/li&gt;
-&lt;li&gt;Lights-Out Management&lt;/li&gt;
+&lt;li&gt;Get IP Address - Returns the IP address to Quicksilver.&lt;/li&gt;
+&lt;li&gt;Lights-Out Management - Returns the LOM address to Quicksilver as a "remote host". From there, you can use one of the above actions to connect to it.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;The plug-in will scan &lt;code&gt;~/.hosts&lt;/code&gt; for a list of machines by default. The file is treated as UTF-8. It should contain one host per line. The hostname or FQDN should be the first thing on each line, but other metadata is allowed (separated by a single space). An example might look like this:&lt;/p&gt;
@@ -408,10 +411,12 @@ ahostiuse ostype:solaris
 &lt;p&gt;The plug-in scans for items on each host's line that look like this: &lt;code&gt;key:value&lt;/code&gt;. All such data will be stored along with the host in Quicksilver's catalog, but there are currently only three that will affect its behavior.&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;ostype: OS type should be a short, generic word, like "solaris", "linux", "windows", etc. Currently, the only real distinction is between "windows" and everything else. Windows hosts get a different default icon and certain actions don't appear. Default icons for additional OS types may be added in the future.&lt;/li&gt;
-&lt;li&gt;icon: You can specify an icon to use for a host if you don't like its default.&lt;/li&gt;
-&lt;li&gt;lom: The Lights-Out Management address will only apply to fancy, rack-mounted servers that provide some sort of network-based LOM. If you don't know what this means, you probably don't need to worry about it. The information itself should be an IP address, hostname, or FQDN for the system's LOM interface.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ostype&lt;/code&gt;: OS type should be a short, generic word, like "solaris", "linux", "windows", etc. Currently, the only real distinction is between "windows" and everything else. Windows hosts get a different default icon and certain actions don't appear. Default icons for additional OS types may be added in the future.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;icon&lt;/code&gt;: You can specify an icon to use for a host if you don't like its default.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;lom&lt;/code&gt;: The Lights-Out Management address will only apply to fancy, rack-mounted servers that provide some sort of network-based LOM. If you don't know what this means, you probably don't need to worry about it. The information itself should be an IP address, hostname, or FQDN for the system's LOM interface.&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;p&gt;You can optionally pull hosts from &lt;code&gt;~/.ssh/known_hosts&lt;/code&gt;. There is a preset (disabled by default) under "Remote Hosts" in the Modules section of the Catalog.&lt;/p&gt;
 
 &lt;h4&gt;Tips&lt;/h4&gt;
 
