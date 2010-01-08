@@ -82,7 +82,10 @@
         // allow other metadata in the file, separated by whitespace
         // hostname or FQDN should be the first thing on the line
         NSArray *lineParts = [line componentsSeparatedByString:@" "];
-        NSString *host = [lineParts objectAtIndex:0];
+        // ~/.ssh/known_hosts could be host or host,ip
+        // to support that file, split on comma
+        NSArray *hostParts = [[lineParts objectAtIndex:0] componentsSeparatedByString:@","];
+        NSString *host = [hostParts objectAtIndex:0];
         NSString *label = [NSString stringWithFormat:@"%@ (remote host)", host];
         NSString *ident = [NSString stringWithFormat:@"remote-host-%@", host];
         // build a QSObject

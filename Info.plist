@@ -15,7 +15,7 @@
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleVersion</key>
-	<string>11D</string>
+	<string>121</string>
 	<key>NSPrincipalClass</key>
 	<string>RemoteHosts</string>
 	<key>QSActions</key>
@@ -439,22 +439,56 @@ ahostiuse ostype:solaris
 	<array>
 		<dict>
 			<key>ID</key>
-			<string>QSPresetHostList</string>
+			<string>QSRemoteHostsGroup</string>
+			<key>children</key>
+			<array>
+				<dict>
+					<key>ID</key>
+					<string>QSPresetHostList</string>
+					<key>enabled</key>
+					<true/>
+					<key>icon</key>
+					<string>com.apple.xserve</string>
+					<key>name</key>
+					<string>~/.hosts</string>
+					<key>settings</key>
+					<dict>
+						<key>path</key>
+						<string>~/.hosts</string>
+						<key>skipItem</key>
+						<true/>
+					</dict>
+					<key>source</key>
+					<string>QSRemoteHostsSource</string>
+				</dict>
+				<dict>
+					<key>ID</key>
+					<string>QSPresetKnownHosts</string>
+					<key>enabled</key>
+					<false/>
+					<key>icon</key>
+					<string>com.apple.xserve</string>
+					<key>name</key>
+					<string>~/.ssh/known_hosts</string>
+					<key>settings</key>
+					<dict>
+						<key>path</key>
+						<string>~/.ssh/known_hosts</string>
+						<key>skipItem</key>
+						<true/>
+					</dict>
+					<key>source</key>
+					<string>QSRemoteHostsSource</string>
+				</dict>
+			</array>
 			<key>enabled</key>
 			<true/>
 			<key>icon</key>
 			<string>com.apple.xserve</string>
 			<key>name</key>
 			<string>Remote Hosts</string>
-			<key>settings</key>
-			<dict>
-				<key>path</key>
-				<string>~/.hosts</string>
-				<key>skipItem</key>
-				<true/>
-			</dict>
 			<key>source</key>
-			<string>QSRemoteHostsSource</string>
+			<string>QSGroupObjectSource</string>
 		</dict>
 	</array>
 	<key>QSRegistration</key>

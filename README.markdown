@@ -36,6 +36,8 @@ The plug-in scans for items on each host's line that look like this: `key:value`
   * `icon`: You can specify an icon to use for a host if you don't like its default.
   * `lom`: The Lights-Out Management address will only apply to fancy, rack-mounted servers that provide some sort of network-based LOM. If you don't know what this means, you probably don't need to worry about it. The information itself should be an IP address, hostname, or FQDN for the system's LOM interface.
 
+You can optionally pull hosts from `~/.ssh/known_hosts`. There is a preset (disabled by default) under "Remote Hosts" in the Modules section of the Catalog.
+
 #### Tips ####
 
 After installation, you may want to check the precedence of the actions and make sure they're to your liking. The actions only apply to "remote hosts" in the catalog, so moving them up rather high on the list shouldn't interfere with other tasks. You may also want to disable some of the ones you never think you'll use.
