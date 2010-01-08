@@ -1,19 +1,22 @@
 ### A Quicksilver plug-in for dealing with a large number of computers ###
 
-Given a text file with a list of machine names in it (either hostname or Fully Qualified Domain Name), this plug-in indexes them as "remote host" objects and provides the following actions:
+Given a text file with a list of machines in it (either hostname, Fully Qualified Domain Name, or IP address), this plug-in indexes them as "remote host" objects and provides the following actions:
 
-  * SSH to host
-  * SSH to host as root
-  * SSH to host as… [username in 3rd pane]
-  * Telnet to host
-  * Telnet to host on port… [port number in 3rd pane]
+  * SSH
+  * SSH as root
+  * SSH as… [username in 3rd pane]
+  * Telnet
+  * Telnet to port… [port number in 3rd pane]
+  * FTP
+  * HTTP
+  * HTTPS
   * Screen Sharing (VNC)
-  * Browse host with CIFS
+  * Browse with CIFS
   * Mount share with CIFS… [share name in 3rd pane]
-  * Browse host with AFP
+  * Browse with AFP
   * Mount share with AFP… [share name in 3rd pane]
-  * Get IP Address
-  * Lights-Out Management
+  * Get IP Address - Returns the IP address to Quicksilver.
+  * Lights-Out Management - Returns the LOM address to Quicksilver as a "remote host". From there, you can use one of the above actions to connect to it.
 
 The plug-in will scan `~/.hosts` for a list of machines by default. The file is treated as UTF-8. It should contain one host per line. The hostname or FQDN should be the first thing on each line, but other metadata is allowed (separated by a single space). An example might look like this:
 
@@ -29,9 +32,9 @@ You may already have a file like this for completion in your shell. If you have 
 
 The plug-in scans for items on each host's line that look like this: `key:value`. All such data will be stored along with the host in Quicksilver's catalog, but there are currently only three that will affect its behavior.
 
-  * ostype: OS type should be a short, generic word, like "solaris", "linux", "windows", etc. Currently, the only real distinction is between "windows" and everything else. Windows hosts get a different default icon and certain actions don't appear. Default icons for additional OS types may be added in the future.
-  * icon: You can specify an icon to use for a host if you don't like its default.
-  * lom: The Lights-Out Management address will only apply to fancy, rack-mounted servers that provide some sort of network-based LOM. If you don't know what this means, you probably don't need to worry about it. The information itself should be an IP address, hostname, or FQDN for the system's LOM interface.
+  * `ostype`: OS type should be a short, generic word, like "solaris", "linux", "windows", etc. Currently, the only real distinction is between "windows" and everything else. Windows hosts get a different default icon and certain actions don't appear. Default icons for additional OS types may be added in the future.
+  * `icon`: You can specify an icon to use for a host if you don't like its default.
+  * `lom`: The Lights-Out Management address will only apply to fancy, rack-mounted servers that provide some sort of network-based LOM. If you don't know what this means, you probably don't need to worry about it. The information itself should be an IP address, hostname, or FQDN for the system's LOM interface.
 
 #### Tips ####
 

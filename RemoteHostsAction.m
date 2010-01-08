@@ -281,7 +281,7 @@
     // look up the LOM address for this host and return it to the Quicksilver interface
     NSString *host = [dObject name];
     NSString *hostName = [[host componentsSeparatedByString:@"."] objectAtIndex:0];
-    NSString *label = [NSString stringWithFormat:@"%@ (LOM)", hostName];
+    NSString *label = [NSString stringWithFormat:@"%@ • LOM", hostName];
     // using objectWithString here would cause Quicksilver to treat the address as a URL
     // so we create the object with a few explicit details to make it act like text
     NSString *lom = [dObject objectForMeta:@"lom"];
@@ -289,7 +289,6 @@
     QSObject *lomObject = [QSObject objectWithName:lom];
     [lomObject setIdentifier:ident];
     [lomObject setObject:lom forType:QSRemoteHostsType];
-    [lomObject setIcon:[QSResourceManager imageNamed:@"com.apple.xserve"]];
     [lomObject setLabel:label];
     [lomObject setObject:@"lom" forMeta:@"ostype"];
     return lomObject;

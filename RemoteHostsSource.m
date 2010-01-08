@@ -148,6 +148,8 @@
         {
             // icon = @"public.generic-pc";
             icon = @"GenericPCIcon";
+        } else if ([ostype isEqualToString:@"lom"]) {
+            icon = @"com.apple.xserve";
         } else {
             icon = @"com.apple.mac";
         }
