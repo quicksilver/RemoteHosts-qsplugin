@@ -86,9 +86,14 @@
         // to support that file, split on comma
         NSArray *hostParts = [[lineParts objectAtIndex:0] componentsSeparatedByString:@","];
         NSString *host = [hostParts objectAtIndex:0];
-        if ([host characterAtIndex:[host length] - 1] == '=')
+        // check for valid hostnames with a regex
+        // valid characters are a-z, 0-9, '.', and '-'
+        // must begin with a letter or digit, can contain '-', and can end with '.'
+        NSString *hostRegEx = @"^[[:letter:][:number:]][[:letter:][:number:]\\-\\.]*[[:letter:] [:number:]\\.]$";
+        NSPredicate *regextest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", hostRegEx];
+        if (![regextest evaluateWithObject:host])
         {
-            // looks like a hased known_hosts file, which we can't do anything with
+            // this doesn't look like a valid hostname - skip it
             continue;
         }
         NSString *label = [NSString stringWithFormat:@"%@ (remote host)", host];
