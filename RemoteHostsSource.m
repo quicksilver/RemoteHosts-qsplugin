@@ -86,6 +86,11 @@
         // to support that file, split on comma
         NSArray *hostParts = [[lineParts objectAtIndex:0] componentsSeparatedByString:@","];
         NSString *host = [hostParts objectAtIndex:0];
+        if ([host characterAtIndex:[host length] - 1] == '=')
+        {
+            // looks like a hased known_hosts file, which we can't do anything with
+            continue;
+        }
         NSString *label = [NSString stringWithFormat:@"%@ (remote host)", host];
         NSString *ident = [NSString stringWithFormat:@"remote-host-%@", host];
         // build a QSObject
