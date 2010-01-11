@@ -38,7 +38,7 @@
 
 /* helper methods */
 // TODO create a method to take a QSObject and return an array of connection URLs
-// TODO use notification system for erors instead of returning them as objects?
+// TODO use notification system for erors instead of returning them as objects? see Calculator Module
 
 - (void)launchConnection:(NSString *)inetloc
 {

@@ -96,14 +96,11 @@
             // this doesn't look like a valid hostname - skip it
             continue;
         }
-        NSString *label = [NSString stringWithFormat:@"%@ (remote host)", host];
         NSString *ident = [NSString stringWithFormat:@"remote-host-%@", host];
         // build a QSObject
         newObject = [QSObject objectWithName:host];
         [newObject setIdentifier:ident];
         [newObject setObject:host forType:QSRemoteHostsType];
-        // [newObject setIcon:[QSResourceManager imageNamed:@"com.apple.mac"]];
-        [newObject setLabel:label];
         //[newObject setPrimaryType:QSRemoteHostsType];
         // add some metadata
         if([lineParts count] > 1)
@@ -121,6 +118,22 @@
                     [newObject setObject:[dataParts objectAtIndex:1] forMeta:[dataParts objectAtIndex:0]];
                 }
             }
+        }
+        // make the description and label more useful if possible
+        NSString *ostype = [newObject objectForMeta:@"ostype"];
+        NSString *hostType;
+        if (ostype)
+        {
+            hostType = [ostype capitalizedString];
+        } else {
+            hostType = @"Remote";
+        }
+        // the "details" string appears in smaller text below the object in the UI
+        [newObject setDetails:[NSString stringWithFormat:@"%@ (%@ Host)", host, hostType]];
+        NSString *labelExtra = [newObject objectForMeta:@"label"];
+        if (labelExtra)
+        {
+            [newObject setLabel:[NSString stringWithFormat:@"%@ • %@", host, labelExtra]];
         }
         
         // if the object is OK, add it to the list
