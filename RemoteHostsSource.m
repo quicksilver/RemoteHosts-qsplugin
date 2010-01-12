@@ -190,4 +190,25 @@
     return YES;
 }
 */
+
+- (BOOL)loadChildrenForObject:(QSObject *)object
+{
+    NSLog(@"load children - remote host - %@", [object name]);
+    // [object setChildren:[self objectsForEntry:nil]];
+    NSMutableArray *children = [NSMutableArray arrayWithCapacity:1];
+    NSArray *metaKeys = [NSArray arrayWithObjects:
+        @"ostype",
+        @"lom",
+        nil
+    ];
+    for (NSString *key in metaKeys)
+    {
+        NSString *value = [object objectForMeta:key];
+        if (value)
+            [children addObject:[QSObject objectWithString:[NSString stringWithFormat:@"%@: %@", key, value]]];
+    }
+    [object setChildren:children];
+    return TRUE;
+}
+
 @end
