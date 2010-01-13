@@ -15,7 +15,7 @@
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleVersion</key>
-	<string>135</string>
+	<string>136</string>
 	<key>NSPrincipalClass</key>
 	<string>RemoteHosts</string>
 	<key>QSActions</key>
@@ -85,7 +85,7 @@
 			<key>name</key>
 			<string>Browse with CIFS</string>
 			<key>precedence</key>
-			<string>0</string>
+			<string>0.5</string>
 			<key>validatesObjects</key>
 			<true/>
 		</dict>
@@ -112,7 +112,7 @@
 			<key>name</key>
 			<string>Mount share with CIFS…</string>
 			<key>precedence</key>
-			<string>0</string>
+			<string>0.5</string>
 			<key>validatesObjects</key>
 			<true/>
 		</dict>
@@ -312,48 +312,6 @@
 			<string>InternetLocationVNC</string>
 			<key>name</key>
 			<string>Screen Sharing (VNC)</string>
-			<key>precedence</key>
-			<string>0</string>
-			<key>validatesObjects</key>
-			<true/>
-		</dict>
-		<key>GetIPAddress</key>
-		<dict>
-			<key>actionClass</key>
-			<string>QSRemoteHostsAction</string>
-			<key>actionSelector</key>
-			<string>getIPForHost:</string>
-			<key>directTypes</key>
-			<array>
-				<string>QSRemoteHostsType</string>
-			</array>
-			<key>displaysResult</key>
-			<true/>
-			<key>icon</key>
-			<string>ToolbarInfo</string>
-			<key>name</key>
-			<string>Get IP Address</string>
-			<key>precedence</key>
-			<string>0</string>
-			<key>validatesObjects</key>
-			<true/>
-		</dict>
-		<key>LightsOutManagement</key>
-		<dict>
-			<key>actionClass</key>
-			<string>QSRemoteHostsAction</string>
-			<key>actionSelector</key>
-			<string>getLOMForHost:</string>
-			<key>directTypes</key>
-			<array>
-				<string>QSRemoteHostsType</string>
-			</array>
-			<key>displaysResult</key>
-			<true/>
-			<key>icon</key>
-			<string>ToolbarUtilitiesFolderIcon</string>
-			<key>name</key>
-			<string>Lights-Out Management</string>
 			<key>precedence</key>
 			<string>0</string>
 			<key>validatesObjects</key>

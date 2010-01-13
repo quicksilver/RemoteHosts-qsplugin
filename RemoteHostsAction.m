@@ -27,7 +27,6 @@
             [NSArray arrayWithObjects:kUnixHosts, kWindowsHosts, kMultipleHosts, nil], @"ConnectUsingHTTPS",
             [NSArray arrayWithObjects:kUnixHosts, kWindowsHosts, kMultipleHosts, nil], @"ConnectUsingVNC",
             [NSArray arrayWithObjects:kUnixHosts, kWindowsHosts, nil], @"GetIPAddress",
-            [NSArray arrayWithObjects:kHostsWithLOM, nil], @"LightsOutManagement",
             nil
         ] retain];
         // store known actions
@@ -254,46 +253,6 @@
     return nil;
 }
 
-- (QSObject *)getIPForHost:(QSObject *)dObject
-{
-    // look up the IP address for this host and return it to the Quicksilver interface
-    NSString *hostName = [dObject name];
-    NSHost *host = [NSHost hostWithName:hostName];
-    
-    // this action doesn't support the comma-trick
-    
-    // if there is no such host, return an error
-    if (!host) {
-        return [self sendErrorToUser:@"Host not found"];
-    } else {
-        // using objectWithString here would cause Quicksilver to treat the IP as a URL
-        // so we create the object with a few explicit details to make it act like text
-        NSString *ip = [host address];
-        QSObject *ipObject = [QSObject objectWithName:ip];
-        [ipObject setObject:ip forType:QSTextType];
-        [ipObject setIcon:[QSResourceManager imageNamed:@"GenericNetworkIcon"]];
-        return ipObject;
-    }
-}
-
-- (QSObject *)getLOMForHost:(QSObject *)dObject
-{
-    // look up the LOM address for this host and return it to the Quicksilver interface
-    NSString *host = [dObject name];
-    NSString *hostName = [[host componentsSeparatedByString:@"."] objectAtIndex:0];
-    NSString *label = [NSString stringWithFormat:@"%@ • LOM", hostName];
-    // using objectWithString here would cause Quicksilver to treat the address as a URL
-    // so we create the object with a few explicit details to make it act like text
-    NSString *lom = [dObject objectForMeta:@"lom"];
-    NSString *ident = [NSString stringWithFormat:@"remote-host-%@", lom];
-    QSObject *lomObject = [QSObject objectWithName:lom];
-    [lomObject setIdentifier:ident];
-    [lomObject setObject:lom forType:QSRemoteHostsType];
-    [lomObject setLabel:label];
-    [lomObject setObject:@"lom" forMeta:@"ostype"];
-    return lomObject;
-}
-
 /* methods called by Quicksilver as needed */
 
 // declaring this here will cause the third pane to pop up in text-entry mode by default
@@ -361,14 +320,6 @@
                 && [capabilities containsObject:[NSString stringWithString:kWindowsHosts]])
             {
                 [newActions addObject:action];
-                continue;
-            }
-            
-            // Lights-Out Management support
-            NSString *lom = [dObject objectForMeta:@"lom"];
-            if (lom && [capabilities containsObject:[NSString stringWithString:kHostsWithLOM]])
-            {
-                [newActions addObject:@"LightsOutManagement"];
                 continue;
             }
         }
