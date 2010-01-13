@@ -15,8 +15,16 @@ Given a text file with a list of machines in it (either hostname, Fully Qualifie
   * Mount share with CIFS… [share name in 3rd pane]
   * Browse with AFP
   * Mount share with AFP… [share name in 3rd pane]
-  * Get IP Address - Returns the IP address to Quicksilver.
-  * Lights-Out Management - Returns the LOM address to Quicksilver as a "remote host". From there, you can use one of the above actions to connect to it.
+
+Selecting a host in Quicksilver and hitting → or / will provide the following information (if available):
+
+  * IP Address
+    
+    Quicksilver treats this as a string, so you can use "Large Type", paste it into the current application, send it via IM or e-mail, etc.
+    
+  * Lights-Out Management
+    
+    The LOM address is itself another "remote host" in Quicksilver. With it selected, you can use one of the above actions to connect to it.
 
 The plug-in will scan `~/.hosts` for a list of machines by default. The file is treated as UTF-8. It should contain one host per line. The hostname or FQDN should be the first thing on each line, but other metadata is allowed (separated by a single space). An example might look like this:
 
