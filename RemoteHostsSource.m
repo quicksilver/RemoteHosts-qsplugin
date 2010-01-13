@@ -193,20 +193,41 @@
 
 - (BOOL)loadChildrenForObject:(QSObject *)object
 {
-    NSLog(@"load children - remote host - %@", [object name]);
-    // [object setChildren:[self objectsForEntry:nil]];
     NSMutableArray *children = [NSMutableArray arrayWithCapacity:1];
-    NSArray *metaKeys = [NSArray arrayWithObjects:
-        @"ostype",
-        @"lom",
-        nil
-    ];
-    for (NSString *key in metaKeys)
+    NSString *hostName = [object name];
+    // look up the LOM address for this host and add it as a child
+    NSString *lom = [object objectForMeta:@"lom"];
+    if (lom)
     {
-        NSString *value = [object objectForMeta:key];
-        if (value)
-            [children addObject:[QSObject objectWithString:[NSString stringWithFormat:@"%@: %@", key, value]]];
+        // NSString *hostNameOnly = [[host componentsSeparatedByString:@"."] objectAtIndex:0];
+        // NSString *label = [NSString stringWithFormat:@"%@ • LOM", hostName];
+        NSString *label = @"Lights-Out Management";
+        // using objectWithString here would cause Quicksilver to treat the address as a URL
+        // so we create the object with a few explicit details to make it act like text
+        NSString *ident = [NSString stringWithFormat:@"remote-host-%@", lom];
+        QSObject *lomObject = [QSObject objectWithName:lom];
+        [lomObject setIdentifier:ident];
+        [lomObject setObject:lom forType:QSRemoteHostsType];
+        [lomObject setLabel:label];
+        [lomObject setObject:@"lom" forMeta:@"ostype"];
+        [children addObject:lomObject];
     }
+    // look up the IP address for this host and add it as a child
+    NSHost *host = [NSHost hostWithName:hostName];
+    
+    // this action doesn't support the comma-trick
+    
+    // if there is no such host, return an error
+    if (host) {
+        // using objectWithString here would cause Quicksilver to treat the IP as a URL
+        // so we create the object with a few explicit details to make it act like text
+        NSString *ip = [host address];
+        QSObject *ipObject = [QSObject objectWithName:ip];
+        [ipObject setObject:ip forType:QSTextType];
+        [ipObject setIcon:[QSResourceManager imageNamed:@"GenericNetworkIcon"]];
+        [children addObject:ipObject];
+    }
+    
     [object setChildren:children];
     return TRUE;
 }
