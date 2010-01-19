@@ -101,7 +101,9 @@
         newObject = [QSObject objectWithName:host];
         [newObject setIdentifier:ident];
         [newObject setObject:host forType:QSRemoteHostsType];
-        //[newObject setPrimaryType:QSRemoteHostsType];
+        // this type allows paste, large type, e-mail, IM, etc
+        [newObject setObject:host forType:QSTextType];
+        [newObject setPrimaryType:QSRemoteHostsType];
         // add some metadata
         if([lineParts count] > 1)
         {
@@ -208,6 +210,9 @@
         QSObject *lomObject = [QSObject objectWithName:lom];
         [lomObject setIdentifier:ident];
         [lomObject setObject:lom forType:QSRemoteHostsType];
+        // this type allows paste, large type, e-mail, IM, etc
+        [lomObject setObject:lom forType:QSTextType];
+        [lomObject setPrimaryType:QSRemoteHostsType];
         [lomObject setLabel:label];
         [lomObject setObject:@"lom" forMeta:@"ostype"];
         [children addObject:lomObject];
