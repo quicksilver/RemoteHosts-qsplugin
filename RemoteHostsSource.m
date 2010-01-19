@@ -222,15 +222,26 @@
     
     // this action doesn't support the comma-trick
     
-    // if there is no such host, return an error
+    // if there is no such host, skip this
     if (host) {
-        // using objectWithString here would cause Quicksilver to treat the IP as a URL
-        // so we create the object with a few explicit details to make it act like text
-        NSString *ip = [host address];
-        QSObject *ipObject = [QSObject objectWithName:ip];
-        [ipObject setObject:ip forType:QSTextType];
-        [ipObject setIcon:[QSResourceManager imageNamed:@"GenericNetworkIcon"]];
-        [children addObject:ipObject];
+        for (NSString *ip in [host addresses])
+        {
+            // using objectWithString here would cause Quicksilver to treat the IP as a URL
+            // so we create the object with a few explicit details to make it act like text
+            QSObject *ipObject = [QSObject objectWithName:ip];
+            [ipObject setObject:ip forType:QSTextType];
+            [ipObject setIcon:[QSResourceManager imageNamed:@"GenericNetworkIcon"]];
+            [children addObject:ipObject];
+        }
+        for (NSString *alias in [host names])
+        {
+            // using objectWithString here would cause Quicksilver to treat the IP as a URL
+            // so we create the object with a few explicit details to make it act like text
+            QSObject *aliasObject = [QSObject objectWithName:alias];
+            [aliasObject setObject:alias forType:QSTextType];
+            [aliasObject setIcon:[QSResourceManager imageNamed:@"GenericNetworkIcon"]];
+            [children addObject:aliasObject];
+        }
     }
     
     [object setChildren:children];
