@@ -15,7 +15,7 @@
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleVersion</key>
-	<string>13E</string>
+	<string>146</string>
 	<key>NSPrincipalClass</key>
 	<string>RemoteHosts</string>
 	<key>QSActions</key>
@@ -122,6 +122,8 @@
 			<string>QSRemoteHostsAction</string>
 			<key>actionSelector</key>
 			<string>connectWithFTP:</string>
+			<key>alternateAction</key>
+			<string>GetFTPURL</string>
 			<key>directTypes</key>
 			<array>
 				<string>QSRemoteHostsType</string>
@@ -143,6 +145,8 @@
 			<string>QSRemoteHostsAction</string>
 			<key>actionSelector</key>
 			<string>connectWithHTTP:</string>
+			<key>alternateAction</key>
+			<string>GetHTTPURL</string>
 			<key>directTypes</key>
 			<array>
 				<string>QSRemoteHostsType</string>
@@ -164,6 +168,8 @@
 			<string>QSRemoteHostsAction</string>
 			<key>actionSelector</key>
 			<string>connectWithHTTPS:</string>
+			<key>alternateAction</key>
+			<string>GetHTTPSURL</string>
 			<key>directTypes</key>
 			<array>
 				<string>QSRemoteHostsType</string>
@@ -185,6 +191,8 @@
 			<string>QSRemoteHostsAction</string>
 			<key>actionSelector</key>
 			<string>connectAsDefault:</string>
+			<key>alternateAction</key>
+			<string>ConnectUsingSSHroot</string>
 			<key>directTypes</key>
 			<array>
 				<string>QSRemoteHostsType</string>
@@ -317,6 +325,75 @@
 			<key>validatesObjects</key>
 			<true/>
 		</dict>
+		<key>GetFTPURL</key>
+		<dict>
+			<key>actionClass</key>
+			<string>QSRemoteHostsAction</string>
+			<key>actionSelector</key>
+			<string>getFTPURL:</string>
+			<key>directTypes</key>
+			<array>
+				<string>QSRemoteHostsType</string>
+			</array>
+			<key>displaysResult</key>
+			<true/>
+			<key>enabled</key>
+			<false/>
+			<key>icon</key>
+			<string>InternetLocationFTP</string>
+			<key>name</key>
+			<string>Get FTP URL</string>
+			<key>precedence</key>
+			<string>0</string>
+			<key>validatesObjects</key>
+			<true/>
+		</dict>
+		<key>GetHTTPSURL</key>
+		<dict>
+			<key>actionClass</key>
+			<string>QSRemoteHostsAction</string>
+			<key>actionSelector</key>
+			<string>getHTTPSURL:</string>
+			<key>directTypes</key>
+			<array>
+				<string>QSRemoteHostsType</string>
+			</array>
+			<key>displaysResult</key>
+			<true/>
+			<key>enabled</key>
+			<false/>
+			<key>icon</key>
+			<string>BookmarkIcon</string>
+			<key>name</key>
+			<string>Get HTTPS URL</string>
+			<key>precedence</key>
+			<string>0</string>
+			<key>validatesObjects</key>
+			<true/>
+		</dict>
+		<key>GetHTTPURL</key>
+		<dict>
+			<key>actionClass</key>
+			<string>QSRemoteHostsAction</string>
+			<key>actionSelector</key>
+			<string>getHTTPURL:</string>
+			<key>directTypes</key>
+			<array>
+				<string>QSRemoteHostsType</string>
+			</array>
+			<key>displaysResult</key>
+			<true/>
+			<key>enabled</key>
+			<false/>
+			<key>icon</key>
+			<string>BookmarkIcon</string>
+			<key>name</key>
+			<string>Get HTTP URL</string>
+			<key>precedence</key>
+			<string>0</string>
+			<key>validatesObjects</key>
+			<true/>
+		</dict>
 	</dict>
 	<key>QSPlugIn</key>
 	<dict>
@@ -331,7 +408,7 @@
 		<key>description</key>
 		<string>Provides actions that can be taken on computers</string>
 		<key>extendedDescription</key>
-		<string>&lt;h3&gt;A Quicksilver plug-in for dealing with a large number of computers&lt;/h3&gt;
+		<string>&lt;h3 id="a_quicksilver_plug_in_for_dealing_with_a_large_number_of_computers"&gt;A Quicksilver plug-in for dealing with a large number of computers&lt;/h3&gt;
 
 &lt;p&gt;Given a text file with a list of machines in it (either hostname, Fully Qualified Domain Name, or IP address), this plug-in indexes them as "remote host" objects and provides the following actions:&lt;/p&gt;
 
@@ -350,6 +427,18 @@
 &lt;li&gt;Browse with AFP&lt;/li&gt;
 &lt;li&gt;Mount share with AFP… [share name in 3rd pane]&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;p&gt;Some of the above actions also provide "alternate" actions. Hit ⌘↩ instead of ↩ to run the alternate.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Action      Alternate
+-------     -------------
+SSH         SSH as root
+FTP         Get FTP URL
+HTTP        Get HTTP URL
+HTTPS       Get HTTPS URL
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The "Get XYZ URL" actions are useful in situations where you need to paste the URL to a remote machine, or want to open it in something other than the default application.&lt;/p&gt;
 
 &lt;p&gt;Selecting a host in Quicksilver and hitting → or / will provide the following information (if available):&lt;/p&gt;
 
@@ -386,7 +475,7 @@ ahostiuse ostype:solaris
 
 &lt;p&gt;You can optionally pull hosts from &lt;code&gt;~/.ssh/known_hosts&lt;/code&gt;. There is a preset (disabled by default) under "Remote Hosts" in the Modules section of the Catalog.&lt;/p&gt;
 
-&lt;h4&gt;Tips&lt;/h4&gt;
+&lt;h4 id="tips"&gt;Tips&lt;/h4&gt;
 
 &lt;p&gt;After installation, you may want to check the precedence of the actions and make sure they're to your liking. The actions only apply to "remote hosts" in the catalog, so moving them up rather high on the list shouldn't interfere with other tasks. You may also want to disable some of the ones you never think you'll use.&lt;/p&gt;
 

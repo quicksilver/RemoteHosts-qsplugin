@@ -25,8 +25,10 @@
             [NSArray arrayWithObjects:kUnixHosts, kWindowsHosts, kMultipleHosts, nil], @"ConnectUsingFTP",
             [NSArray arrayWithObjects:kUnixHosts, kWindowsHosts, kMultipleHosts, nil], @"ConnectUsingHTTP",
             [NSArray arrayWithObjects:kUnixHosts, kWindowsHosts, kMultipleHosts, nil], @"ConnectUsingHTTPS",
+            [NSArray arrayWithObjects:kUnixHosts, kWindowsHosts, nil], @"GetFTPURL",
+            [NSArray arrayWithObjects:kUnixHosts, kWindowsHosts, nil], @"GetHTTPURL",
+            [NSArray arrayWithObjects:kUnixHosts, kWindowsHosts, nil], @"GetHTTPSURL",
             [NSArray arrayWithObjects:kUnixHosts, kWindowsHosts, kMultipleHosts, nil], @"ConnectUsingVNC",
-            [NSArray arrayWithObjects:kUnixHosts, kWindowsHosts, nil], @"GetIPAddress",
             nil
         ] retain];
         // store known actions
@@ -177,6 +179,36 @@
     
     }
     return nil;
+}
+
+- (QSObject *)getFTPURL:(QSObject *)dObject
+{
+    // send a URL back to Quicksilver for the user to do something with
+    
+    NSString *URLString = [NSString stringWithFormat:@"ftp://%@/",[dObject name]];
+    NSString *URLTitle = [NSString stringWithFormat:@"FTP on %@",[dObject name]];
+    
+    return [QSObject URLObjectWithURL:URLString title:URLTitle];
+}
+
+- (QSObject *)getHTTPURL:(QSObject *)dObject
+{
+    // send a URL back to Quicksilver for the user to do something with
+    
+    NSString *URLString = [NSString stringWithFormat:@"http://%@/",[dObject name]];
+    NSString *URLTitle = [NSString stringWithFormat:@"HTTP on %@",[dObject name]];
+    
+    return [QSObject URLObjectWithURL:URLString title:URLTitle];
+}
+
+- (QSObject *)getHTTPSURL:(QSObject *)dObject
+{
+    // send a URL back to Quicksilver for the user to do something with
+    
+    NSString *URLString = [NSString stringWithFormat:@"https://%@/",[dObject name]];
+    NSString *URLTitle = [NSString stringWithFormat:@"HTTPS on %@",[dObject name]];
+    
+    return [QSObject URLObjectWithURL:URLString title:URLTitle];
 }
 
 - (QSObject *)connectWithHTTP:(QSObject *)dObject

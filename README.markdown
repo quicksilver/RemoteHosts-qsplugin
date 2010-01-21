@@ -16,6 +16,17 @@ Given a text file with a list of machines in it (either hostname, Fully Qualifie
   * Browse with AFP
   * Mount share with AFP… [share name in 3rd pane]
 
+Some of the above actions also provide "alternate" actions. Hit ⌘↩ instead of ↩ to run the alternate.
+
+    Action      Alternate
+    -------     -------------
+    SSH         SSH as root
+    FTP         Get FTP URL
+    HTTP        Get HTTP URL
+    HTTPS       Get HTTPS URL
+
+The "Get XYZ URL" actions are useful in situations where you need to paste the URL to a remote machine, or want to open it in something other than the default application.
+
 Selecting a host in Quicksilver and hitting → or / will provide the following information (if available):
 
   * IP Address

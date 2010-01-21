@@ -45,10 +45,11 @@
 					PBXSymbolsDataSource_ReferenceNameID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 284328922;
-			PBXWorkspaceStateSaveDate = 284328922;
+			PBXPerProjectTemplateStateSaveDate = 285282408;
+			PBXWorkspaceStateSaveDate = 285282408;
 		};
 		perUserProjectItems = {
+			D41122351101107900772D2F /* PBXTextBookmark */ = D41122351101107900772D2F /* PBXTextBookmark */;
 			D443C7AD10E934330048F122 /* PBXTextBookmark */ = D443C7AD10E934330048F122 /* PBXTextBookmark */;
 			D443C7AE10E934330048F122 /* PBXTextBookmark */ = D443C7AE10E934330048F122 /* PBXTextBookmark */;
 			D45268FA10E9585400B1FA75 /* PBXTextBookmark */ = D45268FA10E9585400B1FA75 /* PBXTextBookmark */;
@@ -56,7 +57,6 @@
 			D45BB10E10F284F30078C9C7 /* PBXTextBookmark */ = D45BB10E10F284F30078C9C7 /* PBXTextBookmark */;
 			D4922AE110E5BFBF00E49984 /* PBXTextBookmark */ = D4922AE110E5BFBF00E49984 /* PBXTextBookmark */;
 			D4922AE210E5BFBF00E49984 /* PBXTextBookmark */ = D4922AE210E5BFBF00E49984 /* PBXTextBookmark */;
-			D49B06ED10EBE8AD0001C3AC /* PBXTextBookmark */ = D49B06ED10EBE8AD0001C3AC /* PBXTextBookmark */;
 		};
 		sourceControlManager = D46346BC10E3C34C0046E655 /* Source Control */;
 		userBuildSettings = {
@@ -74,9 +74,9 @@
 	};
 	BBF5817B0B1D9D84003CFF55 /* RemoteHostsAction.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {901, 4381}}";
-			sepNavSelRange = "{12051, 0}";
-			sepNavVisRange = "{11161, 1265}";
+			sepNavIntBoundsRect = "{{0, 0}, {901, 4160}}";
+			sepNavSelRange = "{11754, 0}";
+			sepNavVisRange = "{10818, 936}";
 		};
 	};
 	BBF581820B1D9DC3003CFF55 /* RemoteHostsSource.h */ = {
@@ -92,6 +92,16 @@
 			sepNavSelRange = "{2018, 0}";
 			sepNavVisRange = "{382, 1247}";
 		};
+	};
+	D41122351101107900772D2F /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = BBF5817B0B1D9D84003CFF55 /* RemoteHostsAction.m */;
+		name = "RemoteHostsAction.m: 332";
+		rLen = 0;
+		rLoc = 11754;
+		rType = 0;
+		vrLen = 936;
+		vrLoc = 10818;
 	};
 	D443C7AD10E934330048F122 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -132,16 +142,16 @@
 		);
 		name = /Users/rob/Coding/Quicksilver/RemoteHosts/Info.plist;
 		rLen = 0;
-		rLoc = 9223372036854775807;
+		rLoc = 9223372036854775808;
 	};
 	D45BB10E10F284F30078C9C7 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = BBF5817B0B1D9D84003CFF55 /* RemoteHostsAction.m */;
 		name = "RemoteHostsAction.m: 334";
 		rLen = 0;
-		rLoc = 12051;
+		rLoc = 11754;
 		rType = 0;
-		vrLen = 1265;
+		vrLen = 593;
 		vrLoc = 11161;
 	};
 	D46346BC10E3C34C0046E655 /* Source Control */ = {
@@ -177,16 +187,6 @@
 		rType = 0;
 		vrLen = 1247;
 		vrLoc = 382;
-	};
-	D49B06ED10EBE8AD0001C3AC /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = BBF5817B0B1D9D84003CFF55 /* RemoteHostsAction.m */;
-		name = "RemoteHostsAction.m: 93";
-		rLen = 0;
-		rLoc = 2603;
-		rType = 0;
-		vrLen = 937;
-		vrLoc = 2389;
 	};
 	E1EAB045068128A200774DFF /* RemoteHosts.m */ = {
 		uiCtxt = {
