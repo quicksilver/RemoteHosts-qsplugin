@@ -230,8 +230,6 @@
 			<key>Layout</key>
 			<array>
 				<dict>
-					<key>BecomeActive</key>
-					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -296,7 +294,7 @@
 							<real>208</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>147 151 1034 675 0 0 1440 878 </string>
+						<string>138 93 1034 675 0 0 1440 878 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -312,7 +310,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>RemoteHostsAction.m</string>
+								<string>Info.plist</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -320,11 +318,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>RemoteHostsAction.m</string>
+										<string>Info.plist</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>D41122351101107900772D2F</string>
+										<string>D4E0969D110F705500249396</string>
 										<key>history</key>
 										<array>
 											<string>D4922AE110E5BFBF00E49984</string>
@@ -332,8 +330,8 @@
 											<string>D443C7AD10E934330048F122</string>
 											<string>D443C7AE10E934330048F122</string>
 											<string>D45268FA10E9585400B1FA75</string>
-											<string>D45BB10D10F284F30078C9C7</string>
-											<string>D45BB10E10F284F30078C9C7</string>
+											<string>D4E3B339110F4A7B00A2EA0E</string>
+											<string>D4E0969C110F705500249396</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -345,14 +343,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {804, 416}}</string>
+								<string>{{0, 0}, {804, 394}}</string>
 								<key>RubberWindowFrame</key>
-								<string>147 151 1034 675 0 0 1440 878 </string>
+								<string>138 93 1034 675 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>416pt</string>
+							<string>394pt</string>
 						</dict>
 						<dict>
 							<key>ContentConfiguration</key>
@@ -365,14 +363,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 421}, {804, 213}}</string>
+								<string>{{0, 399}, {804, 235}}</string>
 								<key>RubberWindowFrame</key>
-								<string>147 151 1034 675 0 0 1440 878 </string>
+								<string>138 93 1034 675 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
 							<key>Proportion</key>
-							<string>213pt</string>
+							<string>235pt</string>
 						</dict>
 					</array>
 					<key>Proportion</key>
@@ -391,9 +389,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>D41122361101107900772D2F</string>
+				<string>D4E0969E110F705500249396</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>D41122371101107900772D2F</string>
+				<string>D4E0969F110F705500249396</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -535,7 +533,7 @@
 		<string>/Users/rob/Coding/Quicksilver/RemoteHosts/RemoteHosts.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>147 151 1034 675 0 0 1440 878 </string>
+	<string>138 93 1034 675 0 0 1440 878 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>
@@ -612,7 +610,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>D46346C510E3C3580046E655</string>
-				<string>D41122381101107900772D2F</string>
+				<string>D4E096A0110F705500249396</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>

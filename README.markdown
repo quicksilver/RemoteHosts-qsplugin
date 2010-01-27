@@ -29,9 +29,9 @@ The "Get XYZ URL" actions are useful in situations where you need to paste the U
 
 Selecting a host in Quicksilver and hitting → or / will provide the following information (if available):
 
-  * IP Address
+  * IP Addresses and aliases
     
-    Quicksilver treats this as a string, so you can use "Large Type", paste it into the current application, send it via IM or e-mail, etc.
+    Quicksilver treats these as strings, so you can use "Large Type", paste them into the current application, send them via IM or e-mail, etc.
     
   * Lights-Out Management
     
@@ -45,14 +45,14 @@ The plug-in will scan `~/.hosts` for a list of machines by default. The file is 
     server4.example.com ostype:linux lom:10.1.2.3 label:test
     appleserver.example.com icon:com.apple.xserve ostype:macosx
     windows.example.com ostype:windows
-    ahostiuse ostype:solaris
+    somehost ostype:solaris
 
 You may already have a file like this for completion in your shell. If you have existing metadata in this file, it shouldn't break anything, but it won't necessarily be useful in Quicksilver.
 
 The plug-in scans for items on each host's line that look like this: `key:value`. All such data will be stored along with the host in Quicksilver's catalog, but there are currently only four that will affect its behavior.
 
   * `ostype`: OS type should be a short, generic word, like "solaris", "linux", "windows", etc. Currently, the only real distinction is between "windows" and everything else. Windows hosts get a different default icon and certain actions don't appear. Default icons for additional OS types may be added in the future.
-  * `icon`: You can specify an icon to use for a host if you don't like its default.
+  * `icon`: You can specify an icon to use for a host if you don't like its default. This can be a bundle identifier, like "com.apple.Terminal", the name of an icon in the CoreTypes bundle like "com.apple.mac", or the path to an icon or image file. The usual types of images are supported, but they will most likely get squished into a square (depending on which Quicksilver interface you use).
   * `lom`: The Lights-Out Management address will only apply to fancy, rack-mounted servers that provide some sort of network-based LOM. If you don't know what this means, you probably don't need to worry about it. The information itself should be an IP address, hostname, or FQDN for the system's LOM interface.
   * `label`: By default, all hosts in your catalog will be labeled with their hostname, FQDN, or IP address (as it appears in your file). Setting a label in the file will append to the default, not replace it. Quicksilver searches the text in the label as you type to search for things. If you have many hosts with similar names, they can be hard to get to quickly. Using this item to append to the label can be useful to group or "tag" systems for faster searching.
 
