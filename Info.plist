@@ -15,7 +15,7 @@
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleVersion</key>
-	<string>147</string>
+	<string>14A</string>
 	<key>NSPrincipalClass</key>
 	<string>RemoteHosts</string>
 	<key>QSActions</key>
@@ -59,7 +59,7 @@
 			<false/>
 			<key>indirectTypes</key>
 			<array>
-				<string>NSString</string>
+				<string>NSStringPboardType</string>
 			</array>
 			<key>name</key>
 			<string>Mount share with AFP…</string>
@@ -107,7 +107,7 @@
 			<false/>
 			<key>indirectTypes</key>
 			<array>
-				<string>NSString</string>
+				<string>NSStringPboardType</string>
 			</array>
 			<key>name</key>
 			<string>Mount share with CIFS…</string>
@@ -247,7 +247,7 @@
 			<false/>
 			<key>indirectTypes</key>
 			<array>
-				<string>NSString</string>
+				<string>NSStringPboardType</string>
 			</array>
 			<key>name</key>
 			<string>SSH as…</string>
@@ -295,7 +295,7 @@
 			<false/>
 			<key>indirectTypes</key>
 			<array>
-				<string>NSString</string>
+				<string>NSStringPboardType</string>
 			</array>
 			<key>name</key>
 			<string>Telnet to port…</string>
@@ -324,6 +324,27 @@
 			<string>0</string>
 			<key>validatesObjects</key>
 			<true/>
+		</dict>
+		<key>ConvertTextToHost</key>
+		<dict>
+			<key>actionClass</key>
+			<string>QSRemoteHostsAction</string>
+			<key>actionSelector</key>
+			<string>convertTextToHost:</string>
+			<key>directTypes</key>
+			<array>
+				<string>NSStringPboardType</string>
+			</array>
+			<key>displaysResult</key>
+			<true/>
+			<key>icon</key>
+			<string>com.apple.mac</string>
+			<key>name</key>
+			<string>Use as Remote Host</string>
+			<key>precedence</key>
+			<string>0</string>
+			<key>validatesObjects</key>
+			<false/>
 		</dict>
 		<key>GetFTPURL</key>
 		<dict>
@@ -428,6 +449,8 @@
 &lt;li&gt;Mount share with AFP… [share name in 3rd pane]&lt;/li&gt;
 &lt;/ul&gt;
 
+&lt;p&gt;There is also a "Use as Remote Host" action that applies to text. If you type a hostname by hand, paste it, or pull it from an application using ⌘⎋ or ⌘G, this action will "convert" it to a remote host in Quicksilver so you can connect to it, etc.&lt;/p&gt;
+
 &lt;p&gt;Some of the above actions also provide "alternate" actions. Hit ⌘↩ instead of ↩ to run the alternate.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;Action      Alternate
@@ -481,7 +504,7 @@ somehost ostype:solaris
 
 &lt;p&gt;For more than a few machines, you should use a script to generate a &lt;code&gt;.hosts&lt;/code&gt; file from DNS, LDAP, a database, or some other authoritative source if possible, rather than managing it by hand. You might also schedule a job to update the file on a regular basis.&lt;/p&gt;
 
-&lt;p&gt;If you find yourself using "SSH to host as…" frequently, you may want to add something like this to your &lt;code&gt;~/.ssh/config&lt;/code&gt;:&lt;/p&gt;
+&lt;p&gt;If you find yourself using "SSH as…" frequently, you may want to add something like this to your &lt;code&gt;~/.ssh/config&lt;/code&gt;:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;Host server.domain
   User someuser

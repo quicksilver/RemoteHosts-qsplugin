@@ -285,6 +285,18 @@
     return nil;
 }
 
+- (QSObject *)convertTextToHost:(QSObject *)dObject
+{
+    NSString *host = [dObject stringValue];
+    QSObject *hostObject = [QSObject objectWithName:host];
+    [hostObject setObject:host forType:QSRemoteHostsType];
+    // this type allows paste, large type, e-mail, IM, etc
+    [hostObject setObject:host forType:QSTextType];
+    [hostObject setPrimaryType:QSRemoteHostsType];
+    [hostObject setObject:@"unknown" forMeta:@"ostype"];
+    return hostObject;
+}
+
 /* methods called by Quicksilver as needed */
 
 // declaring this here will cause the third pane to pop up in text-entry mode by default

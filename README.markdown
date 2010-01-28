@@ -16,6 +16,8 @@ Given a text file with a list of machines in it (either hostname, Fully Qualifie
   * Browse with AFP
   * Mount share with AFP… [share name in 3rd pane]
 
+There is also a "Use as Remote Host" action that applies to text. If you type a hostname by hand, paste it, or pull it from an application using ⌘⎋ or ⌘G, this action will "convert" it to a remote host in Quicksilver so you can connect to it, etc.
+
 Some of the above actions also provide "alternate" actions. Hit ⌘↩ instead of ↩ to run the alternate.
 
     Action      Alternate
@@ -64,7 +66,7 @@ After installation, you may want to check the precedence of the actions and make
 
 For more than a few machines, you should use a script to generate a `.hosts` file from DNS, LDAP, a database, or some other authoritative source if possible, rather than managing it by hand. You might also schedule a job to update the file on a regular basis.
 
-If you find yourself using "SSH to host as…" frequently, you may want to add something like this to your `~/.ssh/config`:
+If you find yourself using "SSH as…" frequently, you may want to add something like this to your `~/.ssh/config`:
 
     Host server.domain
       User someuser
@@ -84,7 +86,7 @@ I've kept a list of systems I use in `~/.hosts` for years to allow shell complet
 ### Known Issues and To Do Items ###
 
   * There's no interface for configuring a custom catalog entry (to pull hosts from different files) although you can add them, and such entries will work if you edit them in `Catalog.plist` by hand.
-  * The actions won't apply to strings typed by hand or pasted (so you can type a hostname by hand if it wasn't scanned in from a file). I wanted to give the actions some default priority to make them easier to access in the most common use cases. If I supported strings and assigned these priorities, the remote host actions would end up being higher than other defaults for things typed by hand, such as "Large Type". If enough people ask, I may add arbitrary string support and just set the priorities for all to 0.
+  * The extra step of converting text in the first pane to a remote host before being able to connect is intentional. I wanted to give the actions some default priority to make them easier to access in the most common use cases. If I supported strings and assigned these priorities, the remote host actions would end up being higher than other defaults for things typed by hand, such as "Large Type". If we let "Large Type" remain as default, you would need to select an action like "SSH" by hand each and every time.
 
 ### Possible Future Actions ###
 
