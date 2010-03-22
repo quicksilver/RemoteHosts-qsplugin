@@ -17,6 +17,7 @@
 #define kMultipleHosts @"works with multiple objects"
 #define kWindowsHosts @"works with windows"
 #define kUnixHosts @"works with unix"
+#define kRequireCoRD @"requires the CoRD application"
 
 @interface QSRemoteHostsAction : QSActionProvider
 {
@@ -24,6 +25,8 @@
     NSDictionary *actionCapabilities;
     // keep a list of all known actions
     NSArray *actionList;
+    // path to the CoRD application
+    NSString *cordPath;
 }
 @end
 

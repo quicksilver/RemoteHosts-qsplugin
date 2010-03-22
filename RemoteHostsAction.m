@@ -29,10 +29,13 @@
             [NSArray arrayWithObjects:kUnixHosts, kWindowsHosts, nil], @"GetHTTPURL",
             [NSArray arrayWithObjects:kUnixHosts, kWindowsHosts, nil], @"GetHTTPSURL",
             [NSArray arrayWithObjects:kUnixHosts, kWindowsHosts, kMultipleHosts, nil], @"ConnectUsingVNC",
+            [NSArray arrayWithObjects:kRequireCoRD, nil], @"MSRemoteDesktop",
             nil
         ] retain];
         // store known actions
         actionList = [[actionCapabilities allKeys] retain];
+        // no need to check for an application over and over, so do it once here
+        cordPath = [[[NSWorkspace sharedWorkspace] absolutePathForAppBundleWithIdentifier:@"net.sf.cord"] retain];
     }
     return self;
 }
@@ -253,6 +256,20 @@
     return nil;
 }
 
+- (QSObject *)msRemoteDesktop:(QSObject *)dObject
+{
+    // launch CoRD and connect to host
+    
+    for(NSString *remoteHost in [dObject arrayForType:QSRemoteHostsType])
+    {
+        //NSLog(@"Connection for %@", remoteHost);
+        
+        [self launchConnection:[NSString stringWithFormat:@"rdp://%@",remoteHost]];
+    
+    }
+    return nil;
+}
+
 - (QSObject *)browseWithCIFS:(QSObject *)dObject
 {
     // this action doesn't support the comma-trick
@@ -363,6 +380,13 @@
             if ([ostype isEqualToString:@"windows"]
                 && [capabilities containsObject:[NSString stringWithString:kWindowsHosts]])
             {
+                [newActions addObject:action];
+                continue;
+            }
+            // checks based on presecnce of other applications
+            if (cordPath && [capabilities containsObject:[NSString stringWithString:kRequireCoRD]])
+            {
+                // CoRD is installed for MS Remote Desktop support
                 [newActions addObject:action];
                 continue;
             }

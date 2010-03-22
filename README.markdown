@@ -15,6 +15,7 @@ Given a text file with a list of machines in it (either hostname, Fully Qualifie
   * Mount share with CIFS… [share name in 3rd pane]
   * Browse with AFP
   * Mount share with AFP… [share name in 3rd pane]
+  * MS Remote Desktop [requires the CoRD application]
 
 There is also a "Use as Remote Host" action that applies to text. If you type a hostname by hand, paste it, or pull it from an application using ⌘⎋ or ⌘G, this action will "convert" it to a remote host in Quicksilver so you can connect to it, etc.
 
@@ -87,15 +88,13 @@ I've kept a list of systems I use in `~/.hosts` for years to allow shell complet
 
   * There's no interface for configuring a custom catalog entry (to pull hosts from different files) although you can add them, and such entries will work if you edit them in `Catalog.plist` by hand.
   * The extra step of converting text in the first pane to a remote host before being able to connect is intentional. I wanted to give the actions some default priority to make them easier to access in the most common use cases. If I supported strings and assigned these priorities, the remote host actions would end up being higher than other defaults for things typed by hand, such as "Large Type". If we let "Large Type" remain as default, you would need to select an action like "SSH" by hand each and every time.
+  * I've attempted to add the obvious NFS actions, but the "Internet Locations" for this protocol doesn't seem to work everywhere. If you use "Connect to Server…" in the Finder and type `nfs://server/share_name`, it works. But `open nfs://server/share_name` from Terminal fails. This is essentially what the plugin is asking the system to do, so if `open` doesn't like it, we're out of luck. Sorry.
 
 ### Possible Future Actions ###
 
-  * Connect with MS Remote Desktop
   * Ping
   * Scan with nmap
   * Etc.
-
-I've attempted to add the obvious NFS and FTP actions, but the "Internet Locations" for these protocols don't seem to work everywhere. If you use "Connect to Server…" in the Finder and type `nfs://server/share_name` or `ftp://server`, it works. But `open nfs://server/share_name` and `open ftp://server` from Terminal fail. This is essentially what the plugin is asking the system to do, so if `open` doesn't like it, we're out of luck. Sorry.
 
 ### Pie-in-the-Sky Stuff ###
 
