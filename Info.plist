@@ -15,7 +15,7 @@
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleVersion</key>
-	<string>151</string>
+	<string>154</string>
 	<key>NSPrincipalClass</key>
 	<string>RemoteHosts</string>
 	<key>QSActions</key>
@@ -657,6 +657,16 @@ somehost ostype:solaris
 		<dict>
 			<key>QSRemoteHostsSource</key>
 			<string>QSRemoteHostsSource</string>
+		</dict>
+		<key>QSTypeDefinitions</key>
+		<dict>
+			<key>QSRemoteHostsType</key>
+			<dict>
+				<key>icon</key>
+				<string>com.apple.xserve</string>
+				<key>name</key>
+				<string>Remote Hosts</string>
+			</dict>
 		</dict>
 	</dict>
 	<key>QSRequirementsTemplate</key>
