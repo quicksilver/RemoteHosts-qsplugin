@@ -361,7 +361,7 @@
         
         // comma trick support is all or nothing
         // other checks are only attempted on single objects
-        if ([[dObject stringValue] isEqualToString:@"combined objects"])
+        if ([dObject count] > 1)
         {
             if ([capabilities containsObject:[NSString stringWithString:kMultipleHosts]])
             {
