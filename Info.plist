@@ -16,6 +16,8 @@
 	<string>BNDL</string>
 	<key>CFBundleVersion</key>
 	<string>155</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.2</string>
 	<key>NSPrincipalClass</key>
 	<string>RemoteHosts</string>
 	<key>QSActions</key>
@@ -450,9 +452,9 @@
 		<key>description</key>
 		<string>Provides actions that can be taken on computers</string>
 		<key>extendedDescription</key>
-		<string>&lt;h3 id="a_quicksilver_plug_in_for_dealing_with_a_large_number_of_computers"&gt;A Quicksilver plug-in for dealing with a large number of computers&lt;/h3&gt;
+		<string>&lt;h3 id=&quot;a_quicksilver_plug_in_for_dealing_with_a_large_number_of_computers&quot;&gt;A Quicksilver plug-in for dealing with a large number of computers&lt;/h3&gt;
 
-&lt;p&gt;Given a text file with a list of machines in it (either hostname, Fully Qualified Domain Name, or IP address), this plug-in indexes them as "remote host" objects and provides the following actions:&lt;/p&gt;
+&lt;p&gt;Given a text file with a list of machines in it (either hostname, Fully Qualified Domain Name, or IP address), this plug-in indexes them as &quot;remote host&quot; objects and provides the following actions:&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;SSH&lt;/li&gt;
@@ -471,9 +473,9 @@
 &lt;li&gt;MS Remote Desktop [requires the CoRD application]&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;There is also a "Use as Remote Host" action that applies to text. If you type a hostname by hand, paste it, or pull it from an application using ⌘⎋ or ⌘G, this action will "convert" it to a remote host in Quicksilver so you can connect to it, etc.&lt;/p&gt;
+&lt;p&gt;There is also a &quot;Use as Remote Host&quot; action that applies to text. If you type a hostname by hand, paste it, or pull it from an application using ⌘⎋ or ⌘G, this action will &quot;convert&quot; it to a remote host in Quicksilver so you can connect to it, etc.&lt;/p&gt;
 
-&lt;p&gt;Some of the above actions also provide "alternate" actions. Hit ⌘↩ instead of ↩ to run the alternate.&lt;/p&gt;
+&lt;p&gt;Some of the above actions also provide &quot;alternate&quot; actions. Hit ⌘↩ instead of ↩ to run the alternate.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;Action      Alternate
 -------     -------------
@@ -483,17 +485,17 @@ HTTP        Get HTTP URL
 HTTPS       Get HTTPS URL
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;The "Get XYZ URL" actions are useful in situations where you need to paste the URL to a remote machine, or want to open it in something other than the default application.&lt;/p&gt;
+&lt;p&gt;The &quot;Get XYZ URL&quot; actions are useful in situations where you need to paste the URL to a remote machine, or want to open it in something other than the default application.&lt;/p&gt;
 
 &lt;p&gt;Selecting a host in Quicksilver and hitting → or / will provide the following information (if available):&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;IP Addresses and aliases&lt;/p&gt;
 
-&lt;p&gt;Quicksilver treats these as strings, so you can use "Large Type", paste them into the current application, send them via IM or e-mail, etc.&lt;/p&gt;&lt;/li&gt;
+&lt;p&gt;Quicksilver treats these as strings, so you can use &quot;Large Type&quot;, paste them into the current application, send them via IM or e-mail, etc.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Lights-Out Management&lt;/p&gt;
 
-&lt;p&gt;The LOM address is itself another "remote host" in Quicksilver. With it selected, you can use one of the above actions to connect to it.&lt;/p&gt;&lt;/li&gt;
+&lt;p&gt;The LOM address is itself another &quot;remote host&quot; in Quicksilver. With it selected, you can use one of the above actions to connect to it.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;The plug-in will scan &lt;code&gt;~/.hosts&lt;/code&gt; for a list of machines by default. The file is treated as UTF-8. It should contain one host per line. The hostname or FQDN should be the first thing on each line, but other metadata is allowed (separated by a single space). An example might look like this:&lt;/p&gt;
@@ -507,26 +509,26 @@ windows.example.com ostype:windows
 somehost ostype:solaris
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;You may already have a file like this for completion in your shell. If you have existing metadata in this file, it shouldn't break anything, but it won't necessarily be useful in Quicksilver.&lt;/p&gt;
+&lt;p&gt;You may already have a file like this for completion in your shell. If you have existing metadata in this file, it shouldn&apos;t break anything, but it won&apos;t necessarily be useful in Quicksilver.&lt;/p&gt;
 
-&lt;p&gt;The plug-in scans for items on each host's line that look like this: &lt;code&gt;key:value&lt;/code&gt;. All such data will be stored along with the host in Quicksilver's catalog, but there are currently only four that will affect its behavior.&lt;/p&gt;
+&lt;p&gt;The plug-in scans for items on each host&apos;s line that look like this: &lt;code&gt;key:value&lt;/code&gt;. All such data will be stored along with the host in Quicksilver&apos;s catalog, but there are currently only four that will affect its behavior.&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;code&gt;ostype&lt;/code&gt;: OS type should be a short, generic word, like "solaris", "linux", "windows", etc. Currently, the only real distinction is between "windows" and everything else. Windows hosts get a different default icon and certain actions don't appear. Default icons for additional OS types may be added in the future.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;icon&lt;/code&gt;: You can specify an icon to use for a host if you don't like its default. This can be a bundle identifier, like "com.apple.Terminal", the name of an icon in the CoreTypes bundle like "com.apple.mac", or the path to an icon or image file. The usual types of images are supported, but they will most likely get squished into a square (depending on which Quicksilver interface you use).&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;lom&lt;/code&gt;: The Lights-Out Management address will only apply to fancy, rack-mounted servers that provide some sort of network-based LOM. If you don't know what this means, you probably don't need to worry about it. The information itself should be an IP address, hostname, or FQDN for the system's LOM interface.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;label&lt;/code&gt;: By default, all hosts in your catalog will be labeled with their hostname, FQDN, or IP address (as it appears in your file). Setting a label in the file will append to the default, not replace it. Quicksilver searches the text in the label as you type to search for things. If you have many hosts with similar names, they can be hard to get to quickly. Using this item to append to the label can be useful to group or "tag" systems for faster searching.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ostype&lt;/code&gt;: OS type should be a short, generic word, like &quot;solaris&quot;, &quot;linux&quot;, &quot;windows&quot;, etc. Currently, the only real distinction is between &quot;windows&quot; and everything else. Windows hosts get a different default icon and certain actions don&apos;t appear. Default icons for additional OS types may be added in the future.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;icon&lt;/code&gt;: You can specify an icon to use for a host if you don&apos;t like its default. This can be a bundle identifier, like &quot;com.apple.Terminal&quot;, the name of an icon in the CoreTypes bundle like &quot;com.apple.mac&quot;, or the path to an icon or image file. The usual types of images are supported, but they will most likely get squished into a square (depending on which Quicksilver interface you use).&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;lom&lt;/code&gt;: The Lights-Out Management address will only apply to fancy, rack-mounted servers that provide some sort of network-based LOM. If you don&apos;t know what this means, you probably don&apos;t need to worry about it. The information itself should be an IP address, hostname, or FQDN for the system&apos;s LOM interface.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;label&lt;/code&gt;: By default, all hosts in your catalog will be labeled with their hostname, FQDN, or IP address (as it appears in your file). Setting a label in the file will append to the default, not replace it. Quicksilver searches the text in the label as you type to search for things. If you have many hosts with similar names, they can be hard to get to quickly. Using this item to append to the label can be useful to group or &quot;tag&quot; systems for faster searching.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;You can optionally pull hosts from &lt;code&gt;~/.ssh/known_hosts&lt;/code&gt;. There is a preset (disabled by default) under "Remote Hosts" in the Modules section of the Catalog.&lt;/p&gt;
+&lt;p&gt;You can optionally pull hosts from &lt;code&gt;~/.ssh/known_hosts&lt;/code&gt;. There is a preset (disabled by default) under &quot;Remote Hosts&quot; in the Modules section of the Catalog.&lt;/p&gt;
 
-&lt;h4 id="tips"&gt;Tips&lt;/h4&gt;
+&lt;h4 id=&quot;tips&quot;&gt;Tips&lt;/h4&gt;
 
-&lt;p&gt;After installation, you may want to check the precedence of the actions and make sure they're to your liking. The actions only apply to "remote hosts" in the catalog, so moving them up rather high on the list shouldn't interfere with other tasks. You may also want to disable some of the ones you never think you'll use.&lt;/p&gt;
+&lt;p&gt;After installation, you may want to check the precedence of the actions and make sure they&apos;re to your liking. The actions only apply to &quot;remote hosts&quot; in the catalog, so moving them up rather high on the list shouldn&apos;t interfere with other tasks. You may also want to disable some of the ones you never think you&apos;ll use.&lt;/p&gt;
 
 &lt;p&gt;For more than a few machines, you should use a script to generate a &lt;code&gt;.hosts&lt;/code&gt; file from DNS, LDAP, a database, or some other authoritative source if possible, rather than managing it by hand. You might also schedule a job to update the file on a regular basis.&lt;/p&gt;
 
-&lt;p&gt;If you find yourself using "SSH as…" frequently, you may want to add something like this to your &lt;code&gt;~/.ssh/config&lt;/code&gt;:&lt;/p&gt;
+&lt;p&gt;If you find yourself using &quot;SSH as…&quot; frequently, you may want to add something like this to your &lt;code&gt;~/.ssh/config&lt;/code&gt;:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;Host server.domain
   User someuser
@@ -534,25 +536,25 @@ somehost ostype:solaris
 
 &lt;p&gt;See the &lt;code&gt;ssh_config(5)&lt;/code&gt; man page for details.&lt;/p&gt;
 
-&lt;p&gt;Finally, don't forget the "comma trick". You can select multiple hosts using the comma or ⌘A, then connect to them all at once.&lt;/p&gt;
+&lt;p&gt;Finally, don&apos;t forget the &quot;comma trick&quot;. You can select multiple hosts using the comma or ⌘A, then connect to them all at once.&lt;/p&gt;
 
-&lt;h3 id="why"&gt;Why?&lt;/h3&gt;
+&lt;h3 id=&quot;why&quot;&gt;Why?&lt;/h3&gt;
 
 &lt;p&gt;If you have more than two or three systems that you regularly interact with, this plug-in will speed up the process tremendously.&lt;/p&gt;
 
 &lt;p&gt;I have over 100 systems that I connect to via SSH on a regular basis -- sometimes as a regular user, sometimes as root. That is the main motivation behind this plug-in. But once Quicksilver knows about all these remote systems, it makes sense to start adding other actions besides those related to SSH, which is where some of the additional functionality comes in.&lt;/p&gt;
 
-&lt;p&gt;I've kept a list of systems I use in &lt;code&gt;~/.hosts&lt;/code&gt; for years to allow shell completion on hostnames. It made sense to have Quicksilver use this as well. In the past, Quicksilver was made aware of these through &lt;code&gt;.term&lt;/code&gt; files in &lt;code&gt;~/Library/Application Support/Terminal&lt;/code&gt; under 10.4 and using &lt;code&gt;.inetloc&lt;/code&gt; files in 10.5+. It was a pain to keep in sync with &lt;code&gt;~/.hosts&lt;/code&gt;, you needed duplicate entries if you wanted to connect as root, via telnet, etc. and the resulting functionality was limited.&lt;/p&gt;
+&lt;p&gt;I&apos;ve kept a list of systems I use in &lt;code&gt;~/.hosts&lt;/code&gt; for years to allow shell completion on hostnames. It made sense to have Quicksilver use this as well. In the past, Quicksilver was made aware of these through &lt;code&gt;.term&lt;/code&gt; files in &lt;code&gt;~/Library/Application Support/Terminal&lt;/code&gt; under 10.4 and using &lt;code&gt;.inetloc&lt;/code&gt; files in 10.5+. It was a pain to keep in sync with &lt;code&gt;~/.hosts&lt;/code&gt;, you needed duplicate entries if you wanted to connect as root, via telnet, etc. and the resulting functionality was limited.&lt;/p&gt;
 
-&lt;h3 id="known_issues_and_to_do_items"&gt;Known Issues and To Do Items&lt;/h3&gt;
+&lt;h3 id=&quot;known_issues_and_to_do_items&quot;&gt;Known Issues and To Do Items&lt;/h3&gt;
 
 &lt;ul&gt;
-&lt;li&gt;There's no interface for configuring a custom catalog entry (to pull hosts from different files) although you can add them, and such entries will work if you edit them in &lt;code&gt;Catalog.plist&lt;/code&gt; by hand.&lt;/li&gt;
-&lt;li&gt;The extra step of converting text in the first pane to a remote host before being able to connect is intentional. I wanted to give the actions some default priority to make them easier to access in the most common use cases. If I supported strings and assigned these priorities, the remote host actions would end up being higher than other defaults for things typed by hand, such as "Large Type". If we let "Large Type" remain as default, you would need to select an action like "SSH" by hand each and every time.&lt;/li&gt;
-&lt;li&gt;I've attempted to add the obvious NFS actions, but the "Internet Locations" for this protocol doesn't seem to work everywhere. If you use "Connect to Server…" in the Finder and type &lt;code&gt;nfs://server/share_name&lt;/code&gt;, it works. But &lt;code&gt;open nfs://server/share_name&lt;/code&gt; from Terminal fails. This is essentially what the plugin is asking the system to do, so if &lt;code&gt;open&lt;/code&gt; doesn't like it, we're out of luck. Sorry.&lt;/li&gt;
+&lt;li&gt;There&apos;s no interface for configuring a custom catalog entry (to pull hosts from different files) although you can add them, and such entries will work if you edit them in &lt;code&gt;Catalog.plist&lt;/code&gt; by hand.&lt;/li&gt;
+&lt;li&gt;The extra step of converting text in the first pane to a remote host before being able to connect is intentional. I wanted to give the actions some default priority to make them easier to access in the most common use cases. If I supported strings and assigned these priorities, the remote host actions would end up being higher than other defaults for things typed by hand, such as &quot;Large Type&quot;. If we let &quot;Large Type&quot; remain as default, you would need to select an action like &quot;SSH&quot; by hand each and every time.&lt;/li&gt;
+&lt;li&gt;I&apos;ve attempted to add the obvious NFS actions, but the &quot;Internet Locations&quot; for this protocol doesn&apos;t seem to work everywhere. If you use &quot;Connect to Server…&quot; in the Finder and type &lt;code&gt;nfs://server/share_name&lt;/code&gt;, it works. But &lt;code&gt;open nfs://server/share_name&lt;/code&gt; from Terminal fails. This is essentially what the plugin is asking the system to do, so if &lt;code&gt;open&lt;/code&gt; doesn&apos;t like it, we&apos;re out of luck. Sorry.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id="possible_future_actions"&gt;Possible Future Actions&lt;/h3&gt;
+&lt;h3 id=&quot;possible_future_actions&quot;&gt;Possible Future Actions&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Ping&lt;/li&gt;
@@ -560,19 +562,19 @@ somehost ostype:solaris
 &lt;li&gt;Etc.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id="pie_in_the_sky_stuff"&gt;Pie-in-the-Sky Stuff&lt;/h3&gt;
+&lt;h3 id=&quot;pie_in_the_sky_stuff&quot;&gt;Pie-in-the-Sky Stuff&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Optionally use the output from a command as the source instead of a file
 (so you could pull a list of hostnames from LDAP, DNS, etc. in real-time)&lt;/li&gt;
 &lt;li&gt;Make each host object a target for file copy operations
-(resulting in an SCP to the default user's home directory?)&lt;/li&gt;
+(resulting in an SCP to the default user&apos;s home directory?)&lt;/li&gt;
 &lt;li&gt;Right-arrow into a host to get a list of files (via SCP or SFTP?)&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id="credit"&gt;Credit&lt;/h3&gt;
+&lt;h3 id=&quot;credit&quot;&gt;Credit&lt;/h3&gt;
 
-&lt;p&gt;This would not be possible without the information found at &lt;a href="http://lipidity.com/apple/quicksilver-plugins-in-objective-c"&gt;http://lipidity.com/apple/quicksilver-plugins-in-objective-c&lt;/a&gt;.&lt;/p&gt;</string>
+&lt;p&gt;This would not be possible without the information found at &lt;a href=&quot;http://lipidity.com/apple/quicksilver-plugins-in-objective-c&quot;&gt;http://lipidity.com/apple/quicksilver-plugins-in-objective-c&lt;/a&gt;.&lt;/p&gt;</string>
 		<key>icon</key>
 		<string>com.apple.xserve</string>
 		<key>qsversion</key>
