@@ -174,8 +174,7 @@
         NSString *ostype = [object objectForMeta:@"ostype"];
         if([ostype isEqualToString:@"windows"])
         {
-            // icon = @"public.generic-pc";
-            icon = @"GenericPCIcon";
+            icon = @"public.generic-pc";
         } else if ([ostype isEqualToString:@"lom"]) {
             icon = @"ToolbarUtilitiesFolderIcon";
         } else {
