@@ -8,5 +8,4 @@
 #import <QSCore/QSCore.h>
 #endif
 
-
 #define kRemoteHostsType @"RemoteHostsType"

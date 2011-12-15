@@ -6,7 +6,6 @@
 //
 
 #import "RemoteHostsSource.h"
-#import <QSCore/QSObject.h>
 
 
 @implementation QSRemoteHostsSource

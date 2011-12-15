@@ -5,9 +5,6 @@
 //  Created by Rob McBroom on 12/24/09.
 //
 
-#import <QSCore/QSObject.h>
-#import <QSCore/QSActionProvider.h>
-
 #define kQSObjectComponents @"QSObjectComponents"
 
 #define kRemoteHostsAction @"RemoteHostsAction"
