@@ -39,7 +39,7 @@
 // not sure if this method is to conditioanlly override it or what
 // - (NSImage *) iconForEntry:(NSDictionary *)dict
 // {
-//     return [QSResourceManager imageNamed:@"com.apple.mac"];
+//     return [QSResourceManager imageNamed:@"com.apple.xserve"];
 // }
 
 // Return a unique identifier for an object (if you haven't assigned one before)
@@ -178,7 +178,7 @@
         } else if ([ostype isEqualToString:@"lom"]) {
             icon = @"ToolbarUtilitiesFolderIcon";
         } else {
-            icon = @"com.apple.mac";
+            icon = @"com.apple.xserve";
         }
     }
     [object setIcon:[QSResourceManager imageNamed:icon]];

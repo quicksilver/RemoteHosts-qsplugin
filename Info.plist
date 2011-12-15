@@ -14,10 +14,10 @@
 	<string>Remote Hosts Module</string>
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
-	<key>CFBundleVersion</key>
-	<string>155</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.2</string>
+	<string>1.2.1</string>
+	<key>CFBundleVersion</key>
+	<string>156</string>
 	<key>NSPrincipalClass</key>
 	<string>RemoteHosts</string>
 	<key>QSActions</key>
@@ -340,7 +340,7 @@
 			<key>displaysResult</key>
 			<true/>
 			<key>icon</key>
-			<string>com.apple.mac</string>
+			<string>com.apple.xserve</string>
 			<key>name</key>
 			<string>Use as Remote Host</string>
 			<key>precedence</key>
