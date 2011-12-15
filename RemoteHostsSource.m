@@ -51,9 +51,9 @@
 - (NSArray *) objectsForEntry:(NSDictionary *)theEntry
 {
     // use the plist settings to determine which file to load from
-    NSMutableDictionary *settings = [theEntry objectForKey:kItemSettings];
+    NSDictionary *settings = [theEntry objectForKey:kItemSettings];
     NSString *path = [self fullPathForSettings:settings];
-    NSLog(@"Loading remote hosts from: %@", path);
+    //NSLog(@"Loading remote hosts from: %@", path);
     
     // a list of objects that will get returned (and added to the Catalog)
     NSMutableArray *objects=[NSMutableArray arrayWithCapacity:1];
