@@ -660,6 +660,24 @@ somehost ostype:solaris
 			<key>QSRemoteHostsSource</key>
 			<string>QSRemoteHostsSource</string>
 		</dict>
+		<key>QSPreferencePanes</key>
+		<dict>
+			<key>RemoteHostsPrefPane</key>
+			<dict>
+				<key>class</key>
+				<string>RemoteHostsPrefPane</string>
+				<key>description</key>
+				<string>Remote Hosts Preferences</string>
+				<key>icon</key>
+				<string>com.apple.xserve</string>
+				<key>name</key>
+				<string>Remote Hosts</string>
+				<key>nibBundle</key>
+				<string>com.skurfer.Quicksilver.RemoteHosts</string>
+				<key>nibName</key>
+				<string>RemoteHostsPrefPane</string>
+			</dict>
+		</dict>
 		<key>QSTypeDefinitions</key>
 		<dict>
 			<key>QSRemoteHostsType</key>
