@@ -29,6 +29,7 @@
             [NSArray arrayWithObjects:kUnixHosts, kWindowsHosts, nil], @"GetHTTPURL",
             [NSArray arrayWithObjects:kUnixHosts, kWindowsHosts, nil], @"GetHTTPSURL",
             [NSArray arrayWithObjects:kUnixHosts, kWindowsHosts, kMultipleHosts, nil], @"ConnectUsingVNC",
+            [NSArray arrayWithObjects:kUnixHosts, kWindowsHosts, kMultipleHosts, nil], @"GetHostInfo",
             [NSArray arrayWithObjects:kRequireCoRD, nil], @"MSRemoteDesktop",
             nil
         ] retain];
@@ -321,6 +322,20 @@
     return hostObject;
 }
 
+- (QSObject *)getInfo:(QSObject *)dObject
+{
+    NSString *infoURLtemplate = [[NSUserDefaults standardUserDefaults] objectForKey:kInfoURL];
+    NSString *infoURL;
+    for (NSString *hostname in [dObject arrayForType:QSRemoteHostsType]) {
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:kStripDomain]) {
+            hostname = [[hostname componentsSeparatedByString:@"."] objectAtIndex:0];
+        }
+        infoURL = [infoURLtemplate stringByReplacing:@"***" with:hostname];
+        [self launchConnection:infoURL];
+    }
+    return nil;
+}
+
 /* methods called by Quicksilver as needed */
 
 // declaring this here will cause the third pane to pop up in text-entry mode by default
@@ -350,7 +365,7 @@
 - (NSArray *)validActionsForDirectObject:(QSObject *)dObject indirectObject:(QSObject *)iObject
 {
     // actions to be returned
-    NSMutableArray *newActions=[NSMutableArray arrayWithCapacity:1];
+    NSMutableArray *newActions = [NSMutableArray arrayWithCapacity:1];
     
     /*  The general idea here is to loop through all actions and if
         we find a reason — any reason — to allow it, add it to the array
@@ -364,6 +379,13 @@
     
     for (NSString *action in actionList)
     {
+        if ([action isEqualToString:@"GetHostInfo"]) {
+            if ([[NSUserDefaults standardUserDefaults] objectForKey:kInfoURL]) {
+                // the Info URL is defined
+                [newActions addObject:action];
+            }
+            continue;
+        }
         NSArray *capabilities = [actionCapabilities valueForKey:action];
         
         // comma trick support is all or nothing

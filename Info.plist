@@ -417,6 +417,25 @@
 			<key>validatesObjects</key>
 			<true/>
 		</dict>
+		<key>GetHostInfo</key>
+		<dict>
+			<key>actionClass</key>
+			<string>QSRemoteHostsAction</string>
+			<key>actionSelector</key>
+			<string>getInfo:</string>
+			<key>directTypes</key>
+			<array>
+				<string>QSRemoteHostsType</string>
+			</array>
+			<key>displaysResult</key>
+			<false/>
+			<key>icon</key>
+			<string>ToolbarInfo</string>
+			<key>name</key>
+			<string>Get Host Info</string>
+			<key>validatesObjects</key>
+			<true/>
+		</dict>
 		<key>MSRemoteDesktop</key>
 		<dict>
 			<key>actionClass</key>
