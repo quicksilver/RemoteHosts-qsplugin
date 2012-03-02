@@ -215,6 +215,21 @@
         [lomObject setObject:@"lom" forMeta:@"ostype"];
         [children addObject:lomObject];
     }
+    // if there's a URL for host info, add it as a child
+    NSString *infoURLtemplate = [[NSUserDefaults standardUserDefaults] objectForKey:kInfoURL];
+    if (infoURLtemplate) {
+        // there's a URL defined to provide host info
+        NSString *nameForURL;
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:kStripDomain]) {
+            nameForURL = [[hostName componentsSeparatedByString:@"."] objectAtIndex:0];
+        } else {
+            nameForURL = hostName;
+        }
+        NSString *infoURL = [infoURLtemplate stringByReplacing:@"***" with:nameForURL];
+        QSObject *hostInfo = [QSObject URLObjectWithURL:infoURL title:@"Host Info"];
+        [hostInfo setIcon:[QSResourceManager imageNamed:@"ToolbarInfo"]];
+        [children addObject:hostInfo];
+    }
     // look up the IP address for this host and add it as a child
     NSHost *host = [NSHost hostWithName:hostName];
     
