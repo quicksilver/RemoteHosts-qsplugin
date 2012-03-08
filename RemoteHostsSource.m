@@ -27,8 +27,7 @@
     return YES;
 }
 
-// TODO create interface for adding custom catalog entries
-// show this on the drop-down for adding custom catalog entries?
+// show this on the drop-down for adding custom catalog entries
 - (BOOL)isVisibleSource
 {
     return YES;
