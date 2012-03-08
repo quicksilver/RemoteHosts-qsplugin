@@ -42,6 +42,10 @@
     return [super settingsView];
 }
 
+- (NSImage *) iconForEntry:(NSDictionary *)theEntry
+{
+	return [QSResourceManager imageNamed:@"com.apple.xserve"];
+}
 
 // this is set in the Info.plist
 // not sure if this method is to conditioanlly override it or what
