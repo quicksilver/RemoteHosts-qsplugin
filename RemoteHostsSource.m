@@ -31,8 +31,17 @@
 // show this on the drop-down for adding custom catalog entries?
 - (BOOL)isVisibleSource
 {
-    return NO;
+    return YES;
 }
+
+- (NSView *)settingsView
+{
+    if (![super settingsView]) {
+        [NSBundle loadNibNamed:NSStringFromClass([self class]) owner:self];
+    }
+    return [super settingsView];
+}
+
 
 // this is set in the Info.plist
 // not sure if this method is to conditioanlly override it or what
@@ -157,6 +166,34 @@
         itemPath = [bundlePath stringByAppendingPathComponent:itemPath];
     }
     return itemPath;
+}
+
+- (IBAction)selectHostsFile:(NSButton *)sender
+{
+	NSOpenPanel *openPanel = [NSOpenPanel openPanel];
+	NSString *oldFile = [[hostsFilePath stringValue] stringByStandardizingPath];
+	[openPanel setCanChooseDirectories:YES];
+	if (![openPanel runModalForDirectory:[oldFile stringByDeletingLastPathComponent] file:[oldFile lastPathComponent] types:nil]) return;
+	[hostsFilePath setStringValue:[[openPanel filename] stringByAbbreviatingWithTildeInPath]];
+	[[self selection] setName:[[openPanel filename] lastPathComponent]];
+	// update catalog entry
+	NSMutableDictionary *settings = [[self currentEntry] objectForKey:kItemSettings];
+	if (!settings) {
+		settings = [NSMutableDictionary dictionaryWithCapacity:1];
+		[[self currentEntry] setObject:settings forKey:kItemSettings];
+	}
+	[settings setObject:[hostsFilePath stringValue] forKey:kItemPath];
+	[settings setObject:[[hostsFilePath stringValue] lastPathComponent] forKey:kItemName];
+	[currentEntry setObject:[NSNumber numberWithFloat:[NSDate timeIntervalSinceReferenceDate]] forKey:kItemModificationDate];
+	[self populateFields];
+	[[NSNotificationCenter defaultCenter] postNotificationName:QSCatalogEntryChanged object:[self currentEntry]];
+}
+
+- (void)populateFields
+{
+	NSMutableDictionary *settings = [[self currentEntry] objectForKey:kItemSettings];
+	NSString *path = [settings objectForKey:kItemPath];
+	[hostsFilePath setStringValue:(path?path:@"")];
 }
 
 // Object Handler Methods
