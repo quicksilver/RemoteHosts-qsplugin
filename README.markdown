@@ -8,7 +8,6 @@ I've kept a list of systems I use in `~/.hosts` for years to allow shell complet
 
 ### Known Issues and To Do Items ###
 
-  * There's no interface for configuring a custom catalog entry (to pull hosts from different files) although you can add them, and such entries will work if you edit them in `Catalog.plist` by hand.
   * The extra step of converting text in the first pane to a remote host before being able to connect is intentional. I wanted to give the actions some default priority to make them easier to access in the most common use cases. If I supported strings and assigned these priorities, the remote host actions would end up being higher than other defaults for things typed by hand, such as "Large Type". If we let "Large Type" remain as default, you would need to select an action like "SSH" by hand each and every time. As of ß65, Quicksilver will automatically treat FQDNs and IP addresses as remote hosts, so this extra step should be largely unnecessary.
   * I've attempted to add the obvious NFS actions, but the "Internet Locations" for this protocol doesn't seem to work everywhere. If you use "Connect to Server…" in the Finder and type `nfs://server/share_name`, it works. But `open nfs://server/share_name` from Terminal fails. This is essentially what the plugin is asking the system to do, so if `open` doesn't like it, we're out of luck. Sorry.
 
