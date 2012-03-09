@@ -48,7 +48,7 @@
     [super dealloc];
 }
 
-/* helper methods */
+#pragma mark - helper methods
 // TODO create a method to take a QSObject and return an array of connection URLs
 // TODO use notification system for erors instead of returning them as objects? see Calculator Module
 
@@ -65,6 +65,28 @@
     else
         NSLog(@"error with location: %@", inetloc);
 }
+
+- (NSArray *)hostsFromQSObject:(QSObject *)object
+{
+    if ([[object primaryType] isEqualToString:QSRemoteHostsGroupType]) {
+        // get hosts belonging to a group
+        NSMutableArray *hosts = [NSMutableArray arrayWithCapacity:1];
+        QSObject *host;
+        for (NSString *hostID in [object objectForMeta:@"members"]) {
+            host = [QSObject objectWithIdentifier:hostID];
+            if (host) {
+                [hosts addObject:[host objectForType:QSRemoteHostsType]];
+            }
+        }
+        return hosts;
+    } else {
+        // one or more normal host objects
+        return [object arrayForType:QSRemoteHostsType];
+    }
+    return nil;
+}
+
+# pragma mark Quicksilver Actions
 
 - (QSObject *)sendWarningToUser:(NSString *)textForUser
 {
@@ -101,7 +123,7 @@
     // launch SSH with system defaults
     // equivalent to running `ssh hostname` on the command-line
     
-    for(NSString *remoteHost in [dObject arrayForType:QSRemoteHostsType])
+    for (NSString *remoteHost in [self hostsFromQSObject:dObject])
     {
         //NSLog(@"Connection for %@", remoteHost);
         
@@ -117,7 +139,7 @@
     // launch SSH with a username of "root"
     // equivalent to running `ssh -l root hostname` on the command-line
     
-    for(NSString *remoteHost in [dObject arrayForType:QSRemoteHostsType])
+    for (NSString *remoteHost in [self hostsFromQSObject:dObject])
     {
         //NSLog(@"Connection for %@", remoteHost);
         
@@ -133,7 +155,7 @@
     // launch SSH with a user provided username
     // equivalent to running `ssh -l username hostname` on the command-line
     
-    for(NSString *remoteHost in [dObject arrayForType:QSRemoteHostsType])
+    for (NSString *remoteHost in [self hostsFromQSObject:dObject])
     {
         //NSLog(@"Connection for %@", remoteHost);
         
@@ -149,7 +171,7 @@
     // launch Telnet connection
     // equivalent to running `telnet hostname` on the command-line
     
-    for(NSString *remoteHost in [dObject arrayForType:QSRemoteHostsType])
+    for (NSString *remoteHost in [self hostsFromQSObject:dObject])
     {
         //NSLog(@"Connection for %@", remoteHost);
         
@@ -336,7 +358,7 @@
     return nil;
 }
 
-/* methods called by Quicksilver as needed */
+#pragma mark Quicksilver Internal methods
 
 // declaring this here will cause the third pane to pop up in text-entry mode by default
 - (NSArray *)validIndirectObjectsForAction:(NSString *)action directObject:(QSObject *)dObject

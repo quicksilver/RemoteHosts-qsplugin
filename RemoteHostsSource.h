@@ -6,6 +6,7 @@
 //
 
 #define QSRemoteHostsType @"QSRemoteHostsType"
+#define QSRemoteHostsGroupType @"QSRemoteHostsGroupType"
 
 @interface QSRemoteHostsSource : QSObjectSource
 {

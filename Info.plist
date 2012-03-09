@@ -198,6 +198,7 @@
 			<key>directTypes</key>
 			<array>
 				<string>QSRemoteHostsType</string>
+				<string>QSRemoteHostsGroupType</string>
 			</array>
 			<key>displaysResult</key>
 			<false/>
@@ -219,6 +220,7 @@
 			<key>directTypes</key>
 			<array>
 				<string>QSRemoteHostsType</string>
+				<string>QSRemoteHostsGroupType</string>
 			</array>
 			<key>displaysResult</key>
 			<false/>
@@ -240,6 +242,7 @@
 			<key>directTypes</key>
 			<array>
 				<string>QSRemoteHostsType</string>
+				<string>QSRemoteHostsGroupType</string>
 			</array>
 			<key>displaysResult</key>
 			<false/>
@@ -267,6 +270,7 @@
 			<key>directTypes</key>
 			<array>
 				<string>QSRemoteHostsType</string>
+				<string>QSRemoteHostsGroupType</string>
 			</array>
 			<key>displaysResult</key>
 			<false/>
@@ -650,6 +654,8 @@ somehost ostype:solaris
 		</dict>
 		<key>QSObjectHandlers</key>
 		<dict>
+			<key>QSRemoteHostsGroupType</key>
+			<string>QSRemoteHostsSource</string>
 			<key>QSRemoteHostsType</key>
 			<string>QSRemoteHostsSource</string>
 		</dict>
@@ -678,6 +684,13 @@ somehost ostype:solaris
 		</dict>
 		<key>QSTypeDefinitions</key>
 		<dict>
+			<key>QSRemoteHostsGroupType</key>
+			<dict>
+				<key>icon</key>
+				<string>com.apple.xserve</string>
+				<key>name</key>
+				<string>Remote Host Group</string>
+			</dict>
 			<key>QSRemoteHostsType</key>
 			<dict>
 				<key>icon</key>
