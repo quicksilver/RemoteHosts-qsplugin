@@ -77,7 +77,7 @@
     // bail out with an error if the file couldn't be opened
     if(!hostsSource) {
         // there was an error reading the file
-        NSLog(@"Remote hosts could not be loaded: %@", [e localizedFailureReason]);
+        NSLog(@"Remote hosts could not be loaded from %@: %@", path, [e localizedFailureReason]);
         return nil;
     }
     hostsSource = [hostsSource stringByReplacing:@"\n" with:@"\r"];
