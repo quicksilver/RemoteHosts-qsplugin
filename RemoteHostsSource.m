@@ -100,11 +100,13 @@
         // check for valid hostnames with a regex
         // valid characters are a-z, 0-9, '.', and '-'
         // must begin with a letter or digit, can contain '-', and can end with '.'
-        NSString *hostRegEx = @"^[[:letter:][:number:]][[:letter:][:number:]\\-\\.]*[[:letter:] [:number:]\\.]$";
+		// in addition, allow hosts to end with colon and port number
+        NSString *hostRegEx = @"^[[:letter:][:number:]][[:letter:][:number:]\\-\\.]*[[:letter:][:number:]\\.](:[:number:]{1,5})?$";
         NSPredicate *regextest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", hostRegEx];
         if (![regextest evaluateWithObject:host])
         {
             // this doesn't look like a valid hostname - skip it
+			//NSLog(@"skipping invalid host: %@", host);
             continue;
         }
         NSString *ident = [NSString stringWithFormat:@"remote-host-%@", host];
