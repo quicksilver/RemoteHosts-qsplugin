@@ -85,6 +85,12 @@
     
     // read in hosts, one per line
     QSObject *newObject;
+	// check for valid hostnames with a regex
+	// valid characters are a-z, 0-9, '.', and '-'
+	// must begin with a letter or digit, can contain '-', and can end with '.'
+	// in addition, allow hosts to end with colon and port number
+	NSString *hostRegEx = @"^[[:letter:][:number:]][[:letter:][:number:]\\-\\.]*[[:letter:][:number:]\\.](:[:number:]{1,5})?$";
+	NSPredicate *regextest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", hostRegEx];
     for (NSString *line in lines) {
         // skip empty lines
         if ([line length] == 0) {
@@ -97,12 +103,6 @@
         // to support that file, split on comma
         NSArray *hostParts = [[lineParts objectAtIndex:0] componentsSeparatedByString:@","];
         NSString *host = [hostParts objectAtIndex:0];
-        // check for valid hostnames with a regex
-        // valid characters are a-z, 0-9, '.', and '-'
-        // must begin with a letter or digit, can contain '-', and can end with '.'
-		// in addition, allow hosts to end with colon and port number
-        NSString *hostRegEx = @"^[[:letter:][:number:]][[:letter:][:number:]\\-\\.]*[[:letter:][:number:]\\.](:[:number:]{1,5})?$";
-        NSPredicate *regextest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", hostRegEx];
         if (![regextest evaluateWithObject:host])
         {
             // this doesn't look like a valid hostname - skip it
