@@ -203,7 +203,7 @@
 {
 	NSOpenPanel *openPanel = [NSOpenPanel openPanel];
 	NSString *oldFile = [[hostsFilePath stringValue] stringByStandardizingPath];
-	[openPanel setCanChooseDirectories:YES];
+	[openPanel setCanChooseDirectories:NO];
 	if (![openPanel runModalForDirectory:[oldFile stringByDeletingLastPathComponent] file:[oldFile lastPathComponent] types:nil]) return;
 	[hostsFilePath setStringValue:[[openPanel filename] stringByAbbreviatingWithTildeInPath]];
 	[[self selection] setName:[[openPanel filename] lastPathComponent]];
