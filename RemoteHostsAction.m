@@ -29,6 +29,7 @@
             [NSArray arrayWithObjects:kUnixHosts, kWindowsHosts, nil], @"GetHTTPURL",
             [NSArray arrayWithObjects:kUnixHosts, kWindowsHosts, nil], @"GetHTTPSURL",
             [NSArray arrayWithObjects:kUnixHosts, kWindowsHosts, kMultipleHosts, nil], @"ConnectUsingVNC",
+            [NSArray arrayWithObjects:kUnixHosts, kWindowsHosts, kMultipleHosts, nil], @"GetHostInfo",
             [NSArray arrayWithObjects:kRequireCoRD, nil], @"MSRemoteDesktop",
             nil
         ] retain];
@@ -47,7 +48,7 @@
     [super dealloc];
 }
 
-/* helper methods */
+#pragma mark - helper methods
 // TODO create a method to take a QSObject and return an array of connection URLs
 // TODO use notification system for erors instead of returning them as objects? see Calculator Module
 
@@ -64,6 +65,28 @@
     else
         NSLog(@"error with location: %@", inetloc);
 }
+
+- (NSArray *)hostsFromQSObject:(QSObject *)object
+{
+    if ([[object primaryType] isEqualToString:QSRemoteHostsGroupType]) {
+        // get hosts belonging to a group
+        NSMutableArray *hosts = [NSMutableArray arrayWithCapacity:1];
+        QSObject *host;
+        for (NSString *hostID in [object objectForMeta:@"members"]) {
+            host = [QSObject objectWithIdentifier:hostID];
+            if (host) {
+                [hosts addObject:[host objectForType:QSRemoteHostsType]];
+            }
+        }
+        return hosts;
+    } else {
+        // one or more normal host objects
+        return [object arrayForType:QSRemoteHostsType];
+    }
+    return nil;
+}
+
+# pragma mark Quicksilver Actions
 
 - (QSObject *)sendWarningToUser:(NSString *)textForUser
 {
@@ -100,7 +123,7 @@
     // launch SSH with system defaults
     // equivalent to running `ssh hostname` on the command-line
     
-    for(NSString *remoteHost in [dObject arrayForType:QSRemoteHostsType])
+    for (NSString *remoteHost in [self hostsFromQSObject:dObject])
     {
         //NSLog(@"Connection for %@", remoteHost);
         
@@ -116,7 +139,7 @@
     // launch SSH with a username of "root"
     // equivalent to running `ssh -l root hostname` on the command-line
     
-    for(NSString *remoteHost in [dObject arrayForType:QSRemoteHostsType])
+    for (NSString *remoteHost in [self hostsFromQSObject:dObject])
     {
         //NSLog(@"Connection for %@", remoteHost);
         
@@ -132,7 +155,7 @@
     // launch SSH with a user provided username
     // equivalent to running `ssh -l username hostname` on the command-line
     
-    for(NSString *remoteHost in [dObject arrayForType:QSRemoteHostsType])
+    for (NSString *remoteHost in [self hostsFromQSObject:dObject])
     {
         //NSLog(@"Connection for %@", remoteHost);
         
@@ -148,7 +171,7 @@
     // launch Telnet connection
     // equivalent to running `telnet hostname` on the command-line
     
-    for(NSString *remoteHost in [dObject arrayForType:QSRemoteHostsType])
+    for (NSString *remoteHost in [self hostsFromQSObject:dObject])
     {
         //NSLog(@"Connection for %@", remoteHost);
         
@@ -321,7 +344,22 @@
     return hostObject;
 }
 
-/* methods called by Quicksilver as needed */
+- (QSObject *)getInfo:(QSObject *)dObject
+{
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *infoURLtemplate = [defaults objectForKey:kInfoURL];
+    NSString *infoURL;
+    for (NSString *hostname in [dObject arrayForType:QSRemoteHostsType]) {
+        if ([defaults boolForKey:kStripDomain]) {
+            hostname = [[hostname componentsSeparatedByString:@"."] objectAtIndex:0];
+        }
+        infoURL = [infoURLtemplate stringByReplacing:@"***" with:hostname];
+        [self launchConnection:infoURL];
+    }
+    return nil;
+}
+
+#pragma mark Quicksilver Internal methods
 
 // declaring this here will cause the third pane to pop up in text-entry mode by default
 - (NSArray *)validIndirectObjectsForAction:(NSString *)action directObject:(QSObject *)dObject
@@ -350,7 +388,7 @@
 - (NSArray *)validActionsForDirectObject:(QSObject *)dObject indirectObject:(QSObject *)iObject
 {
     // actions to be returned
-    NSMutableArray *newActions=[NSMutableArray arrayWithCapacity:1];
+    NSMutableArray *newActions = [NSMutableArray arrayWithCapacity:1];
     
     /*  The general idea here is to loop through all actions and if
         we find a reason — any reason — to allow it, add it to the array
@@ -364,6 +402,13 @@
     
     for (NSString *action in actionList)
     {
+        if ([action isEqualToString:@"GetHostInfo"]) {
+            if ([[NSUserDefaults standardUserDefaults] objectForKey:kInfoURL]) {
+                // the Info URL is defined
+                [newActions addObject:action];
+            }
+            continue;
+        }
         NSArray *capabilities = [actionCapabilities valueForKey:action];
         
         // comma trick support is all or nothing
