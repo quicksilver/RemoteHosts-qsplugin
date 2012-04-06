@@ -346,10 +346,11 @@
 
 - (QSObject *)getInfo:(QSObject *)dObject
 {
-    NSString *infoURLtemplate = [[NSUserDefaults standardUserDefaults] objectForKey:kInfoURL];
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *infoURLtemplate = [defaults objectForKey:kInfoURL];
     NSString *infoURL;
     for (NSString *hostname in [dObject arrayForType:QSRemoteHostsType]) {
-        if ([[NSUserDefaults standardUserDefaults] boolForKey:kStripDomain]) {
+        if ([defaults boolForKey:kStripDomain]) {
             hostname = [[hostname componentsSeparatedByString:@"."] objectAtIndex:0];
         }
         infoURL = [infoURLtemplate stringByReplacing:@"***" with:hostname];
