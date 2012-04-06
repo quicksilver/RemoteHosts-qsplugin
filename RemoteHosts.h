@@ -6,7 +6,6 @@
 //
 
 // TODO add interface for listing usernames
-// TODO allow host:port designations
 // TODO add action to copy (SCP) to a remote host
 
 @interface RemoteHosts : NSObject

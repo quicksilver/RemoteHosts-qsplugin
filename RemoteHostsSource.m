@@ -27,11 +27,23 @@
     return YES;
 }
 
-// TODO create interface for adding custom catalog entries
-// show this on the drop-down for adding custom catalog entries?
+// show this on the drop-down for adding custom catalog entries
 - (BOOL)isVisibleSource
 {
-    return NO;
+    return YES;
+}
+
+- (NSView *)settingsView
+{
+    if (![super settingsView]) {
+        [NSBundle loadNibNamed:NSStringFromClass([self class]) owner:self];
+    }
+    return [super settingsView];
+}
+
+- (NSImage *) iconForEntry:(NSDictionary *)theEntry
+{
+	return [QSResourceManager imageNamed:@"com.apple.xserve"];
 }
 
 // this is set in the Info.plist
@@ -55,7 +67,7 @@
     //NSLog(@"Loading remote hosts from: %@", path);
     
     // a list of objects that will get returned (and added to the Catalog)
-    NSMutableArray *objects=[NSMutableArray arrayWithCapacity:1];
+    NSMutableArray *objects = [NSMutableArray arrayWithCapacity:1];
     
     // somewhere to dump errors
     NSError *e;
@@ -65,7 +77,7 @@
     // bail out with an error if the file couldn't be opened
     if(!hostsSource) {
         // there was an error reading the file
-        NSLog(@"Remote hosts could not be loaded: %@", [e localizedFailureReason]);
+        NSLog(@"Remote hosts could not be loaded from %@: %@", path, [e localizedFailureReason]);
         return nil;
     }
     hostsSource = [hostsSource stringByReplacing:@"\n" with:@"\r"];
@@ -73,6 +85,14 @@
     
     // read in hosts, one per line
     QSObject *newObject;
+    // check for valid hostnames with a regex
+    // valid characters are a-z, 0-9, '.', and '-'
+    // must begin with a letter or digit, can contain '-', and can end with '.'
+    // in addition, allow hosts to end with colon and port number
+    NSString *hostRegEx = @"^[[:letter:][:number:]][[:letter:][:number:]\\-\\.]*[[:letter:][:number:]\\.](:[:number:]{1,5})?$";
+    NSPredicate *regextest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", hostRegEx];
+    // a place to store groups as they're discovered
+    NSMutableDictionary *groups = [[NSMutableDictionary alloc] init];
     for (NSString *line in lines) {
         // skip empty lines
         if ([line length] == 0) {
@@ -85,14 +105,10 @@
         // to support that file, split on comma
         NSArray *hostParts = [[lineParts objectAtIndex:0] componentsSeparatedByString:@","];
         NSString *host = [hostParts objectAtIndex:0];
-        // check for valid hostnames with a regex
-        // valid characters are a-z, 0-9, '.', and '-'
-        // must begin with a letter or digit, can contain '-', and can end with '.'
-        NSString *hostRegEx = @"^[[:letter:][:number:]][[:letter:][:number:]\\-\\.]*[[:letter:] [:number:]\\.]$";
-        NSPredicate *regextest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", hostRegEx];
         if (![regextest evaluateWithObject:host])
         {
             // this doesn't look like a valid hostname - skip it
+			//NSLog(@"skipping invalid host: %@", host);
             continue;
         }
         NSString *ident = [NSString stringWithFormat:@"remote-host-%@", host];
@@ -119,6 +135,18 @@
                     [newObject setObject:[dataParts objectAtIndex:1] forMeta:[dataParts objectAtIndex:0]];
                 }
             }
+            // look for groups
+            NSString *groupList = [newObject objectForMeta:@"groups"];
+            if (groupList) {
+                NSArray *groupArray = [groupList componentsSeparatedByString:@","];
+                // remember which hosts belong to groups
+                for (NSString *groupName in groupArray) {
+                    if (![groups objectForKey:groupName]) {
+                        [groups setObject:[NSMutableArray arrayWithCapacity:1] forKey:groupName];
+                    }
+                    [[groups objectForKey:groupName] addObject:ident];
+                }
+            }
         }
         // make the description and label more useful if possible
         NSString *ostype = [newObject objectForMeta:@"ostype"];
@@ -142,8 +170,20 @@
             [objects addObject:newObject];
     }
     
+    // add groups to the catalog
+    for (NSString *groupName in [groups allKeys]) {
+        newObject = [QSObject makeObjectWithIdentifier:[NSString stringWithFormat:@"remote-host-group-%@", groupName]];
+        [newObject setName:[NSString stringWithFormat:@"%@ Remote Host Group", groupName]];
+        [newObject setDetails:[NSString stringWithFormat:@"%@ Remote Host Group", groupName]];
+        [newObject setLabel:groupName];
+        [newObject setObject:[groups objectForKey:groupName] forMeta:@"members"];
+        [newObject setPrimaryType:QSRemoteHostsGroupType];
+        [objects addObject:newObject];
+    }
+	    
+    [groups release];
+    groups = nil;
     return objects;
-    
 }
 
 // this method gets the path for a file to scan from an Info.plist
@@ -157,6 +197,34 @@
         itemPath = [bundlePath stringByAppendingPathComponent:itemPath];
     }
     return itemPath;
+}
+
+- (IBAction)selectHostsFile:(NSButton *)sender
+{
+	NSOpenPanel *openPanel = [NSOpenPanel openPanel];
+	NSString *oldFile = [[hostsFilePath stringValue] stringByStandardizingPath];
+	[openPanel setCanChooseDirectories:NO];
+	if (![openPanel runModalForDirectory:[oldFile stringByDeletingLastPathComponent] file:[oldFile lastPathComponent] types:nil]) return;
+	[hostsFilePath setStringValue:[[openPanel filename] stringByAbbreviatingWithTildeInPath]];
+	[[self selection] setName:[[openPanel filename] lastPathComponent]];
+	// update catalog entry
+	NSMutableDictionary *settings = [[self currentEntry] objectForKey:kItemSettings];
+	if (!settings) {
+		settings = [NSMutableDictionary dictionaryWithCapacity:1];
+		[[self currentEntry] setObject:settings forKey:kItemSettings];
+	}
+	[settings setObject:[hostsFilePath stringValue] forKey:kItemPath];
+	[settings setObject:[[hostsFilePath stringValue] lastPathComponent] forKey:kItemName];
+	[currentEntry setObject:[NSNumber numberWithFloat:[NSDate timeIntervalSinceReferenceDate]] forKey:kItemModificationDate];
+	[self populateFields];
+	[[NSNotificationCenter defaultCenter] postNotificationName:QSCatalogEntryChanged object:[self currentEntry]];
+}
+
+- (void)populateFields
+{
+	NSMutableDictionary *settings = [[self currentEntry] objectForKey:kItemSettings];
+	NSString *path = [settings objectForKey:kItemPath];
+	[hostsFilePath setStringValue:(path?path:@"")];
 }
 
 // Object Handler Methods
@@ -191,59 +259,93 @@
 }
 */
 
+- (BOOL)objectHasChildren:(QSObject *)object
+{
+    return YES;
+}
+
 - (BOOL)loadChildrenForObject:(QSObject *)object
 {
     NSMutableArray *children = [NSMutableArray arrayWithCapacity:1];
-    NSString *hostName = [object name];
-    // look up the LOM address for this host and add it as a child
-    NSString *lom = [object objectForMeta:@"lom"];
-    if (lom)
-    {
-        // NSString *hostNameOnly = [[host componentsSeparatedByString:@"."] objectAtIndex:0];
-        // NSString *label = [NSString stringWithFormat:@"%@ • LOM", hostName];
-        NSString *label = @"Lights-Out Management";
-        // using objectWithString here would cause Quicksilver to treat the address as a URL
-        // so we create the object with a few explicit details to make it act like text
-        NSString *ident = [NSString stringWithFormat:@"remote-host-%@", lom];
-        QSObject *lomObject = [QSObject objectWithName:lom];
-        [lomObject setIdentifier:ident];
-        [lomObject setObject:lom forType:QSRemoteHostsType];
-        // this type allows paste, large type, e-mail, IM, etc
-        [lomObject setObject:lom forType:QSTextType];
-        [lomObject setPrimaryType:QSRemoteHostsType];
-        [lomObject setLabel:label];
-        [lomObject setObject:@"lom" forMeta:@"ostype"];
-        [children addObject:lomObject];
-    }
-    // look up the IP address for this host and add it as a child
-    NSHost *host = [NSHost hostWithName:hostName];
-    
-    // this action doesn't support the comma-trick
-    
-    // if there is no such host, skip this
-    if (host) {
-        for (NSString *ip in [host addresses])
+    if ([[object primaryType] isEqualToString:QSRemoteHostsType]) {
+        NSString *hostName = [object name];
+        // look up the LOM address for this host and add it as a child
+        NSString *lom = [object objectForMeta:@"lom"];
+        if (lom)
         {
-            // using objectWithString here would cause Quicksilver to treat the IP as a URL
+            // NSString *hostNameOnly = [[host componentsSeparatedByString:@"."] objectAtIndex:0];
+            // NSString *label = [NSString stringWithFormat:@"%@ • LOM", hostName];
+            NSString *label = @"Lights-Out Management";
+            // using objectWithString here would cause Quicksilver to treat the address as a URL
             // so we create the object with a few explicit details to make it act like text
-            QSObject *ipObject = [QSObject objectWithName:ip];
-            [ipObject setObject:ip forType:QSTextType];
-            [ipObject setIcon:[QSResourceManager imageNamed:@"GenericNetworkIcon"]];
-            [children addObject:ipObject];
+            NSString *ident = [NSString stringWithFormat:@"remote-host-%@", lom];
+            QSObject *lomObject = [QSObject objectWithName:lom];
+            [lomObject setIdentifier:ident];
+            [lomObject setObject:lom forType:QSRemoteHostsType];
+            // this type allows paste, large type, e-mail, IM, etc
+            [lomObject setObject:lom forType:QSTextType];
+            [lomObject setPrimaryType:QSRemoteHostsType];
+            [lomObject setLabel:label];
+            [lomObject setObject:@"lom" forMeta:@"ostype"];
+            [children addObject:lomObject];
         }
-        for (NSString *alias in [host names])
-        {
-            // using objectWithString here would cause Quicksilver to treat the IP as a URL
-            // so we create the object with a few explicit details to make it act like text
-            QSObject *aliasObject = [QSObject objectWithName:alias];
-            [aliasObject setObject:alias forType:QSTextType];
-            [aliasObject setIcon:[QSResourceManager imageNamed:@"GenericNetworkIcon"]];
-            [children addObject:aliasObject];
+        // if there's a URL for host info, add it as a child
+        NSString *infoURLtemplate = [[NSUserDefaults standardUserDefaults] objectForKey:kInfoURL];
+        if (infoURLtemplate) {
+            // there's a URL defined to provide host info
+            NSString *nameForURL;
+            if ([[NSUserDefaults standardUserDefaults] boolForKey:kStripDomain]) {
+                nameForURL = [[hostName componentsSeparatedByString:@"."] objectAtIndex:0];
+            } else {
+                nameForURL = hostName;
+            }
+            NSString *infoURL = [infoURLtemplate stringByReplacing:@"***" with:nameForURL];
+            QSObject *hostInfo = [QSObject URLObjectWithURL:infoURL title:@"Host Info"];
+            [hostInfo setIcon:[QSResourceManager imageNamed:@"ToolbarInfo"]];
+            [children addObject:hostInfo];
         }
+        // look up the IP address for this host and add it as a child
+        NSHost *host = [NSHost hostWithName:hostName];
+        
+        // this action doesn't support the comma-trick
+        
+        // if there is no such host, skip this
+        if (host) {
+            for (NSString *ip in [host addresses])
+            {
+                // using objectWithString here would cause Quicksilver to treat the IP as a URL
+                // so we create the object with a few explicit details to make it act like text
+                QSObject *ipObject = [QSObject objectWithName:ip];
+                [ipObject setObject:ip forType:QSTextType];
+                [ipObject setIcon:[QSResourceManager imageNamed:@"GenericNetworkIcon"]];
+                [children addObject:ipObject];
+            }
+            for (NSString *alias in [host names])
+            {
+                // using objectWithString here would cause Quicksilver to treat the IP as a URL
+                // so we create the object with a few explicit details to make it act like text
+                QSObject *aliasObject = [QSObject objectWithName:alias];
+                [aliasObject setObject:alias forType:QSTextType];
+                [aliasObject setIcon:[QSResourceManager imageNamed:@"GenericNetworkIcon"]];
+                [children addObject:aliasObject];
+            }
+        }
+        
+        [object setChildren:children];
+        return YES;
+    } else if ([[object primaryType] isEqualToString:QSRemoteHostsGroupType]) {
+        // get the individual QSObjects for hosts in this group
+        QSObject *host;
+        for (NSString *ident in [object objectForMeta:@"members"]) {
+            host = [QSObject objectWithIdentifier:ident];
+            if (host) {
+                [children addObject:host];
+            }
+        }
+        [object setChildren:children];
+        return YES;
     }
-    
-    [object setChildren:children];
-    return TRUE;
+    return NO;
 }
 
 @end

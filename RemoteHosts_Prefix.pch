@@ -6,6 +6,9 @@
 #import <Cocoa/Cocoa.h>
 #import <QSFoundation/QSFoundation.h>
 #import <QSCore/QSCore.h>
+#import <QSInterface/QSPreferencePane.h>
 #endif
 
 #define kRemoteHostsType @"RemoteHostsType"
+#define kStripDomain @"RemoteHostsStripDomain"
+#define kInfoURL @"RemoteHostsInfoURL"
