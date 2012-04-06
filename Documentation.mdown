@@ -74,7 +74,9 @@ You can optionally pull hosts from `~/.ssh/known_hosts`. There is a preset (disa
 
   * Host Info URL
     
-    If you have a web-based system that can provide more information about a host, you can define the URL here. Put `***` in the URL where you want the hostname to appear. If this is left blank, the Get Host Info action will not be available.
+    If you have a web-based front end for an inventory or monitoring tool that can provide information about individual hosts, you can define the URL here. Put `***` in the URL where you want the hostname to appear. For example, if http://info.domain.tld/summary/webhost1 provides information for `webhost1`, you could define the URL as http://info.domain.tld/summary/***.
+    
+    If this is left blank, the Get Host Info action will not be available.
 
   * Use hostname in URL
     
