@@ -10,8 +10,6 @@
 #define kQSObjectComponents @"QSObjectComponents"
 
 #define kRemoteHostsAction @"RemoteHostsAction"
-#define QSRemoteHostsType @"QSRemoteHostsType"
-#define QSRemoteHostsGroupType @"QSRemoteHostsGroupType"
 
 // known capabilities for actions
 #define kMultipleHosts @"works with multiple objects"

@@ -8,7 +8,8 @@
 // TODO add interface for listing usernames
 // TODO add action to copy (SCP) to a remote host
 
-#define kRemoteHostsType @"RemoteHostsType"
+#define QSRemoteHostsType @"QSRemoteHostsType"
+#define QSRemoteHostsGroupType @"QSRemoteHostsGroupType"
 #define kStripDomain @"RemoteHostsStripDomain"
 #define kInfoURL @"RemoteHostsInfoURL"
 
