@@ -68,7 +68,7 @@ The plug-in scans for items on each host's line that look like this: `key:value`
   * `label`: By default, all hosts in your catalog will be labeled with their hostname, FQDN, or IP address (as it appears in your file). Setting a label in the file will append to the default, not replace it. Quicksilver searches the text in the label as you type to search for things. If you have many hosts with similar names, they can be hard to get to quickly. Using this item to append to the label can be useful to group or "tag" systems for faster searching.
   * `groups`: A comma separated list of groups you want the host to belong to. Names can't contain spaces at this time. More information on using groups can be found under Tips.
 
-You can optionally pull hosts from `~/.ssh/known_hosts`. There is a preset (disabled by default) under "Remote Hosts" in the Modules section of the Catalog. If you want to get hosts from an arbitrary file, add a new custom catalog entry and choose "Remote Hosts" from the drop-down, then choose the file for the new entry.
+You can optionally pull hosts from `~/.ssh/known_hosts`. There is a preset (disabled by default) under "Remote Hosts" in the Plugins section of the Catalog. If you want to get hosts from an arbitrary file, add a new custom catalog entry and choose "Remote Hosts" from the drop-down, then choose the file for the new entry.
 
 ### Preferences ###
 

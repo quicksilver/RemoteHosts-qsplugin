@@ -14,8 +14,6 @@
 		D44D809A149A467C002EA077 /* Debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = D44D8092149A467C002EA077 /* Debug.xcconfig */; };
 		D44D809B149A467C002EA077 /* Developer.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = D44D8093149A467C002EA077 /* Developer.xcconfig */; };
 		D44D809C149A467C002EA077 /* QSPlugIn.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = D44D8094149A467C002EA077 /* QSPlugIn.xcconfig */; };
-		D44D809D149A467C002EA077 /* QSPlugIn_Debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = D44D8095149A467C002EA077 /* QSPlugIn_Debug.xcconfig */; };
-		D44D809E149A467C002EA077 /* QSPlugIn_Release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = D44D8096149A467C002EA077 /* QSPlugIn_Release.xcconfig */; };
 		D44D809F149A467C002EA077 /* Release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = D44D8098149A467C002EA077 /* Release.xcconfig */; };
 		D44D80B7149A4CC4002EA077 /* QSCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44D80B5149A4CC4002EA077 /* QSCore.framework */; };
 		D44D80B8149A4CC4002EA077 /* QSFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44D80B6149A4CC4002EA077 /* QSFoundation.framework */; };
@@ -23,12 +21,10 @@
 		D4A4D7CD15094C8100A44C3C /* QSObjectSource.name.strings in Resources */ = {isa = PBXBuildFile; fileRef = D4A4D7CC15094C8100A44C3C /* QSObjectSource.name.strings */; };
 		D4E8AC3F150108A4006B2D89 /* RemoteHostsPrefPane.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4E8AC3E150108A4006B2D89 /* RemoteHostsPrefPane.xib */; };
 		D4E8AC4215010C22006B2D89 /* RemoteHostsPrefPane.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E8AC4115010C22006B2D89 /* RemoteHostsPrefPane.m */; };
-		D4E8AC4415010F39006B2D89 /* QSInterface.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4E8AC4315010F39006B2D89 /* QSInterface.framework */; };
 		E1EAB046068128A200774DFF /* RemoteHosts.m in Sources */ = {isa = PBXBuildFile; fileRef = E1EAB045068128A200774DFF /* RemoteHosts.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		32DBCF980370C29C00C91783 /* RemoteHosts_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteHosts_Prefix.pch; sourceTree = "<group>"; };
 		8D1AC9730486D14A00FE50C9 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8D1AC9740486D14A00FE50C9 /* RemoteHosts.qsplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RemoteHosts.qsplugin; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBF5817A0B1D9D84003CFF55 /* RemoteHostsAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteHostsAction.h; sourceTree = "<group>"; };
@@ -39,8 +35,6 @@
 		D44D8092149A467C002EA077 /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Debug.xcconfig; path = /private/tmp/QS/Configuration/Debug.xcconfig; sourceTree = "<absolute>"; };
 		D44D8093149A467C002EA077 /* Developer.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Developer.xcconfig; path = /private/tmp/QS/Configuration/Developer.xcconfig; sourceTree = "<absolute>"; };
 		D44D8094149A467C002EA077 /* QSPlugIn.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = QSPlugIn.xcconfig; path = /private/tmp/QS/Configuration/QSPlugIn.xcconfig; sourceTree = "<absolute>"; };
-		D44D8095149A467C002EA077 /* QSPlugIn_Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = QSPlugIn_Debug.xcconfig; path = /private/tmp/QS/Configuration/QSPlugIn_Debug.xcconfig; sourceTree = "<absolute>"; };
-		D44D8096149A467C002EA077 /* QSPlugIn_Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = QSPlugIn_Release.xcconfig; path = /private/tmp/QS/Configuration/QSPlugIn_Release.xcconfig; sourceTree = "<absolute>"; };
 		D44D8097149A467C002EA077 /* Quicksilver.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Quicksilver.pch; path = /private/tmp/QS/Configuration/Quicksilver.pch; sourceTree = "<absolute>"; };
 		D44D8098149A467C002EA077 /* Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Release.xcconfig; path = /private/tmp/QS/Configuration/Release.xcconfig; sourceTree = "<absolute>"; };
 		D44D80B5149A4CC4002EA077 /* QSCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = QSCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -50,7 +44,6 @@
 		D4E8AC3E150108A4006B2D89 /* RemoteHostsPrefPane.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RemoteHostsPrefPane.xib; sourceTree = "<group>"; };
 		D4E8AC4015010C22006B2D89 /* RemoteHostsPrefPane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteHostsPrefPane.h; sourceTree = "<group>"; };
 		D4E8AC4115010C22006B2D89 /* RemoteHostsPrefPane.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoteHostsPrefPane.m; sourceTree = "<group>"; };
-		D4E8AC4315010F39006B2D89 /* QSInterface.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = QSInterface.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD92D38A0106425D02CA0E72 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		E1EAB045068128A200774DFF /* RemoteHosts.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = RemoteHosts.m; sourceTree = "<group>"; };
 		E1EAB047068128A800774DFF /* RemoteHosts.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = RemoteHosts.h; sourceTree = "<group>"; };
@@ -61,7 +54,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4E8AC4415010F39006B2D89 /* QSInterface.framework in Frameworks */,
 				D44D80B7149A4CC4002EA077 /* QSCore.framework in Frameworks */,
 				D44D80B8149A4CC4002EA077 /* QSFoundation.framework in Frameworks */,
 				8D1AC9700486D14A00FE50C9 /* Cocoa.framework in Frameworks */,
@@ -76,7 +68,6 @@
 			children = (
 				D44D8090149A467C002EA077 /* Configuration */,
 				32DBCF9E0370C38000C91783 /* Classes */,
-				32DBCF9F0370C38200C91783 /* Other Sources */,
 				0259C582FE90428111CA0C5A /* Resources */,
 				1ED78706FE9D4A0611CA0C5A /* Products */,
 				2E58F364FFB232C311CA0CBA /* Frameworks */,
@@ -106,7 +97,6 @@
 		2E58F364FFB232C311CA0CBA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D4E8AC4315010F39006B2D89 /* QSInterface.framework */,
 				D44D80B5149A4CC4002EA077 /* QSCore.framework */,
 				D44D80B6149A4CC4002EA077 /* QSFoundation.framework */,
 				DD92D38A0106425D02CA0E72 /* Cocoa.framework */,
@@ -129,14 +119,6 @@
 			name = Classes;
 			sourceTree = "<group>";
 		};
-		32DBCF9F0370C38200C91783 /* Other Sources */ = {
-			isa = PBXGroup;
-			children = (
-				32DBCF980370C29C00C91783 /* RemoteHosts_Prefix.pch */,
-			);
-			name = "Other Sources";
-			sourceTree = "<group>";
-		};
 		D44D8090149A467C002EA077 /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
@@ -144,8 +126,6 @@
 				D44D8092149A467C002EA077 /* Debug.xcconfig */,
 				D44D8093149A467C002EA077 /* Developer.xcconfig */,
 				D44D8094149A467C002EA077 /* QSPlugIn.xcconfig */,
-				D44D8095149A467C002EA077 /* QSPlugIn_Debug.xcconfig */,
-				D44D8096149A467C002EA077 /* QSPlugIn_Release.xcconfig */,
 				D44D8097149A467C002EA077 /* Quicksilver.pch */,
 				D44D8098149A467C002EA077 /* Release.xcconfig */,
 			);
@@ -160,10 +140,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7F6B3EEB085CE8DF000735A8 /* Build configuration list for PBXNativeTarget "RemoteHosts" */;
 			buildPhases = (
+				E1022B2806B3475D00299BEC /* Update Version and Documentation */,
 				8D1AC9660486D14A00FE50C9 /* Resources */,
 				8D1AC96A0486D14A00FE50C9 /* Sources */,
 				8D1AC96E0486D14A00FE50C9 /* Frameworks */,
-				E1022B2806B3475D00299BEC /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -212,8 +192,6 @@
 				D44D809A149A467C002EA077 /* Debug.xcconfig in Resources */,
 				D44D809B149A467C002EA077 /* Developer.xcconfig in Resources */,
 				D44D809C149A467C002EA077 /* QSPlugIn.xcconfig in Resources */,
-				D44D809D149A467C002EA077 /* QSPlugIn_Debug.xcconfig in Resources */,
-				D44D809E149A467C002EA077 /* QSPlugIn_Release.xcconfig in Resources */,
 				D44D809F149A467C002EA077 /* Release.xcconfig in Resources */,
 				D4E8AC3F150108A4006B2D89 /* RemoteHostsPrefPane.xib in Resources */,
 				D461350115013163001B0814 /* QSRemoteHostsSource.xib in Resources */,
@@ -224,18 +202,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		E1022B2806B3475D00299BEC /* ShellScript */ = {
+		E1022B2806B3475D00299BEC /* Update Version and Documentation */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 8;
+			buildActionMask = 12;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Update Version and Documentation";
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "$SRCROOT/bltrversion $INFOPLIST_FILE";
+			shellScript = "\"$QS_BUILD_ROOT/Tools/bltrversion\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -256,45 +235,21 @@
 /* Begin XCBuildConfiguration section */
 		7F6B3EEC085CE8DF000735A8 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D44D8095149A467C002EA077 /* QSPlugIn_Debug.xcconfig */;
+			baseConfigurationReference = D44D8094149A467C002EA077 /* QSPlugIn.xcconfig */;
 			buildSettings = {
 				COPY_PHASE_STRIP = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(QS_BUILD_ROOT)/build/Debug",
-					/tmp/QS/build/Release,
-				);
-				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = RemoteHosts_Prefix.pch;
-				INFOPLIST_FILE = Info.plist;
-				OTHER_LDFLAGS = "-bundle";
 				PRODUCT_NAME = RemoteHosts;
-				WRAPPER_EXTENSION = qsplugin;
-				ZERO_LINK = YES;
 			};
 			name = Debug;
 		};
 		7F6B3EED085CE8DF000735A8 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D44D8096149A467C002EA077 /* QSPlugIn_Release.xcconfig */;
+			baseConfigurationReference = D44D8094149A467C002EA077 /* QSPlugIn.xcconfig */;
 			buildSettings = {
 				COPY_PHASE_STRIP = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(QS_BUILD_ROOT)/build/Release",
-					/tmp/QS/build/Release,
-				);
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = RemoteHosts_Prefix.pch;
-				INFOPLIST_FILE = Info.plist;
-				OTHER_LDFLAGS = "-bundle";
 				PRODUCT_NAME = RemoteHosts;
-				WRAPPER_EXTENSION = qsplugin;
-				ZERO_LINK = NO;
 			};
 			name = Release;
 		};

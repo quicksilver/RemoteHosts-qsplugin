@@ -11,7 +11,9 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>Remote Hosts Module</string>
+	<string>Remote Hosts Plugin</string>
+	<key>CFBundleDisplayName</key>
+	<string>Remote Hosts</string>
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleShortVersionString</key>
@@ -705,39 +707,6 @@ webhost2 groups:Web
 				<string>Remote Hosts</string>
 			</dict>
 		</dict>
-	</dict>
-	<key>QSRequirementsTemplate</key>
-	<dict>
-		<key>bundlesTemplate</key>
-		<array>
-			<dict>
-				<key>id</key>
-				<string></string>
-				<key>name</key>
-				<string></string>
-				<key>version</key>
-				<string></string>
-			</dict>
-		</array>
-		<key>feature</key>
-		<integer>0</integer>
-		<key>launchLoad</key>
-		<false/>
-		<key>pathsTemplate</key>
-		<array>
-			<string>/path/to/something</string>
-		</array>
-		<key>pluginsTemplate</key>
-		<array>
-			<dict>
-				<key>id</key>
-				<string></string>
-				<key>name</key>
-				<string></string>
-				<key>version</key>
-				<string></string>
-			</dict>
-		</array>
 	</dict>
 </dict>
 </plist>
