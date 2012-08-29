@@ -415,7 +415,7 @@
         // other checks are only attempted on single objects
         if ([dObject count] > 1)
         {
-            if ([capabilities containsObject:[NSString stringWithString:kMultipleHosts]])
+            if ([capabilities containsObject:kMultipleHosts])
             {
                 [newActions addObject:action];
                 continue;
@@ -424,19 +424,19 @@
             // checks based on OS type
             NSString *ostype = [dObject objectForMeta:@"ostype"];
             if (![ostype isEqualToString:@"windows"]
-                && [capabilities containsObject:[NSString stringWithString:kUnixHosts]])
+                && [capabilities containsObject:kUnixHosts])
             {
                 [newActions addObject:action];
                 continue;
             }
             if ([ostype isEqualToString:@"windows"]
-                && [capabilities containsObject:[NSString stringWithString:kWindowsHosts]])
+                && [capabilities containsObject:kWindowsHosts])
             {
                 [newActions addObject:action];
                 continue;
             }
             // checks based on presecnce of other applications
-            if (cordPath && [capabilities containsObject:[NSString stringWithString:kRequireCoRD]])
+            if (cordPath && [capabilities containsObject:kRequireCoRD])
             {
                 // CoRD is installed for MS Remote Desktop support
                 [newActions addObject:action];

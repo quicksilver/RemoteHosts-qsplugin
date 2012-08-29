@@ -203,10 +203,15 @@
 {
 	NSOpenPanel *openPanel = [NSOpenPanel openPanel];
 	NSString *oldFile = [[hostsFilePath stringValue] stringByStandardizingPath];
+	NSString *oldPath = [oldFile stringByDeletingLastPathComponent];
 	[openPanel setCanChooseDirectories:NO];
-	if (![openPanel runModalForDirectory:[oldFile stringByDeletingLastPathComponent] file:[oldFile lastPathComponent] types:nil]) return;
-	[hostsFilePath setStringValue:[[openPanel filename] stringByAbbreviatingWithTildeInPath]];
-	[[self selection] setName:[[openPanel filename] lastPathComponent]];
+	[openPanel setCanChooseFiles:YES];
+	[openPanel setShowsHiddenFiles:YES];
+	[openPanel setDirectoryURL:[NSURL fileURLWithPath:oldPath isDirectory:YES]];
+	if (![openPanel runModal]) return;
+	NSString *newFile = [[openPanel URL] path];
+	[hostsFilePath setStringValue:[newFile stringByAbbreviatingWithTildeInPath]];
+	[[self selection] setName:[newFile lastPathComponent]];
 	// update catalog entry
 	NSMutableDictionary *settings = [[self currentEntry] objectForKey:kItemSettings];
 	if (!settings) {
