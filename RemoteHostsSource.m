@@ -80,11 +80,9 @@
         NSLog(@"Remote hosts could not be loaded from %@: %@", path, [e localizedFailureReason]);
         return nil;
     }
-    hostsSource = [hostsSource stringByReplacing:@"\n" with:@"\r"];
-    NSArray *lines = [hostsSource componentsSeparatedByString:@"\r"];
     
     // read in hosts, one per line
-    QSObject *newObject;
+    NSArray *lines = [hostsSource lines];
     // check for valid hostnames with a regex
     // valid characters are a-z, 0-9, '.', and '-'
     // must begin with a letter or digit, can contain '-', and can end with '.'
@@ -93,84 +91,82 @@
     NSPredicate *regextest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", hostRegEx];
     // a place to store groups as they're discovered
     NSMutableDictionary *groups = [[NSMutableDictionary alloc] init];
-    for (NSString *line in lines) {
+	[lines enumerateObjectsUsingBlock:^(NSString *line, NSUInteger i, BOOL *stop) {
         // skip empty lines
-        if ([line length] == 0) {
-            continue;
+        if ([line length] != 0) {
+			// allow other metadata in the file, separated by whitespace
+			// hostname or FQDN should be the first thing on the line
+			NSArray *lineParts = [line componentsSeparatedByString:@" "];
+			// ~/.ssh/known_hosts could be host or host,ip
+			// to support that file, split on comma
+			NSArray *hostParts = [[lineParts objectAtIndex:0] componentsSeparatedByString:@","];
+			NSString *host = [hostParts objectAtIndex:0];
+			if ([regextest evaluateWithObject:host])
+			{
+				// this looks like a valid hostname
+				NSString *ident = [NSString stringWithFormat:@"remote-host-%@", host];
+				// build a QSObject
+				QSObject *newObject = [QSObject objectWithName:host];
+				[newObject setIdentifier:ident];
+				[newObject setObject:host forType:QSRemoteHostsType];
+				// this type allows paste, large type, e-mail, IM, etc
+				[newObject setObject:host forType:QSTextType];
+				[newObject setPrimaryType:QSRemoteHostsType];
+				// add some metadata
+				if([lineParts count] > 1)
+				{
+					NSRange allButFirst;
+					allButFirst.location = 1;
+					allButFirst.length = [lineParts count] - 1;
+					for (NSString *metadata in [lineParts subarrayWithRange:allButFirst])
+					{
+						// metadata should look like 'key:value'
+						// if we find something like this, add it
+						NSArray *dataParts = [metadata componentsSeparatedByString:@":"];
+						if ([dataParts count] == 2)
+						{
+							[newObject setObject:[dataParts objectAtIndex:1] forMeta:[dataParts objectAtIndex:0]];
+						}
+					}
+					// look for groups
+					NSString *groupList = [newObject objectForMeta:@"groups"];
+					if (groupList) {
+						NSArray *groupArray = [groupList componentsSeparatedByString:@","];
+						// remember which hosts belong to groups
+						for (NSString *groupName in groupArray) {
+							if (![groups objectForKey:groupName]) {
+								[groups setObject:[NSMutableArray arrayWithCapacity:1] forKey:groupName];
+							}
+							[[groups objectForKey:groupName] addObject:ident];
+						}
+					}
+				}
+				// make the description and label more useful if possible
+				NSString *ostype = [newObject objectForMeta:@"ostype"];
+				NSString *hostType;
+				if (ostype)
+				{
+					hostType = [ostype capitalizedString];
+				} else {
+					hostType = @"Remote";
+				}
+				// the "details" string appears in smaller text below the object in the UI
+				[newObject setDetails:[NSString stringWithFormat:@"%@ (%@ Host)", host, hostType]];
+				NSString *labelExtra = [newObject objectForMeta:@"label"];
+				if (labelExtra)
+				{
+					[newObject setLabel:[NSString stringWithFormat:@"%@ • %@", host, labelExtra]];
+				}
+				
+				// if the object is OK, add it to the list
+				if (newObject)
+					[objects addObject:newObject];
+			}
         }
-        // allow other metadata in the file, separated by whitespace
-        // hostname or FQDN should be the first thing on the line
-        NSArray *lineParts = [line componentsSeparatedByString:@" "];
-        // ~/.ssh/known_hosts could be host or host,ip
-        // to support that file, split on comma
-        NSArray *hostParts = [[lineParts objectAtIndex:0] componentsSeparatedByString:@","];
-        NSString *host = [hostParts objectAtIndex:0];
-        if (![regextest evaluateWithObject:host])
-        {
-            // this doesn't look like a valid hostname - skip it
-			//NSLog(@"skipping invalid host: %@", host);
-            continue;
-        }
-        NSString *ident = [NSString stringWithFormat:@"remote-host-%@", host];
-        // build a QSObject
-        newObject = [QSObject objectWithName:host];
-        [newObject setIdentifier:ident];
-        [newObject setObject:host forType:QSRemoteHostsType];
-        // this type allows paste, large type, e-mail, IM, etc
-        [newObject setObject:host forType:QSTextType];
-        [newObject setPrimaryType:QSRemoteHostsType];
-        // add some metadata
-        if([lineParts count] > 1)
-        {
-            NSRange allButFirst;
-            allButFirst.location = 1;
-            allButFirst.length = [lineParts count] - 1;
-            for (NSString *metadata in [lineParts subarrayWithRange:allButFirst])
-            {
-                // metadata should look like 'key:value'
-                // if we find something like this, add it
-                NSArray *dataParts = [metadata componentsSeparatedByString:@":"];
-                if ([dataParts count] == 2)
-                {
-                    [newObject setObject:[dataParts objectAtIndex:1] forMeta:[dataParts objectAtIndex:0]];
-                }
-            }
-            // look for groups
-            NSString *groupList = [newObject objectForMeta:@"groups"];
-            if (groupList) {
-                NSArray *groupArray = [groupList componentsSeparatedByString:@","];
-                // remember which hosts belong to groups
-                for (NSString *groupName in groupArray) {
-                    if (![groups objectForKey:groupName]) {
-                        [groups setObject:[NSMutableArray arrayWithCapacity:1] forKey:groupName];
-                    }
-                    [[groups objectForKey:groupName] addObject:ident];
-                }
-            }
-        }
-        // make the description and label more useful if possible
-        NSString *ostype = [newObject objectForMeta:@"ostype"];
-        NSString *hostType;
-        if (ostype)
-        {
-            hostType = [ostype capitalizedString];
-        } else {
-            hostType = @"Remote";
-        }
-        // the "details" string appears in smaller text below the object in the UI
-        [newObject setDetails:[NSString stringWithFormat:@"%@ (%@ Host)", host, hostType]];
-        NSString *labelExtra = [newObject objectForMeta:@"label"];
-        if (labelExtra)
-        {
-            [newObject setLabel:[NSString stringWithFormat:@"%@ • %@", host, labelExtra]];
-        }
-        
-        // if the object is OK, add it to the list
-        if (newObject)
-            [objects addObject:newObject];
-    }
+	}];
     
     // add groups to the catalog
+	QSObject *newObject = nil;
     for (NSString *groupName in [groups allKeys]) {
         newObject = [QSObject makeObjectWithIdentifier:[NSString stringWithFormat:@"remote-host-group-%@", groupName]];
         [newObject setName:[NSString stringWithFormat:@"%@ Remote Host Group", groupName]];
