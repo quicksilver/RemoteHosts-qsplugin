@@ -173,6 +173,7 @@
         [newObject setDetails:[NSString stringWithFormat:@"%@ Remote Host Group", groupName]];
         [newObject setLabel:groupName];
         [newObject setObject:[groups objectForKey:groupName] forMeta:@"members"];
+		[newObject setObject:groupName forType:QSRemoteHostsGroupType];
         [newObject setPrimaryType:QSRemoteHostsGroupType];
         [objects addObject:newObject];
     }
