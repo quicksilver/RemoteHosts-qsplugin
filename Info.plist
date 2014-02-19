@@ -658,7 +658,9 @@ webhost2 groups:Web
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;See the &lt;code&gt;ssh_config(5)&lt;/code&gt; man page for details.&lt;/p&gt;
 &lt;p&gt;For &lt;strong&gt;iTerm&lt;/strong&gt; users, the SSH and Telnet actions are intentionally not specific to Terminal. They simply send an address to the OS to be opened. Configure your system to open &lt;code&gt;ssh://&lt;/code&gt; and &lt;code&gt;telnet://&lt;/code&gt; locations using iTerm if you want to use that instead of Terminal.&lt;/p&gt;
-&lt;p&gt;Finally, don't forget the "comma trick". You can select multiple hosts using the comma or ⌘A, then connect to them all at once.&lt;/p&gt;</string>
+&lt;p&gt;Finally, don't forget the "comma trick". You can select multiple hosts using the comma or ⌘A, then connect to them all at once.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;This plug-in uses icons from the &lt;a href="http://openiconlibrary.sourceforge.net/"&gt;Open Icon Library&lt;/a&gt;.&lt;/p&gt;</string>
 		<key>icon</key>
 		<string>com.apple.xserve</string>
 		<key>relatedPaths</key>

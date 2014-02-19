@@ -114,3 +114,7 @@ See the `ssh_config(5)` man page for details.
 For **iTerm** users, the SSH and Telnet actions are intentionally not specific to Terminal. They simply send an address to the OS to be opened. Configure your system to open `ssh://` and `telnet://` locations using iTerm if you want to use that instead of Terminal.
 
 Finally, don't forget the "comma trick". You can select multiple hosts using the comma or ⌘A, then connect to them all at once.
+
+* * * * * * * * * *
+
+This plug-in uses icons from the [Open Icon Library](http://openiconlibrary.sourceforge.net/).
