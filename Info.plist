@@ -30,6 +30,8 @@
 			<string>QSRemoteHostsAction</string>
 			<key>actionSelector</key>
 			<string>browseWithAFP:</string>
+			<key>commandFormat</key>
+			<string>Browse AFP shares on %@ in Finder</string>
 			<key>directTypes</key>
 			<array>
 				<string>QSRemoteHostsType</string>
@@ -51,6 +53,8 @@
 			<string>QSRemoteHostsAction</string>
 			<key>actionSelector</key>
 			<string>mountWithAFP:withShareName:</string>
+			<key>commandFormat</key>
+			<string>mount afp://%@/%@</string>
 			<key>directTypes</key>
 			<array>
 				<string>QSRemoteHostsType</string>
@@ -78,6 +82,8 @@
 			<string>QSRemoteHostsAction</string>
 			<key>actionSelector</key>
 			<string>browseWithCIFS:</string>
+			<key>commandFormat</key>
+			<string>Browse CIFS shares on %@ in Finder</string>
 			<key>directTypes</key>
 			<array>
 				<string>QSRemoteHostsType</string>
@@ -99,6 +105,8 @@
 			<string>QSRemoteHostsAction</string>
 			<key>actionSelector</key>
 			<string>mountWithCIFS:withShareName:</string>
+			<key>commandFormat</key>
+			<string>mount cifs://%@/%@</string>
 			<key>directTypes</key>
 			<array>
 				<string>QSRemoteHostsType</string>
@@ -128,6 +136,8 @@
 			<string>connectWithFTP:</string>
 			<key>alternateAction</key>
 			<string>GetFTPURL</string>
+			<key>commandFormat</key>
+			<string>ftp %@</string>
 			<key>directTypes</key>
 			<array>
 				<string>QSRemoteHostsType</string>
@@ -151,6 +161,8 @@
 			<string>connectWithHTTP:</string>
 			<key>alternateAction</key>
 			<string>GetHTTPURL</string>
+			<key>commandFormat</key>
+			<string>Go to http://%@</string>
 			<key>directTypes</key>
 			<array>
 				<string>QSRemoteHostsType</string>
@@ -174,6 +186,8 @@
 			<string>connectWithHTTPS:</string>
 			<key>alternateAction</key>
 			<string>GetHTTPSURL</string>
+			<key>commandFormat</key>
+			<string>Go to https://%@</string>
 			<key>directTypes</key>
 			<array>
 				<string>QSRemoteHostsType</string>
@@ -195,6 +209,8 @@
 			<string>QSRemoteHostsAction</string>
 			<key>actionSelector</key>
 			<string>connectWithMosh:</string>
+			<key>commandFormat</key>
+			<string>mosh %@</string>
 			<key>directTypes</key>
 			<array>
 				<string>QSRemoteHostsType</string>
@@ -215,6 +231,8 @@
 			<string>connectAsDefault:</string>
 			<key>alternateAction</key>
 			<string>ConnectUsingSSHroot</string>
+			<key>commandFormat</key>
+			<string>ssh %@</string>
 			<key>directTypes</key>
 			<array>
 				<string>QSRemoteHostsType</string>
@@ -237,6 +255,8 @@
 			<string>QSRemoteHostsAction</string>
 			<key>actionSelector</key>
 			<string>connectAsRoot:</string>
+			<key>commandFormat</key>
+			<string>ssh root@%@</string>
 			<key>directTypes</key>
 			<array>
 				<string>QSRemoteHostsType</string>
@@ -259,6 +279,8 @@
 			<string>QSRemoteHostsAction</string>
 			<key>actionSelector</key>
 			<string>connectAsUser:withUserName:</string>
+			<key>commandFormat</key>
+			<string>ssh %@ -l %@</string>
 			<key>directTypes</key>
 			<array>
 				<string>QSRemoteHostsType</string>
@@ -287,6 +309,8 @@
 			<string>QSRemoteHostsAction</string>
 			<key>actionSelector</key>
 			<string>connectWithTelnet:</string>
+			<key>commandFormat</key>
+			<string>telnet %@</string>
 			<key>directTypes</key>
 			<array>
 				<string>QSRemoteHostsType</string>
@@ -309,6 +333,8 @@
 			<string>QSRemoteHostsAction</string>
 			<key>actionSelector</key>
 			<string>connectToPortWithTelnet:withPortNumber:</string>
+			<key>commandFormat</key>
+			<string>telnet %@:%@</string>
 			<key>directTypes</key>
 			<array>
 				<string>QSRemoteHostsType</string>
@@ -336,6 +362,8 @@
 			<string>QSRemoteHostsAction</string>
 			<key>actionSelector</key>
 			<string>connectWithVNC:</string>
+			<key>commandFormat</key>
+			<string>Share Screen on %@</string>
 			<key>directTypes</key>
 			<array>
 				<string>QSRemoteHostsType</string>
@@ -357,6 +385,8 @@
 			<string>QSRemoteHostsAction</string>
 			<key>actionSelector</key>
 			<string>convertTextToHost:</string>
+			<key>commandFormat</key>
+			<string>Use %@ as a remote host</string>
 			<key>directTypes</key>
 			<array>
 				<string>NSStringPboardType</string>
@@ -378,6 +408,8 @@
 			<string>QSRemoteHostsAction</string>
 			<key>actionSelector</key>
 			<string>getFTPURL:</string>
+			<key>commandFormat</key>
+			<string>Select ftp://%@ in Quicksilver</string>
 			<key>directTypes</key>
 			<array>
 				<string>QSRemoteHostsType</string>
@@ -401,6 +433,8 @@
 			<string>QSRemoteHostsAction</string>
 			<key>actionSelector</key>
 			<string>getHTTPSURL:</string>
+			<key>commandFormat</key>
+			<string>Select https://%@ in Quicksilver</string>
 			<key>directTypes</key>
 			<array>
 				<string>QSRemoteHostsType</string>
@@ -424,6 +458,8 @@
 			<string>QSRemoteHostsAction</string>
 			<key>actionSelector</key>
 			<string>getHTTPURL:</string>
+			<key>commandFormat</key>
+			<string>Select http://%@ in Quicksilver</string>
 			<key>directTypes</key>
 			<array>
 				<string>QSRemoteHostsType</string>
@@ -447,6 +483,8 @@
 			<string>QSRemoteHostsAction</string>
 			<key>actionSelector</key>
 			<string>getInfo:</string>
+			<key>commandFormat</key>
+			<string>Display info for %@</string>
 			<key>directTypes</key>
 			<array>
 				<string>QSRemoteHostsType</string>
@@ -466,6 +504,8 @@
 			<string>QSRemoteHostsAction</string>
 			<key>actionSelector</key>
 			<string>msRemoteDesktop:</string>
+			<key>commandFormat</key>
+			<string>Connect to desktop on %@</string>
 			<key>directTypes</key>
 			<array>
 				<string>QSRemoteHostsType</string>
