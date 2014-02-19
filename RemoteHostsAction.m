@@ -20,6 +20,8 @@
             [NSArray arrayWithObjects:kUnixHosts, kMultipleHosts, nil], @"ConnectUsingSSH",
             [NSArray arrayWithObjects:kUnixHosts, kMultipleHosts, nil], @"ConnectUsingSSHroot",
             [NSArray arrayWithObjects:kUnixHosts, kMultipleHosts, nil], @"ConnectUsingSSHuser",
+            [NSArray arrayWithObjects:kUnixHosts, kMultipleHosts, nil], @"ConnectUsingMosh",
+            [NSArray arrayWithObjects:kUnixHosts, kMultipleHosts, nil], @"ConnectUsingMoshUser",
             [NSArray arrayWithObjects:kUnixHosts, kMultipleHosts, nil], @"ConnectUsingTelnet",
             [NSArray arrayWithObjects:kUnixHosts, kWindowsHosts, kMultipleHosts, nil], @"ConnectUsingTelnetPort",
             [NSArray arrayWithObjects:kUnixHosts, kWindowsHosts, kMultipleHosts, nil], @"ConnectUsingFTP",
@@ -162,6 +164,18 @@
         // launch an SSH connection
         [self launchConnection:[NSString stringWithFormat:@"ssh://%@@%@",[userName stringValue],remoteHost]];
     
+    }
+    return nil;
+}
+
+- (QSObject *)connectWithMosh:(QSObject *)dObject
+{
+    if ([QSReg respondsToSelector:@selector(preferredTerminalMediator)]) {
+        NSString *command = nil;
+        for (NSString *remoteHost in [self hostsFromQSObject:dObject]) {
+            command = [NSString stringWithFormat:@"mosh %@", remoteHost];
+            [[QSReg preferredTerminalMediator] performCommandInTerminal:command];
+        }
     }
     return nil;
 }
@@ -407,6 +421,11 @@
                 // the Info URL is defined
                 [newActions addObject:action];
             }
+            continue;
+        }
+        if ([action isEqualToString:@"ConnectUsingMosh"] && ![QSReg respondsToSelector:@selector(preferredTerminalMediator)]) {
+            // no Terminal handler installed
+            // can't run commands
             continue;
         }
         NSArray *capabilities = [actionCapabilities valueForKey:action];
