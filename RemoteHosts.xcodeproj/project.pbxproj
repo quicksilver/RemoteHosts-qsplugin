@@ -11,6 +11,18 @@
 		BBF5817C0B1D9D84003CFF55 /* RemoteHostsAction.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF5817B0B1D9D84003CFF55 /* RemoteHostsAction.m */; };
 		BBF581840B1D9DC3003CFF55 /* RemoteHostsSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF581830B1D9DC3003CFF55 /* RemoteHostsSource.m */; };
 		D461350115013163001B0814 /* QSRemoteHostsSource.xib in Resources */ = {isa = PBXBuildFile; fileRef = D461350015013163001B0814 /* QSRemoteHostsSource.xib */; };
+		D486258418B4646B00D8CAE4 /* bsd.png in Resources */ = {isa = PBXBuildFile; fileRef = D486257818B4646B00D8CAE4 /* bsd.png */; };
+		D486258518B4646B00D8CAE4 /* debian.png in Resources */ = {isa = PBXBuildFile; fileRef = D486257918B4646B00D8CAE4 /* debian.png */; };
+		D486258618B4646B00D8CAE4 /* fedora.png in Resources */ = {isa = PBXBuildFile; fileRef = D486257A18B4646B00D8CAE4 /* fedora.png */; };
+		D486258718B4646B00D8CAE4 /* gentoo.png in Resources */ = {isa = PBXBuildFile; fileRef = D486257B18B4646B00D8CAE4 /* gentoo.png */; };
+		D486258818B4646B00D8CAE4 /* netbsd.png in Resources */ = {isa = PBXBuildFile; fileRef = D486257C18B4646B00D8CAE4 /* netbsd.png */; };
+		D486258918B4646B00D8CAE4 /* opensuse.png in Resources */ = {isa = PBXBuildFile; fileRef = D486257D18B4646B00D8CAE4 /* opensuse.png */; };
+		D486258A18B4646B00D8CAE4 /* redhat.png in Resources */ = {isa = PBXBuildFile; fileRef = D486257E18B4646B00D8CAE4 /* redhat.png */; };
+		D486258B18B4646B00D8CAE4 /* solaris.png in Resources */ = {isa = PBXBuildFile; fileRef = D486257F18B4646B00D8CAE4 /* solaris.png */; };
+		D486258C18B4646B00D8CAE4 /* suse.png in Resources */ = {isa = PBXBuildFile; fileRef = D486258018B4646B00D8CAE4 /* suse.png */; };
+		D486258D18B4646B00D8CAE4 /* ubuntu.png in Resources */ = {isa = PBXBuildFile; fileRef = D486258118B4646B00D8CAE4 /* ubuntu.png */; };
+		D486258E18B4646B00D8CAE4 /* unix-linux.png in Resources */ = {isa = PBXBuildFile; fileRef = D486258218B4646B00D8CAE4 /* unix-linux.png */; };
+		D486258F18B4646B00D8CAE4 /* windows.png in Resources */ = {isa = PBXBuildFile; fileRef = D486258318B4646B00D8CAE4 /* windows.png */; };
 		D4A4D7CD15094C8100A44C3C /* QSObjectSource.name.strings in Resources */ = {isa = PBXBuildFile; fileRef = D4A4D7CC15094C8100A44C3C /* QSObjectSource.name.strings */; };
 		D4E8AC3F150108A4006B2D89 /* RemoteHostsPrefPane.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4E8AC3E150108A4006B2D89 /* RemoteHostsPrefPane.xib */; };
 		D4E8AC4215010C22006B2D89 /* RemoteHostsPrefPane.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E8AC4115010C22006B2D89 /* RemoteHostsPrefPane.m */; };
@@ -30,6 +42,18 @@
 		D44D8097149A467C002EA077 /* Quicksilver.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Quicksilver.pch; path = /private/tmp/QS/Configuration/Quicksilver.pch; sourceTree = "<absolute>"; };
 		D44D8098149A467C002EA077 /* Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Release.xcconfig; path = /private/tmp/QS/Configuration/Release.xcconfig; sourceTree = "<absolute>"; };
 		D461350015013163001B0814 /* QSRemoteHostsSource.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QSRemoteHostsSource.xib; sourceTree = "<group>"; };
+		D486257818B4646B00D8CAE4 /* bsd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bsd.png; sourceTree = "<group>"; };
+		D486257918B4646B00D8CAE4 /* debian.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = debian.png; sourceTree = "<group>"; };
+		D486257A18B4646B00D8CAE4 /* fedora.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fedora.png; sourceTree = "<group>"; };
+		D486257B18B4646B00D8CAE4 /* gentoo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gentoo.png; sourceTree = "<group>"; };
+		D486257C18B4646B00D8CAE4 /* netbsd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = netbsd.png; sourceTree = "<group>"; };
+		D486257D18B4646B00D8CAE4 /* opensuse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = opensuse.png; sourceTree = "<group>"; };
+		D486257E18B4646B00D8CAE4 /* redhat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redhat.png; sourceTree = "<group>"; };
+		D486257F18B4646B00D8CAE4 /* solaris.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = solaris.png; sourceTree = "<group>"; };
+		D486258018B4646B00D8CAE4 /* suse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = suse.png; sourceTree = "<group>"; };
+		D486258118B4646B00D8CAE4 /* ubuntu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ubuntu.png; sourceTree = "<group>"; };
+		D486258218B4646B00D8CAE4 /* unix-linux.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "unix-linux.png"; sourceTree = "<group>"; };
+		D486258318B4646B00D8CAE4 /* windows.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = windows.png; sourceTree = "<group>"; };
 		D4A4D7CC15094C8100A44C3C /* QSObjectSource.name.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = QSObjectSource.name.strings; sourceTree = "<group>"; };
 		D4E8AC3E150108A4006B2D89 /* RemoteHostsPrefPane.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RemoteHostsPrefPane.xib; sourceTree = "<group>"; };
 		D4E8AC4015010C22006B2D89 /* RemoteHostsPrefPane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteHostsPrefPane.h; sourceTree = "<group>"; };
@@ -69,6 +93,7 @@
 				8D1AC9730486D14A00FE50C9 /* Info.plist */,
 				D4E8AC3E150108A4006B2D89 /* RemoteHostsPrefPane.xib */,
 				D461350015013163001B0814 /* QSRemoteHostsSource.xib */,
+				D486257718B4646B00D8CAE4 /* Images */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -115,6 +140,25 @@
 			);
 			name = Configuration;
 			path = ../../../../../../private/tmp/QS/Configuration;
+			sourceTree = "<group>";
+		};
+		D486257718B4646B00D8CAE4 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				D486257818B4646B00D8CAE4 /* bsd.png */,
+				D486257918B4646B00D8CAE4 /* debian.png */,
+				D486257A18B4646B00D8CAE4 /* fedora.png */,
+				D486257B18B4646B00D8CAE4 /* gentoo.png */,
+				D486257C18B4646B00D8CAE4 /* netbsd.png */,
+				D486257D18B4646B00D8CAE4 /* opensuse.png */,
+				D486257E18B4646B00D8CAE4 /* redhat.png */,
+				D486257F18B4646B00D8CAE4 /* solaris.png */,
+				D486258018B4646B00D8CAE4 /* suse.png */,
+				D486258118B4646B00D8CAE4 /* ubuntu.png */,
+				D486258218B4646B00D8CAE4 /* unix-linux.png */,
+				D486258318B4646B00D8CAE4 /* windows.png */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -176,6 +220,18 @@
 				D4E8AC3F150108A4006B2D89 /* RemoteHostsPrefPane.xib in Resources */,
 				D461350115013163001B0814 /* QSRemoteHostsSource.xib in Resources */,
 				D4A4D7CD15094C8100A44C3C /* QSObjectSource.name.strings in Resources */,
+				D486258418B4646B00D8CAE4 /* bsd.png in Resources */,
+				D486258618B4646B00D8CAE4 /* fedora.png in Resources */,
+				D486258A18B4646B00D8CAE4 /* redhat.png in Resources */,
+				D486258818B4646B00D8CAE4 /* netbsd.png in Resources */,
+				D486258718B4646B00D8CAE4 /* gentoo.png in Resources */,
+				D486258D18B4646B00D8CAE4 /* ubuntu.png in Resources */,
+				D486258918B4646B00D8CAE4 /* opensuse.png in Resources */,
+				D486258E18B4646B00D8CAE4 /* unix-linux.png in Resources */,
+				D486258F18B4646B00D8CAE4 /* windows.png in Resources */,
+				D486258B18B4646B00D8CAE4 /* solaris.png in Resources */,
+				D486258518B4646B00D8CAE4 /* debian.png in Resources */,
+				D486258C18B4646B00D8CAE4 /* suse.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

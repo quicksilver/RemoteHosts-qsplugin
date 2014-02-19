@@ -233,33 +233,34 @@
 
 - (void)setQuickIconForObject:(QSObject *)object
 {
-    // An icon that is either already in memory or easy to load
-    
+    [object setIcon:[QSResourceManager imageNamed:@"com.apple.xserve"]];
+}
+
+- (BOOL)loadIconForObject:(QSObject *)object
+{
     // check for an icon in metadata
-    NSString *icon = [object objectForMeta:@"icon"];
+    NSImage *icon = [QSResourceManager imageNamed:[object objectForMeta:@"icon"]];
     if (!icon)
     {
         // no icon specified, so pick one based on OS type
         NSString *ostype = [object objectForMeta:@"ostype"];
-        if([ostype isEqualToString:@"windows"])
-        {
-            icon = @"public.generic-pc";
-        } else if ([ostype isEqualToString:@"lom"]) {
-            icon = @"ToolbarUtilitiesFolderIcon";
+        if ([ostype isEqualToString:@"lom"]) {
+            // Lights-Out Management interface
+            icon = [QSResourceManager imageNamed:@"ToolbarUtilitiesFolderIcon"];
         } else {
-            icon = @"com.apple.xserve";
+            // check for OS icons stored in the bundle
+            if ([ostype isEqualToString:@"unix"] || [ostype isEqualToString:@"linux"]) {
+                ostype = @"unix-linux";
+            }
+            NSString *iconFile = [NSString stringWithFormat:@"%@.png", ostype];
+            icon = [QSResourceManager imageNamed:iconFile inBundle:[NSBundle bundleForClass:[self class]]];
         }
     }
-    [object setIcon:[QSResourceManager imageNamed:icon]];
-}
-/*
-- (BOOL)loadIconForObject:(QSObject *)object{
-    return NO;
-    id data=[object objectForType:kRemoteHostsType];
-    [object setIcon:nil];
+    if (icon) {
+        [object setIcon:icon];
+    }
     return YES;
 }
-*/
 
 - (BOOL)objectHasChildren:(QSObject *)object
 {
