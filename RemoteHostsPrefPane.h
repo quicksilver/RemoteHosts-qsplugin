@@ -7,4 +7,6 @@
 
 @interface RemoteHostsPrefPane : QSPreferencePane
 
+- (IBAction)rescanRemoteHosts:(id)sender;
+
 @end

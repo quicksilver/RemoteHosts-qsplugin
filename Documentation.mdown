@@ -86,15 +86,18 @@ You can optionally pull hosts from `~/.ssh/known_hosts`. There is a preset (disa
 
 ### Preferences ###
 
-  * Host Info URL
+Display Hostnames
+  : If hosts are defined using their fully qualified domain names, you can choose to display only the hostname in the main interface.
     
-    If you have a web-based front end for an inventory or monitoring tool that can provide information about individual hosts, you can define the URL here. Put `***` in the URL where you want the hostname to appear. For example, if http://info.domain.tld/summary/webhost1 provides information for `webhost1`, you could define the URL as http://info.domain.tld/summary/***.
+    You will still be able to search for the FQDN, and the FQDN will still be used when running actions.
+
+Host Info URL
+  : If you have a web-based front end for an inventory or monitoring tool that can provide information about individual hosts, you can define the URL here. Put `***` in the URL where you want the hostname to appear. For example, if http://info.domain.tld/summary/webhost1 provides information for `webhost1`, you could define the URL as http://info.domain.tld/summary/***.
     
     If this is left blank, the Get Host Info action will not be available.
 
-  * Use hostname in URL
-    
-    If you have hosts in your catalog using their Fully Qualified Domain Name, but the info URL expects the hostname, enable this preference to remove the domain.
+Use hostname in URL
+  : If you have hosts in your catalog using their Fully Qualified Domain Name, but the info URL expects the hostname, enable this preference to remove the domain.
 
 ### Tips ###
 

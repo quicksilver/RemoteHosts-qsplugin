@@ -522,6 +522,15 @@
 			<true/>
 		</dict>
 	</dict>
+	<key>QSDefaults</key>
+	<dict>
+		<key>RemoteHostsDisplayHostname</key>
+		<true/>
+		<key>RemoteHostsInfoURL</key>
+		<string></string>
+		<key>RemoteHostsStripDomain</key>
+		<true/>
+	</dict>
 	<key>QSPlugIn</key>
 	<dict>
 		<key>author</key>
@@ -637,17 +646,22 @@ webhost2 groups:Web
 &lt;/ul&gt;
 &lt;p&gt;You can optionally pull hosts from &lt;code&gt;~/.ssh/known_hosts&lt;/code&gt;. There is a preset (disabled by default) under "Remote Hosts" in the Plugins section of the Catalog. If you want to get hosts from an arbitrary file, add a new custom catalog entry and choose "Remote Hosts" from the drop-down, then choose the file for the new entry.&lt;/p&gt;
 &lt;h3&gt;Preferences&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Host Info URL&lt;/p&gt;
+&lt;dl&gt;
+&lt;dt&gt;Display Hostnames&lt;/dt&gt;
+&lt;dd&gt;
+&lt;p&gt;If hosts are defined using their fully qualified domain names, you can choose to display only the hostname in the main interface.&lt;/p&gt;
+&lt;p&gt;You will still be able to search for the FQDN, and the FQDN will still be used when running actions.&lt;/p&gt;
+&lt;/dd&gt;
+&lt;dt&gt;Host Info URL&lt;/dt&gt;
+&lt;dd&gt;
 &lt;p&gt;If you have a web-based front end for an inventory or monitoring tool that can provide information about individual hosts, you can define the URL here. Put &lt;code&gt;***&lt;/code&gt; in the URL where you want the hostname to appear. For example, if http://info.domain.tld/summary/webhost1 provides information for &lt;code&gt;webhost1&lt;/code&gt;, you could define the URL as http://info.domain.tld/summary/***.&lt;/p&gt;
 &lt;p&gt;If this is left blank, the Get Host Info action will not be available.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Use hostname in URL&lt;/p&gt;
+&lt;/dd&gt;
+&lt;dt&gt;Use hostname in URL&lt;/dt&gt;
+&lt;dd&gt;
 &lt;p&gt;If you have hosts in your catalog using their Fully Qualified Domain Name, but the info URL expects the hostname, enable this preference to remove the domain.&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
+&lt;/dd&gt;
+&lt;/dl&gt;
 &lt;h3&gt;Tips&lt;/h3&gt;
 &lt;p&gt;After installation, you may want to check the precedence of the actions and make sure they're to your liking. The actions only apply to "remote hosts" in the catalog, so moving them up rather high on the list shouldn't interfere with other tasks. You may also want to disable some of the ones you never think you'll use.&lt;/p&gt;
 &lt;p&gt;For more than a few machines, you should use a script to generate a &lt;code&gt;.hosts&lt;/code&gt; file from DNS, LDAP, a database, or some other authoritative source if possible, rather than managing it by hand. You might also schedule a job to update the file on a regular basis.&lt;/p&gt;

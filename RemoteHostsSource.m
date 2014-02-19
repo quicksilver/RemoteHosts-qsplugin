@@ -152,11 +152,16 @@
 				}
 				// the "details" string appears in smaller text below the object in the UI
 				[newObject setDetails:[NSString stringWithFormat:@"%@ (%@ Host)", host, hostType]];
+                // figure out what the label should be
+                BOOL displayHostname = [[NSUserDefaults standardUserDefaults] boolForKey:kDisplayHostname];
+                NSString *hostname = displayHostname ? [host componentsSeparatedByString:@"."][0] : host;
 				NSString *labelExtra = [newObject objectForMeta:@"label"];
 				if (labelExtra)
 				{
-					[newObject setLabel:[NSString stringWithFormat:@"%@ • %@", host, labelExtra]];
-				}
+					[newObject setLabel:[NSString stringWithFormat:@"%@ • %@", hostname, labelExtra]];
+				} else if (displayHostname) {
+                    [newObject setLabel:hostname];
+                }
 				
 				// if the object is OK, add it to the list
 				if (newObject)

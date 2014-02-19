@@ -9,4 +9,10 @@
 
 @implementation RemoteHostsPrefPane
 
+- (IBAction)rescanRemoteHosts:(id)sender
+{
+    // tell all Remote Hosts catalog entries to rescan
+    [[NSNotificationCenter defaultCenter] postNotificationName:QSCatalogSourceInvalidated object:@"QSRemoteHostsSource"];
+}
+
 @end
