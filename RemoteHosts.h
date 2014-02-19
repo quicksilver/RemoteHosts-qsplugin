@@ -12,3 +12,5 @@
 #define QSRemoteHostsGroupType @"QSRemoteHostsGroupType"
 #define kStripDomain @"RemoteHostsStripDomain"
 #define kInfoURL @"RemoteHostsInfoURL"
+#define kQSMetaOSType @"ostype"
+#define kQSMetaGroupMembers @"members"

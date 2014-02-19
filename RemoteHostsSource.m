@@ -142,7 +142,7 @@
 					}
 				}
 				// make the description and label more useful if possible
-				NSString *ostype = [newObject objectForMeta:@"ostype"];
+				NSString *ostype = [newObject objectForMeta:kQSMetaOSType];
 				NSString *hostType;
 				if (ostype)
 				{
@@ -172,7 +172,7 @@
         [newObject setName:[NSString stringWithFormat:@"%@ Remote Host Group", groupName]];
         [newObject setDetails:[NSString stringWithFormat:@"%@ Remote Host Group", groupName]];
         [newObject setLabel:groupName];
-        [newObject setObject:[groups objectForKey:groupName] forMeta:@"members"];
+        [newObject setObject:[groups objectForKey:groupName] forMeta:kQSMetaGroupMembers];
 		[newObject setObject:groupName forType:QSRemoteHostsGroupType];
         [newObject setPrimaryType:QSRemoteHostsGroupType];
         [objects addObject:newObject];
@@ -243,7 +243,7 @@
     if (!icon)
     {
         // no icon specified, so pick one based on OS type
-        NSString *ostype = [object objectForMeta:@"ostype"];
+        NSString *ostype = [object objectForMeta:kQSMetaOSType];
         if ([ostype isEqualToString:@"lom"]) {
             // Lights-Out Management interface
             icon = [QSResourceManager imageNamed:@"ToolbarUtilitiesFolderIcon"];
@@ -289,7 +289,7 @@
             [lomObject setObject:lom forType:QSTextType];
             [lomObject setPrimaryType:QSRemoteHostsType];
             [lomObject setLabel:label];
-            [lomObject setObject:@"lom" forMeta:@"ostype"];
+            [lomObject setObject:@"lom" forMeta:kQSMetaOSType];
             [children addObject:lomObject];
         }
         // if there's a URL for host info, add it as a child

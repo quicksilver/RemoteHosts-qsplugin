@@ -354,7 +354,7 @@
     // this type allows paste, large type, e-mail, IM, etc
     [hostObject setObject:host forType:QSTextType];
     [hostObject setPrimaryType:QSRemoteHostsType];
-    [hostObject setObject:@"unknown" forMeta:@"ostype"];
+    [hostObject setObject:@"unknown" forMeta:kQSMetaOSType];
     return hostObject;
 }
 
@@ -441,7 +441,7 @@
             }
         } else {
             // checks based on OS type
-            NSString *ostype = [dObject objectForMeta:@"ostype"];
+            NSString *ostype = [dObject objectForMeta:kQSMetaOSType];
             if (![ostype isEqualToString:@"windows"]
                 && [capabilities containsObject:kUnixHosts])
             {
