@@ -12,9 +12,3 @@
 #define QSRemoteHostsGroupType @"QSRemoteHostsGroupType"
 #define kStripDomain @"RemoteHostsStripDomain"
 #define kInfoURL @"RemoteHostsInfoURL"
-
-@interface RemoteHosts : NSObject
-{
-}
-@end
-

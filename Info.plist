@@ -21,7 +21,7 @@
 	<key>CFBundleVersion</key>
 	<string>15C</string>
 	<key>NSPrincipalClass</key>
-	<string>RemoteHosts</string>
+	<string>RemoteHostsSource</string>
 	<key>QSActions</key>
 	<dict>
 		<key>AFPBrowse</key>

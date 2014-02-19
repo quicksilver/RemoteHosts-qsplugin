@@ -14,12 +14,11 @@
 		D4A4D7CD15094C8100A44C3C /* QSObjectSource.name.strings in Resources */ = {isa = PBXBuildFile; fileRef = D4A4D7CC15094C8100A44C3C /* QSObjectSource.name.strings */; };
 		D4E8AC3F150108A4006B2D89 /* RemoteHostsPrefPane.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4E8AC3E150108A4006B2D89 /* RemoteHostsPrefPane.xib */; };
 		D4E8AC4215010C22006B2D89 /* RemoteHostsPrefPane.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E8AC4115010C22006B2D89 /* RemoteHostsPrefPane.m */; };
-		E1EAB046068128A200774DFF /* RemoteHosts.m in Sources */ = {isa = PBXBuildFile; fileRef = E1EAB045068128A200774DFF /* RemoteHosts.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8D1AC9730486D14A00FE50C9 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		8D1AC9740486D14A00FE50C9 /* RemoteHosts.qsplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RemoteHosts.qsplugin; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D1AC9740486D14A00FE50C9 /* RemoteHosts.qsplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = RemoteHosts.qsplugin; path = "Remote Hosts Plugin.qsplugin"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBF5817A0B1D9D84003CFF55 /* RemoteHostsAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteHostsAction.h; sourceTree = "<group>"; };
 		BBF5817B0B1D9D84003CFF55 /* RemoteHostsAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoteHostsAction.m; sourceTree = "<group>"; };
 		BBF581820B1D9DC3003CFF55 /* RemoteHostsSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteHostsSource.h; sourceTree = "<group>"; };
@@ -36,7 +35,6 @@
 		D4E8AC4015010C22006B2D89 /* RemoteHostsPrefPane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteHostsPrefPane.h; sourceTree = "<group>"; };
 		D4E8AC4115010C22006B2D89 /* RemoteHostsPrefPane.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoteHostsPrefPane.m; sourceTree = "<group>"; };
 		DD92D38A0106425D02CA0E72 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
-		E1EAB045068128A200774DFF /* RemoteHosts.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = RemoteHosts.m; sourceTree = "<group>"; };
 		E1EAB047068128A800774DFF /* RemoteHosts.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = RemoteHosts.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -97,7 +95,6 @@
 				BBF5817A0B1D9D84003CFF55 /* RemoteHostsAction.h */,
 				BBF5817B0B1D9D84003CFF55 /* RemoteHostsAction.m */,
 				E1EAB047068128A800774DFF /* RemoteHosts.h */,
-				E1EAB045068128A200774DFF /* RemoteHosts.m */,
 				BBF581820B1D9DC3003CFF55 /* RemoteHostsSource.h */,
 				BBF581830B1D9DC3003CFF55 /* RemoteHostsSource.m */,
 				D4E8AC4015010C22006B2D89 /* RemoteHostsPrefPane.h */,
@@ -206,7 +203,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1EAB046068128A200774DFF /* RemoteHosts.m in Sources */,
 				BBF5817C0B1D9D84003CFF55 /* RemoteHostsAction.m in Sources */,
 				BBF581840B1D9DC3003CFF55 /* RemoteHostsSource.m in Sources */,
 				D4E8AC4215010C22006B2D89 /* RemoteHostsPrefPane.m in Sources */,
