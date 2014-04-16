@@ -17,9 +17,9 @@
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.4.0</string>
+	<string>1.4.1</string>
 	<key>CFBundleVersion</key>
-	<string>15D</string>
+	<string>15E</string>
 	<key>NSPrincipalClass</key>
 	<string>RemoteHostsSource</string>
 	<key>QSActions</key>
@@ -42,8 +42,6 @@
 			<string>GenericFileServerIcon</string>
 			<key>name</key>
 			<string>Browse with AFP</string>
-			<key>precedence</key>
-			<string>0</string>
 			<key>validatesObjects</key>
 			<true/>
 		</dict>
@@ -71,8 +69,6 @@
 			</array>
 			<key>name</key>
 			<string>Mount share with AFP…</string>
-			<key>precedence</key>
-			<string>0</string>
 			<key>validatesObjects</key>
 			<true/>
 		</dict>
@@ -95,7 +91,7 @@
 			<key>name</key>
 			<string>Browse with CIFS</string>
 			<key>precedence</key>
-			<string>0.5</string>
+			<real>0.5</real>
 			<key>validatesObjects</key>
 			<true/>
 		</dict>
@@ -124,7 +120,7 @@
 			<key>name</key>
 			<string>Mount share with CIFS…</string>
 			<key>precedence</key>
-			<string>0.5</string>
+			<real>0.5</real>
 			<key>validatesObjects</key>
 			<true/>
 		</dict>
@@ -148,8 +144,6 @@
 			<string>InternetLocationFTP</string>
 			<key>name</key>
 			<string>FTP</string>
-			<key>precedence</key>
-			<string>0</string>
 			<key>validatesObjects</key>
 			<true/>
 		</dict>
@@ -173,8 +167,6 @@
 			<string>BookmarkIcon</string>
 			<key>name</key>
 			<string>HTTP</string>
-			<key>precedence</key>
-			<string>0</string>
 			<key>validatesObjects</key>
 			<true/>
 		</dict>
@@ -198,8 +190,6 @@
 			<string>BookmarkIcon</string>
 			<key>name</key>
 			<string>HTTPS</string>
-			<key>precedence</key>
-			<string>0</string>
 			<key>validatesObjects</key>
 			<true/>
 		</dict>
@@ -245,7 +235,7 @@
 			<key>name</key>
 			<string>SSH</string>
 			<key>precedence</key>
-			<string>2</string>
+			<real>1.8</real>
 			<key>validatesObjects</key>
 			<true/>
 		</dict>
@@ -269,7 +259,7 @@
 			<key>name</key>
 			<string>SSH as root</string>
 			<key>precedence</key>
-			<string>1</string>
+			<integer>1</integer>
 			<key>validatesObjects</key>
 			<true/>
 		</dict>
@@ -299,7 +289,7 @@
 			<key>name</key>
 			<string>SSH as…</string>
 			<key>precedence</key>
-			<string>1</string>
+			<integer>1</integer>
 			<key>validatesObjects</key>
 			<true/>
 		</dict>
@@ -322,8 +312,6 @@
 			<string>com.apple.Terminal</string>
 			<key>name</key>
 			<string>Telnet</string>
-			<key>precedence</key>
-			<string>0</string>
 			<key>validatesObjects</key>
 			<true/>
 		</dict>
@@ -351,8 +339,6 @@
 			</array>
 			<key>name</key>
 			<string>Telnet to port…</string>
-			<key>precedence</key>
-			<string>0</string>
 			<key>validatesObjects</key>
 			<true/>
 		</dict>
@@ -374,8 +360,6 @@
 			<string>InternetLocationVNC</string>
 			<key>name</key>
 			<string>Screen Sharing (VNC)</string>
-			<key>precedence</key>
-			<string>0</string>
 			<key>validatesObjects</key>
 			<true/>
 		</dict>
@@ -397,8 +381,6 @@
 			<string>com.apple.xserve</string>
 			<key>name</key>
 			<string>Use as Remote Host</string>
-			<key>precedence</key>
-			<string>0</string>
 			<key>validatesObjects</key>
 			<false/>
 		</dict>
@@ -422,8 +404,6 @@
 			<string>InternetLocationFTP</string>
 			<key>name</key>
 			<string>Get FTP URL</string>
-			<key>precedence</key>
-			<string>0</string>
 			<key>validatesObjects</key>
 			<true/>
 		</dict>
@@ -447,8 +427,6 @@
 			<string>BookmarkIcon</string>
 			<key>name</key>
 			<string>Get HTTPS URL</string>
-			<key>precedence</key>
-			<string>0</string>
 			<key>validatesObjects</key>
 			<true/>
 		</dict>
@@ -472,8 +450,6 @@
 			<string>BookmarkIcon</string>
 			<key>name</key>
 			<string>Get HTTP URL</string>
-			<key>precedence</key>
-			<string>0</string>
 			<key>validatesObjects</key>
 			<true/>
 		</dict>
@@ -516,8 +492,6 @@
 			<string>net.sf.cord</string>
 			<key>name</key>
 			<string>MS Remote Desktop</string>
-			<key>precedence</key>
-			<string>0</string>
 			<key>validatesObjects</key>
 			<true/>
 		</dict>
