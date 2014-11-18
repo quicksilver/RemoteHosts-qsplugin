@@ -270,7 +270,7 @@
 			<key>actionSelector</key>
 			<string>connectAsUser:withUserName:</string>
 			<key>commandFormat</key>
-			<string>ssh %@ -l %@</string>
+			<string>ssh %2$@@%1$@</string>
 			<key>directTypes</key>
 			<array>
 				<string>QSRemoteHostsType</string>
