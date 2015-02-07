@@ -24,6 +24,7 @@
 		D486258E18B4646B00D8CAE4 /* unix-linux.png in Resources */ = {isa = PBXBuildFile; fileRef = D486258218B4646B00D8CAE4 /* unix-linux.png */; };
 		D486258F18B4646B00D8CAE4 /* windows.png in Resources */ = {isa = PBXBuildFile; fileRef = D486258318B4646B00D8CAE4 /* windows.png */; };
 		D4A4D7CD15094C8100A44C3C /* QSObjectSource.name.strings in Resources */ = {isa = PBXBuildFile; fileRef = D4A4D7CC15094C8100A44C3C /* QSObjectSource.name.strings */; };
+		D4D686261A840DC700E082E0 /* SSHKeySource.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D686251A840DC700E082E0 /* SSHKeySource.m */; };
 		D4E8AC3F150108A4006B2D89 /* RemoteHostsPrefPane.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4E8AC3E150108A4006B2D89 /* RemoteHostsPrefPane.xib */; };
 		D4E8AC4215010C22006B2D89 /* RemoteHostsPrefPane.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E8AC4115010C22006B2D89 /* RemoteHostsPrefPane.m */; };
 /* End PBXBuildFile section */
@@ -55,6 +56,8 @@
 		D486258218B4646B00D8CAE4 /* unix-linux.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "unix-linux.png"; sourceTree = "<group>"; };
 		D486258318B4646B00D8CAE4 /* windows.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = windows.png; sourceTree = "<group>"; };
 		D4A4D7CC15094C8100A44C3C /* QSObjectSource.name.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = QSObjectSource.name.strings; sourceTree = "<group>"; };
+		D4D686241A840DC700E082E0 /* SSHKeySource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSHKeySource.h; sourceTree = "<group>"; };
+		D4D686251A840DC700E082E0 /* SSHKeySource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSHKeySource.m; sourceTree = "<group>"; };
 		D4E8AC3E150108A4006B2D89 /* RemoteHostsPrefPane.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RemoteHostsPrefPane.xib; sourceTree = "<group>"; };
 		D4E8AC4015010C22006B2D89 /* RemoteHostsPrefPane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteHostsPrefPane.h; sourceTree = "<group>"; };
 		D4E8AC4115010C22006B2D89 /* RemoteHostsPrefPane.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoteHostsPrefPane.m; sourceTree = "<group>"; };
@@ -124,6 +127,8 @@
 				BBF581830B1D9DC3003CFF55 /* RemoteHostsSource.m */,
 				D4E8AC4015010C22006B2D89 /* RemoteHostsPrefPane.h */,
 				D4E8AC4115010C22006B2D89 /* RemoteHostsPrefPane.m */,
+				D4D686241A840DC700E082E0 /* SSHKeySource.h */,
+				D4D686251A840DC700E082E0 /* SSHKeySource.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -260,6 +265,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BBF5817C0B1D9D84003CFF55 /* RemoteHostsAction.m in Sources */,
+				D4D686261A840DC700E082E0 /* SSHKeySource.m in Sources */,
 				BBF581840B1D9DC3003CFF55 /* RemoteHostsSource.m in Sources */,
 				D4E8AC4215010C22006B2D89 /* RemoteHostsPrefPane.m in Sources */,
 			);

@@ -1,3 +1,5 @@
+# Remote Hosts #
+
 ## A Quicksilver plug-in for dealing with a large number of computers ##
 
 Given a text file with a list of machines in it (either hostname, Fully Qualified Domain Name, or IP address), this plug-in indexes them as "remote host" objects and provides the following actions:
@@ -84,7 +86,7 @@ The plug-in scans for items on each host's line that look like this: `key:value`
 
 You can optionally pull hosts from `~/.ssh/known_hosts`. There is a preset (disabled by default) under "Remote Hosts" in the Plugins section of the Catalog. If you want to get hosts from an arbitrary file, add a new custom catalog entry and choose "Remote Hosts" from the drop-down, then choose the file for the new entry.
 
-### Preferences ###
+## Preferences ##
 
 Display Hostnames
   : If hosts are defined using their fully qualified domain names, you can choose to display only the hostname in the main interface.
@@ -117,6 +119,12 @@ See the `ssh_config(5)` man page for details.
 For **iTerm** users, the SSH and Telnet actions are intentionally not specific to Terminal. They simply send an address to the OS to be opened. Configure your system to open `ssh://` and `telnet://` locations using iTerm if you want to use that instead of Terminal.
 
 Finally, don't forget the "comma trick". You can select multiple hosts using the comma or ⌘A, then connect to them all at once.
+
+## SSH Keys ##
+
+You can optionally add your SSH public keys to the catalog by enabling the preset in your Catalog preferences. This makes it easy to paste the key to a remote machine, or into a message to a remote sysadmin.
+
+If the key has a descriptive comment, that will be used as its name. Otherwise, the file name will be used.
 
 * * * * * * * * * *
 

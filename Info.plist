@@ -17,9 +17,9 @@
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.4.1</string>
+	<string>1.5.0</string>
 	<key>CFBundleVersion</key>
-	<string>15E</string>
+	<string>15F</string>
 	<key>NSPrincipalClass</key>
 	<string>RemoteHostsSource</string>
 	<key>QSActions</key>
@@ -518,7 +518,8 @@
 		<key>description</key>
 		<string>Provides actions that can be taken on computers</string>
 		<key>extendedDescription</key>
-		<string>&lt;h2&gt;A Quicksilver plug-in for dealing with a large number of computers&lt;/h2&gt;
+		<string>&lt;h1&gt;Remote Hosts&lt;/h1&gt;
+&lt;h2&gt;A Quicksilver plug-in for dealing with a large number of computers&lt;/h2&gt;
 &lt;p&gt;Given a text file with a list of machines in it (either hostname, Fully Qualified Domain Name, or IP address), this plug-in indexes them as "remote host" objects and provides the following actions:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;SSH&lt;/li&gt;
@@ -619,7 +620,7 @@ webhost2 groups:Web
 &lt;li&gt;&lt;code&gt;groups&lt;/code&gt;: A comma separated list of groups you want the host to belong to. Names can't contain spaces at this time. More information on using groups can be found under Tips.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;You can optionally pull hosts from &lt;code&gt;~/.ssh/known_hosts&lt;/code&gt;. There is a preset (disabled by default) under "Remote Hosts" in the Plugins section of the Catalog. If you want to get hosts from an arbitrary file, add a new custom catalog entry and choose "Remote Hosts" from the drop-down, then choose the file for the new entry.&lt;/p&gt;
-&lt;h3&gt;Preferences&lt;/h3&gt;
+&lt;h2&gt;Preferences&lt;/h2&gt;
 &lt;dl&gt;
 &lt;dt&gt;Display Hostnames&lt;/dt&gt;
 &lt;dd&gt;
@@ -647,6 +648,9 @@ webhost2 groups:Web
 &lt;p&gt;See the &lt;code&gt;ssh_config(5)&lt;/code&gt; man page for details.&lt;/p&gt;
 &lt;p&gt;For &lt;strong&gt;iTerm&lt;/strong&gt; users, the SSH and Telnet actions are intentionally not specific to Terminal. They simply send an address to the OS to be opened. Configure your system to open &lt;code&gt;ssh://&lt;/code&gt; and &lt;code&gt;telnet://&lt;/code&gt; locations using iTerm if you want to use that instead of Terminal.&lt;/p&gt;
 &lt;p&gt;Finally, don't forget the "comma trick". You can select multiple hosts using the comma or ⌘A, then connect to them all at once.&lt;/p&gt;
+&lt;h2&gt;SSH Keys&lt;/h2&gt;
+&lt;p&gt;You can optionally add your SSH public keys to the catalog by enabling the preset in your Catalog preferences. This makes it easy to paste the key to a remote machine, or into a message to a remote sysadmin.&lt;/p&gt;
+&lt;p&gt;If the key has a descriptive comment, that will be used as its name. Otherwise, the file name will be used.&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;This plug-in uses icons from the &lt;a href="http://openiconlibrary.sourceforge.net/"&gt;Open Icon Library&lt;/a&gt;.&lt;/p&gt;</string>
 		<key>icon</key>
@@ -702,6 +706,18 @@ webhost2 groups:Web
 					<key>source</key>
 					<string>QSRemoteHostsSource</string>
 				</dict>
+				<dict>
+					<key>ID</key>
+					<string>QSPresetSSHPublicKeys</string>
+					<key>enabled</key>
+					<false/>
+					<key>icon</key>
+					<string>com.apple.keychainaccess</string>
+					<key>name</key>
+					<string>SSH Public Keys</string>
+					<key>source</key>
+					<string>SSHKeySource</string>
+				</dict>
 			</array>
 			<key>enabled</key>
 			<true/>
@@ -736,6 +752,8 @@ webhost2 groups:Web
 		<dict>
 			<key>QSRemoteHostsSource</key>
 			<string>QSRemoteHostsSource</string>
+			<key>SSHKeySource</key>
+			<string>SSHKeySource</string>
 		</dict>
 		<key>QSPreferencePanes</key>
 		<dict>
