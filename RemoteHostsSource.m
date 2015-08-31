@@ -224,7 +224,7 @@
 	[settings setObject:[[hostsFilePath stringValue] lastPathComponent] forKey:kItemName];
 	[currentEntry setObject:[NSNumber numberWithFloat:[NSDate timeIntervalSinceReferenceDate]] forKey:kItemModificationDate];
 	[self populateFields];
-	[[NSNotificationCenter defaultCenter] postNotificationName:QSCatalogEntryChanged object:[self currentEntry]];
+	[[NSNotificationCenter defaultCenter] postNotificationName:QSCatalogEntryChangedNotification object:[self currentEntry]];
 }
 
 - (void)populateFields
