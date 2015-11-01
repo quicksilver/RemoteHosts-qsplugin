@@ -1,0 +1,2 @@
+@interface SSHConfigSource : QSObjectSource
+@end
