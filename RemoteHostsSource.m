@@ -83,12 +83,7 @@
     
     // read in hosts, one per line
     NSArray *lines = [hostsSource lines];
-    // check for valid hostnames with a regex
-    // valid characters are a-z, 0-9, '.', and '-'
-    // must begin with a letter or digit, can contain '-', and can end with '.'
-    // in addition, allow hosts to end with colon and port number
-    NSString *hostRegEx = @"^[[:letter:][:number:]][[:letter:][:number:]\\-\\.]*[[:letter:][:number:]\\.](:[:number:]{1,5})?$";
-    NSPredicate *regextest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", hostRegEx];
+    NSPredicate *regextest = predicateForValidHostname();
     // a place to store groups as they're discovered
     NSMutableDictionary *groups = [[NSMutableDictionary alloc] init];
 	[lines enumerateObjectsUsingBlock:^(NSString *line, NSUInteger i, BOOL *stop) {
@@ -97,16 +92,16 @@
 			// allow other metadata in the file, separated by whitespace
 			// hostname or FQDN should be the first thing on the line
 			NSArray *lineParts = [line componentsSeparatedByString:@" "];
-			// ~/.ssh/known_hosts could be host or host,ip
+        	// ~/.ssh/known_hosts could be host or host,ip
 			// to support that file, split on comma
 			NSArray *hostParts = [[lineParts objectAtIndex:0] componentsSeparatedByString:@","];
-			NSString *host = [hostParts objectAtIndex:0];
-			if ([regextest evaluateWithObject:host])
+        	NSString *host = [hostParts objectAtIndex:0];
+        	if ([regextest evaluateWithObject:host])
 			{
 				// this looks like a valid hostname
-				NSString *ident = [NSString stringWithFormat:@"remote-host-%@", host];
 				// build a QSObject
 				QSObject *newObject = [QSObject objectWithName:host];
+                NSString* ident = identifierForHost(host);
 				[newObject setIdentifier:ident];
 				[newObject setObject:host forType:QSRemoteHostsType];
 				// this type allows paste, large type, e-mail, IM, etc
@@ -152,16 +147,11 @@
 				}
 				// the "details" string appears in smaller text below the object in the UI
 				[newObject setDetails:[NSString stringWithFormat:@"%@ (%@ Host)", host, hostType]];
-                // figure out what the label should be
-                BOOL displayHostname = [[NSUserDefaults standardUserDefaults] boolForKey:kDisplayHostname];
-                NSString *hostname = displayHostname ? [host componentsSeparatedByString:@"."][0] : host;
 				NSString *labelExtra = [newObject objectForMeta:@"label"];
 				if (labelExtra)
 				{
-					[newObject setLabel:[NSString stringWithFormat:@"%@ • %@", hostname, labelExtra]];
-				} else if (displayHostname) {
-                    [newObject setLabel:hostname];
-                }
+					[newObject setLabel:[NSString stringWithFormat:@"%@ • %@", host, labelExtra]];
+				}
 				
 				// if the object is OK, add it to the list
 				if (newObject)
@@ -185,7 +175,7 @@
 	    
     [groups release];
     groups = nil;
-    return objects;
+    return sortQSObjects(objects);
 }
 
 // this method gets the path for a file to scan from an Info.plist

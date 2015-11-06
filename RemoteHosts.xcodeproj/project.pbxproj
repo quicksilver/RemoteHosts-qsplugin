@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		855287391BE96776003022D2 /* RemoteHosts.m in Sources */ = {isa = PBXBuildFile; fileRef = 855287381BE96776003022D2 /* RemoteHosts.m */; };
 		857EFB691BE6C71D00ABFBB3 /* SSHConfigSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 857EFB681BE6C71D00ABFBB3 /* SSHConfigSource.m */; };
 		8D1AC9700486D14A00FE50C9 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD92D38A0106425D02CA0E72 /* Cocoa.framework */; };
 		BBF5817C0B1D9D84003CFF55 /* RemoteHostsAction.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF5817B0B1D9D84003CFF55 /* RemoteHostsAction.m */; };
@@ -31,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		855287381BE96776003022D2 /* RemoteHosts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoteHosts.m; sourceTree = "<group>"; };
 		857EFB671BE6C71D00ABFBB3 /* SSHConfigSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSHConfigSource.h; sourceTree = "<group>"; };
 		857EFB681BE6C71D00ABFBB3 /* SSHConfigSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSHConfigSource.m; sourceTree = "<group>"; };
 		8D1AC9730486D14A00FE50C9 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 				BBF5817A0B1D9D84003CFF55 /* RemoteHostsAction.h */,
 				BBF5817B0B1D9D84003CFF55 /* RemoteHostsAction.m */,
 				E1EAB047068128A800774DFF /* RemoteHosts.h */,
+				855287381BE96776003022D2 /* RemoteHosts.m */,
 				BBF581820B1D9DC3003CFF55 /* RemoteHostsSource.h */,
 				BBF581830B1D9DC3003CFF55 /* RemoteHostsSource.m */,
 				D4E8AC4015010C22006B2D89 /* RemoteHostsPrefPane.h */,
@@ -274,6 +277,7 @@
 				BBF581840B1D9DC3003CFF55 /* RemoteHostsSource.m in Sources */,
 				857EFB691BE6C71D00ABFBB3 /* SSHConfigSource.m in Sources */,
 				D4E8AC4215010C22006B2D89 /* RemoteHostsPrefPane.m in Sources */,
+				855287391BE96776003022D2 /* RemoteHosts.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -15,3 +15,22 @@
 #define kDisplayHostname @"RemoteHostsDisplayHostname"
 #define kQSMetaOSType @"ostype"
 #define kQSMetaGroupMembers @"members"
+
+/**
+ * returns a predicate, that checks for valid hostnames.
+ * valid characters are a-z, 0-9, '.', and '-'
+ * must begin with a letter or digit, can contain '-', and can end with '.'
+ * in addition, allow hosts to end with colon and port number
+ */
+NSPredicate* predicateForValidHostname();
+
+/**
+ * calcs the identifier that is used for a host throughout the remote hosts plugin
+ */
+NSString* identifierForHost(NSString* host);
+
+/**
+ * sorts the NSObject-arrays alphabetical after the name
+ */
+NSMutableArray* sortQSObjects(NSMutableArray* objects);
+
