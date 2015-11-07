@@ -25,3 +25,25 @@ NSMutableArray* sortQSObjects(NSMutableArray* objects) {
     }];
   return objects;
 }
+
+QSObject* hostObjectForSource(NSString* hostName, NSString* source) {
+  QSObject* result = [QSObject objectWithName:hostName];
+  [result setObject:source forMeta:@"source"];
+  [result setIdentifier:identifierForHost(hostName)];
+  [result setPrimaryType:QSRemoteHostsType];
+  [result setObject:hostName forType:QSRemoteHostsType];
+
+  // this type allows paste, large type, e-mail, IM, etc
+  [result setObject:hostName forType:QSTextType];
+  return result;
+}
+
+BOOL isFromCurrentSource(NSString* hostName, NSString* source) {
+  QSObject* candidate = [QSLib objectWithIdentifier:identifierForHost(hostName)];
+  NSString* sourceOfEntry = [candidate objectForMeta:@"source"];
+  if (!sourceOfEntry) {
+    // qsobjects without source are overwritten
+    return YES;
+  }
+  return [sourceOfEntry isEqualToString:source];
+}

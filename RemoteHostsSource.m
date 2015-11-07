@@ -100,13 +100,8 @@
 			{
 				// this looks like a valid hostname
 				// build a QSObject
-				QSObject *newObject = [QSObject objectWithName:host];
-                NSString* ident = identifierForHost(host);
-				[newObject setIdentifier:ident];
-				[newObject setObject:host forType:QSRemoteHostsType];
-				// this type allows paste, large type, e-mail, IM, etc
-				[newObject setObject:host forType:QSTextType];
-				[newObject setPrimaryType:QSRemoteHostsType];
+                QSObject *newObject = hostObjectForSource(host, @"RemoteHostsSource");
+                [newObject setObject:@"RemoteHostsSource" forMeta:@"source"];
 				// add some metadata
 				if([lineParts count] > 1)
 				{
@@ -132,7 +127,7 @@
 							if (![groups objectForKey:groupName]) {
 								[groups setObject:[NSMutableArray arrayWithCapacity:1] forKey:groupName];
 							}
-							[[groups objectForKey:groupName] addObject:ident];
+							[[groups objectForKey:groupName] addObject:[newObject identifier]];
 						}
 					}
 				}

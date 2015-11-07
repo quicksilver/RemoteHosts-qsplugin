@@ -25,12 +25,16 @@
 NSPredicate* predicateForValidHostname();
 
 /**
- * calcs the identifier that is used for a host throughout the remote hosts plugin
- */
-NSString* identifierForHost(NSString* host);
-
-/**
  * sorts the NSObject-arrays alphabetical after the name
  */
 NSMutableArray* sortQSObjects(NSMutableArray* objects);
 
+/**
+ * creates a qsobject for a host and initializes the source meta data to the given string.
+ */
+QSObject* hostObjectForSource(NSString* hostName, NSString* source);
+
+/**
+ * checks if another source has already defined an entry for host.
+ */
+BOOL isFromCurrentSource(NSString* host, NSString* currentSource);

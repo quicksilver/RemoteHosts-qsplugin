@@ -28,17 +28,17 @@ NSArray* hostsFromMatch(NSTextCheckingResult *result, NSString *sshConfig) {
     return res;
   }
 
+  NSString* sourceId = @"SSHConfigSource";
   [hostRegex() enumerateMatchesInString:sshConfig
                                 options:0
                                   range:NSMakeRange(0, [sshConfig length])
                              usingBlock:^(NSTextCheckingResult * match, NSMatchingFlags flags, BOOL * stop) {
       NSArray *hosts = hostsFromMatch(match, sshConfig);
       for (NSString *hostName in hosts) {
-        QSObject *hostEntry = [QSObject objectWithName:hostName];
-        [hostEntry setIdentifier:identifierForHost(hostName)];
-        [hostEntry setObject:hostName forType:QSRemoteHostsType];
-        [hostEntry setObject:hostName forType:QSTextType];
-        [hostEntry setPrimaryType:QSRemoteHostsType];
+        if (!isFromCurrentSource(hostName, sourceId)) {
+          continue;
+        }
+        QSObject *hostEntry = hostObjectForSource(hostName, [sourceId retain]);
         [hostEntry setDetails:@"Host in ~/.ssh/config"];
         [res addObject:hostEntry];
       }
