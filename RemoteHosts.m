@@ -35,6 +35,10 @@ QSObject* hostObjectForSource(NSString* fqdn, NSString* source) {
 
   // this type allows paste, large type, e-mail, IM, etc
   [result setObject:fqdn forType:QSTextType];
+  // figure out what the label should be
+  BOOL displayHostname = [[NSUserDefaults standardUserDefaults] boolForKey:kDisplayHostname];
+  NSString *hostname = displayHostname ? [fqdn componentsSeparatedByString:@"."][0] : fqdn;
+  [result setLabel:hostname];
   return result;
 }
 

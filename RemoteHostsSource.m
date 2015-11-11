@@ -145,7 +145,7 @@
 				NSString *labelExtra = [newObject objectForMeta:@"label"];
 				if (labelExtra)
 				{
-					[newObject setLabel:[NSString stringWithFormat:@"%@ • %@", host, labelExtra]];
+					[newObject setLabel:[NSString stringWithFormat:@"%@ • %@", [newObject displayName], labelExtra]];
 				}
 				
 				// if the object is OK, add it to the list
