@@ -1,17 +1,17 @@
 #import "SSHConfigSource.h"
 
-NSString* getConfigPath() {
+NSString *getConfigPath() {
 	return [@"~/.ssh/config" stringByExpandingTildeInPath];
 }
 
-NSRegularExpression* hostRegex() {
+NSRegularExpression *hostRegex() {
 	return [NSRegularExpression
 					 regularExpressionWithPattern:@"^Host (.*)$"
 																options:NSRegularExpressionUseUnixLineSeparators | NSRegularExpressionAnchorsMatchLines
 																	error:nil];
 }
 
-NSArray* hostsFromMatch(NSTextCheckingResult *result, NSString *sshConfig) {
+NSArray *hostsFromMatch(NSTextCheckingResult *result, NSString *sshConfig) {
 	NSString *hostsString = [sshConfig substringWithRange:[result rangeAtIndex:1]];
 	NSArray *hosts = [[hostsString componentsSeparatedByString:@" "]
 											filteredArrayUsingPredicate:predicateForValidHostname()];
@@ -28,7 +28,7 @@ NSArray* hostsFromMatch(NSTextCheckingResult *result, NSString *sshConfig) {
 		return res;
 	}
 
-	NSString* sourceId = @"SSHConfigSource";
+	NSString *sourceId = @"SSHConfigSource";
 	[hostRegex() enumerateMatchesInString:sshConfig
 																options:0
 																	range:NSMakeRange(0, [sshConfig length])
@@ -47,7 +47,7 @@ NSArray* hostsFromMatch(NSTextCheckingResult *result, NSString *sshConfig) {
 }
 
 - (BOOL)indexIsValidFromDate:(NSDate *)indexDate forEntry:(NSDictionary *)theEntry {
-	NSString* sshConfigPath = getConfigPath();
+	NSString *sshConfigPath = getConfigPath();
 	NSFileManager *manager = [NSFileManager defaultManager];
 	if (![manager fileExistsAtPath:sshConfigPath isDirectory:NULL]) {
 		return YES;

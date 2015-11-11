@@ -1,6 +1,6 @@
 #import "RemoteHosts.h"
 
-NSPredicate* predicateForValidHostname() {
+NSPredicate *predicateForValidHostname() {
 	NSString *hostRegEx = @"^[a-zA-Z0-9\\-\\.]*$";
 	NSRegularExpression *regex =
 		[NSRegularExpression
@@ -13,12 +13,12 @@ NSPredicate* predicateForValidHostname() {
 		}];
 }
 
-NSString* identifierForHost(NSString* host) {
+NSString *identifierForHost(NSString *host) {
 	return [NSString stringWithFormat:@"remote-host-%@", host];
 }
 
-QSObject* hostObjectForSource(NSString* fqdn, NSString* source) {
-	QSObject* result = [QSObject objectWithName:fqdn];
+QSObject *hostObjectForSource(NSString *fqdn, NSString *source) {
+	QSObject *result = [QSObject objectWithName:fqdn];
 	[result setObject:source forMeta:@"source"];
 	[result setIdentifier:identifierForHost(fqdn)];
 	[result setPrimaryType:QSRemoteHostsType];
@@ -28,14 +28,15 @@ QSObject* hostObjectForSource(NSString* fqdn, NSString* source) {
 	[result setObject:fqdn forType:QSTextType];
 	// figure out what the label should be
 	BOOL displayHostname = [[NSUserDefaults standardUserDefaults] boolForKey:kDisplayHostname];
+	// TODO detect IP addresses
 	NSString *hostname = displayHostname ? [fqdn componentsSeparatedByString:@"."][0] : fqdn;
 	[result setLabel:hostname];
 	return result;
 }
 
-BOOL isFromCurrentSource(NSString* fqdn, NSString* source) {
-	QSObject* candidate = [QSLib objectWithIdentifier:identifierForHost(fqdn)];
-	NSString* sourceOfEntry = [candidate objectForMeta:@"source"];
+BOOL isFromCurrentSource(NSString *fqdn, NSString *source) {
+	QSObject *candidate = [QSLib objectWithIdentifier:identifierForHost(fqdn)];
+	NSString *sourceOfEntry = [candidate objectForMeta:@"source"];
 	if (!sourceOfEntry) {
 		// qsobjects without source are overwritten
 		return YES;
