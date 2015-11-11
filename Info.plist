@@ -583,6 +583,7 @@
 &lt;p&gt;If you've defined a URL in the preferences that provides info for hosts, it will appear here.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
+&lt;h2&gt;Catalog Sources&lt;/h2&gt;
 &lt;p&gt;The plug-in will scan &lt;code&gt;~/.hosts&lt;/code&gt; for a list of machines by default. (You can use any file. See below.) The file is treated as UTF-8. It should contain one host per line. The hostname or FQDN should be the first thing on each line, but other metadata is allowed (separated by a single space). A port can also be specified. An example might look like this:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;server1.example.com
 server2
@@ -620,6 +621,7 @@ webhost2 groups:Web
 &lt;li&gt;&lt;code&gt;groups&lt;/code&gt;: A comma separated list of groups you want the host to belong to. Names can't contain spaces at this time. More information on using groups can be found under Tips.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;You can optionally pull hosts from &lt;code&gt;~/.ssh/known_hosts&lt;/code&gt;. There is a preset (disabled by default) under "Remote Hosts" in the Plugins section of the Catalog. If you want to get hosts from an arbitrary file, add a new custom catalog entry and choose "Remote Hosts" from the drop-down, then choose the file for the new entry.&lt;/p&gt;
+&lt;p&gt;There is also a preset named "SSH Config Hosts" that will read hosts from &lt;code&gt;~/.ssh/config&lt;/code&gt;. These hosts will be ignored if they were found in one of the other files (to preserve any metadata).&lt;/p&gt;
 &lt;h2&gt;Preferences&lt;/h2&gt;
 &lt;dl&gt;
 &lt;dt&gt;Display Hostnames&lt;/dt&gt;
