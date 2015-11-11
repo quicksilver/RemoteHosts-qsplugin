@@ -32,9 +32,9 @@ NSMutableArray* sortQSObjects(NSMutableArray* objects);
 /**
  * creates a qsobject for a host and initializes the source meta data to the given string.
  */
-QSObject* hostObjectForSource(NSString* hostName, NSString* source);
+QSObject* hostObjectForSource(NSString* fqdn, NSString* source);
 
 /**
  * checks if another source has already defined an entry for host.
  */
-BOOL isFromCurrentSource(NSString* host, NSString* currentSource);
+BOOL isFromCurrentSource(NSString* fqdn, NSString* currentSource);

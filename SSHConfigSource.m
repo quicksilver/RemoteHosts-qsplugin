@@ -34,11 +34,11 @@ NSArray* hostsFromMatch(NSTextCheckingResult *result, NSString *sshConfig) {
                                   range:NSMakeRange(0, [sshConfig length])
                              usingBlock:^(NSTextCheckingResult * match, NSMatchingFlags flags, BOOL * stop) {
       NSArray *hosts = hostsFromMatch(match, sshConfig);
-      for (NSString *hostName in hosts) {
-        if (!isFromCurrentSource(hostName, sourceId)) {
+      for (NSString *host in hosts) {
+        if (!isFromCurrentSource(host, sourceId)) {
           continue;
         }
-        QSObject *hostEntry = hostObjectForSource(hostName, [sourceId retain]);
+        QSObject *hostEntry = hostObjectForSource(host, [sourceId retain]);
         [hostEntry setDetails:@"Host in ~/.ssh/config"];
         [res addObject:hostEntry];
       }
