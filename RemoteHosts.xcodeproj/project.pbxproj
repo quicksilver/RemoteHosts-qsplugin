@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		855287391BE96776003022D2 /* RemoteHosts.m in Sources */ = {isa = PBXBuildFile; fileRef = 855287381BE96776003022D2 /* RemoteHosts.m */; };
+		857EFB691BE6C71D00ABFBB3 /* SSHConfigSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 857EFB681BE6C71D00ABFBB3 /* SSHConfigSource.m */; };
 		8D1AC9700486D14A00FE50C9 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD92D38A0106425D02CA0E72 /* Cocoa.framework */; };
 		BBF5817C0B1D9D84003CFF55 /* RemoteHostsAction.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF5817B0B1D9D84003CFF55 /* RemoteHostsAction.m */; };
 		BBF581840B1D9DC3003CFF55 /* RemoteHostsSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF581830B1D9DC3003CFF55 /* RemoteHostsSource.m */; };
@@ -30,6 +32,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		855287381BE96776003022D2 /* RemoteHosts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoteHosts.m; sourceTree = "<group>"; };
+		857EFB671BE6C71D00ABFBB3 /* SSHConfigSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSHConfigSource.h; sourceTree = "<group>"; };
+		857EFB681BE6C71D00ABFBB3 /* SSHConfigSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSHConfigSource.m; sourceTree = "<group>"; };
 		8D1AC9730486D14A00FE50C9 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8D1AC9740486D14A00FE50C9 /* Remote Hosts Plugin.qsplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Remote Hosts Plugin.qsplugin"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBF5817A0B1D9D84003CFF55 /* RemoteHostsAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteHostsAction.h; sourceTree = "<group>"; };
@@ -123,12 +128,15 @@
 				BBF5817A0B1D9D84003CFF55 /* RemoteHostsAction.h */,
 				BBF5817B0B1D9D84003CFF55 /* RemoteHostsAction.m */,
 				E1EAB047068128A800774DFF /* RemoteHosts.h */,
+				855287381BE96776003022D2 /* RemoteHosts.m */,
 				BBF581820B1D9DC3003CFF55 /* RemoteHostsSource.h */,
 				BBF581830B1D9DC3003CFF55 /* RemoteHostsSource.m */,
 				D4E8AC4015010C22006B2D89 /* RemoteHostsPrefPane.h */,
 				D4E8AC4115010C22006B2D89 /* RemoteHostsPrefPane.m */,
 				D4D686241A840DC700E082E0 /* SSHKeySource.h */,
 				D4D686251A840DC700E082E0 /* SSHKeySource.m */,
+				857EFB671BE6C71D00ABFBB3 /* SSHConfigSource.h */,
+				857EFB681BE6C71D00ABFBB3 /* SSHConfigSource.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -195,7 +203,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = NO;
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = "Skurfers' Alliance";
 			};
 			buildConfigurationList = 7F6B3EEF085CE8DF000735A8 /* Build configuration list for PBXProject "RemoteHosts" */;
@@ -267,7 +275,9 @@
 				BBF5817C0B1D9D84003CFF55 /* RemoteHostsAction.m in Sources */,
 				D4D686261A840DC700E082E0 /* SSHKeySource.m in Sources */,
 				BBF581840B1D9DC3003CFF55 /* RemoteHostsSource.m in Sources */,
+				857EFB691BE6C71D00ABFBB3 /* SSHConfigSource.m in Sources */,
 				D4E8AC4215010C22006B2D89 /* RemoteHostsPrefPane.m in Sources */,
+				855287391BE96776003022D2 /* RemoteHosts.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,6 +288,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D44D8094149A467C002EA077 /* QSPlugIn.xcconfig */;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 			};
 			name = Debug;
@@ -286,6 +297,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D44D8094149A467C002EA077 /* QSPlugIn.xcconfig */;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 			};
 			name = Release;
@@ -294,6 +306,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D44D8092149A467C002EA077 /* Debug.xcconfig */;
 			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				ONLY_ACTIVE_ARCH = YES;
 			};
 			name = Debug;
 		};
@@ -301,6 +315,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D44D8098149A467C002EA077 /* Release.xcconfig */;
 			buildSettings = {
+				PRODUCT_NAME = ttt;
 			};
 			name = Release;
 		};

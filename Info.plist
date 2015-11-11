@@ -19,7 +19,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.5.1</string>
 	<key>CFBundleVersion</key>
-	<string>161</string>
+	<string>162</string>
 	<key>NSPrincipalClass</key>
 	<string>RemoteHostsSource</string>
 	<key>QSActions</key>
@@ -718,6 +718,18 @@ webhost2 groups:Web
 					<key>source</key>
 					<string>SSHKeySource</string>
 				</dict>
+				<dict>
+					<key>ID</key>
+					<string>QSSSHConfigHostsSource</string>
+					<key>enabled</key>
+					<true/>
+					<key>icon</key>
+					<string>com.apple.xserve</string>
+					<key>name</key>
+					<string>SSH Config Hosts</string>
+					<key>source</key>
+					<string>SSHConfigSource</string>
+				</dict>
 			</array>
 			<key>enabled</key>
 			<true/>
@@ -752,6 +764,8 @@ webhost2 groups:Web
 		<dict>
 			<key>QSRemoteHostsSource</key>
 			<string>QSRemoteHostsSource</string>
+			<key>SSHConfigSource</key>
+			<string>SSHConfigSource</string>
 			<key>SSHKeySource</key>
 			<string>SSHKeySource</string>
 		</dict>
