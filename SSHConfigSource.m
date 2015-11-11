@@ -43,7 +43,7 @@ NSArray* hostsFromMatch(NSTextCheckingResult *result, NSString *sshConfig) {
         [res addObject:hostEntry];
       }
     }];
-  return sortQSObjects(res);
+  return res;
 }
 
 - (BOOL)indexIsValidFromDate:(NSDate *)indexDate forEntry:(NSDictionary *)theEntry {

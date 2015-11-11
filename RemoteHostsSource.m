@@ -170,7 +170,7 @@
 	    
     [groups release];
     groups = nil;
-    return sortQSObjects(objects);
+    return objects;
 }
 
 // this method gets the path for a file to scan from an Info.plist

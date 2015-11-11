@@ -25,11 +25,6 @@
 NSPredicate* predicateForValidHostname();
 
 /**
- * sorts the NSObject-arrays alphabetical after the name
- */
-NSMutableArray* sortQSObjects(NSMutableArray* objects);
-
-/**
  * creates a qsobject for a host and initializes the source meta data to the given string.
  */
 QSObject* hostObjectForSource(NSString* fqdn, NSString* source);

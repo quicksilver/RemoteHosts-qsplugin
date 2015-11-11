@@ -17,15 +17,6 @@ NSString* identifierForHost(NSString* host) {
   return [NSString stringWithFormat:@"remote-host-%@", host];
 }
 
-NSMutableArray* sortQSObjects(NSMutableArray* objects) {
-  [objects sortUsingComparator:^NSComparisonResult(id obj1, id obj2) {
-      QSObject* o1 = obj1;
-      QSObject* o2 = obj2;
-      return [[o1 name] compare:[o2 name]];
-    }];
-  return objects;
-}
-
 QSObject* hostObjectForSource(NSString* fqdn, NSString* source) {
   QSObject* result = [QSObject objectWithName:fqdn];
   [result setObject:source forMeta:@"source"];
