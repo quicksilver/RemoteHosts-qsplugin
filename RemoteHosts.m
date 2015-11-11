@@ -2,15 +2,13 @@
 
 NSPredicate *predicateForValidHostname() {
 	NSString *hostRegEx = @"^[a-zA-Z0-9\\-\\.]*$";
-	NSRegularExpression *regex =
-		[NSRegularExpression
+	NSRegularExpression *regex = [NSRegularExpression
 						regularExpressionWithPattern:hostRegEx
-																 options:NSRegularExpressionUseUnixLineSeparators | NSRegularExpressionAnchorsMatchLines
-																	 error:nil];
-	return [NSPredicate predicateWithBlock:^BOOL(id evaluatedObject,
-																							 NSDictionary<NSString*,id>* bindings) {
-			return [regex firstMatchInString:evaluatedObject options:0 range:NSMakeRange(0, [evaluatedObject length])] != nil;
-		}];
+						options:NSRegularExpressionUseUnixLineSeparators | NSRegularExpressionAnchorsMatchLines
+						error:nil];
+	return [NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary<NSString*,id>* bindings) {
+		return [regex firstMatchInString:evaluatedObject options:0 range:NSMakeRange(0, [evaluatedObject length])] != nil;
+	}];
 }
 
 NSString *identifierForHost(NSString *host) {
