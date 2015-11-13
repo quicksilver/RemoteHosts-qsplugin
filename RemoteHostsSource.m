@@ -291,7 +291,7 @@
             } else {
                 nameForURL = hostName;
             }
-            NSString *infoURL = [infoURLtemplate stringByReplacing:@"***" with:nameForURL];
+            NSString *infoURL = [infoURLtemplate stringByReplacingOccurrencesOfString:@"***" withString:nameForURL];
             QSObject *hostInfo = [QSObject URLObjectWithURL:infoURL title:@"Host Info"];
             [hostInfo setIcon:[QSResourceManager imageNamed:@"ToolbarInfo"]];
             [children addObject:hostInfo];
@@ -329,7 +329,7 @@
         // get the individual QSObjects for hosts in this group
         QSObject *host;
         for (NSString *ident in [object objectForMeta:@"members"]) {
-            host = [QSObject objectWithIdentifier:ident];
+            host = [QSLib objectWithIdentifier:ident];
             if (host) {
                 [children addObject:host];
             }

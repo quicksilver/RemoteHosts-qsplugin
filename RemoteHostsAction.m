@@ -68,7 +68,7 @@
         NSMutableArray *hosts = [NSMutableArray arrayWithCapacity:1];
         QSObject *host;
         for (NSString *hostID in [object objectForMeta:@"members"]) {
-            host = [QSObject objectWithIdentifier:hostID];
+            host = [QSLib objectWithIdentifier:hostID];
             if (host) {
                 [hosts addObject:[host objectForType:QSRemoteHostsType]];
             }
@@ -356,11 +356,14 @@
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *infoURLtemplate = [defaults objectForKey:kInfoURL];
     NSString *infoURL;
-    for (NSString *hostname in [dObject arrayForType:QSRemoteHostsType]) {
+    for (NSString *fqdn in [dObject arrayForType:QSRemoteHostsType]) {
+		NSString *host;
         if ([defaults boolForKey:kStripDomain]) {
-            hostname = [[hostname componentsSeparatedByString:@"."] objectAtIndex:0];
-        }
-        infoURL = [infoURLtemplate stringByReplacing:@"***" with:hostname];
+            host = [[fqdn componentsSeparatedByString:@"."] objectAtIndex:0];
+		} else {
+			host = fqdn;
+		}
+        infoURL = [infoURLtemplate stringByReplacingOccurrencesOfString:@"***" withString:host];
         [self launchConnection:infoURL];
     }
     return nil;
