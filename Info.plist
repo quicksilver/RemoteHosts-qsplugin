@@ -505,7 +505,6 @@
 &lt;li&gt;SSH&lt;/li&gt;
 &lt;li&gt;SSH as root&lt;/li&gt;
 &lt;li&gt;SSH as… [username in 3rd pane]&lt;/li&gt;
-&lt;li&gt;Mobile Shell (requires a Terminal plug-in)&lt;/li&gt;
 &lt;li&gt;Telnet&lt;/li&gt;
 &lt;li&gt;Telnet to port… [port number in 3rd pane]&lt;/li&gt;
 &lt;li&gt;FTP&lt;/li&gt;

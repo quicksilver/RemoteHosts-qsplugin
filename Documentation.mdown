@@ -7,7 +7,6 @@ Given a text file with a list of machines in it (either hostname, Fully Qualifie
   * SSH
   * SSH as root
   * SSH as… [username in 3rd pane]
-  * Mobile Shell (requires a Terminal plug-in)
   * Telnet
   * Telnet to port… [port number in 3rd pane]
   * FTP
