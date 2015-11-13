@@ -168,7 +168,6 @@
         [objects addObject:newObject];
     }
 	    
-    [groups release];
     groups = nil;
     return objects;
 }

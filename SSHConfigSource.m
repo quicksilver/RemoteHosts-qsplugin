@@ -38,7 +38,7 @@ NSArray *hostsFromMatch(NSTextCheckingResult *result, NSString *sshConfig) {
 				if (!isFromCurrentSource(host, sourceId)) {
 					continue;
 				}
-				QSObject *hostEntry = hostObjectForSource(host, [sourceId retain]);
+				QSObject *hostEntry = hostObjectForSource(host, sourceId);
 				[hostEntry setDetails:@"Host in ~/.ssh/config"];
 				[res addObject:hostEntry];
 			}

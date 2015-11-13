@@ -12,7 +12,7 @@
 - (id)init {
     if ((self = [super init])) {
         // define what each action will work with (for validation)
-        actionCapabilities = [[NSDictionary dictionaryWithObjectsAndKeys:
+        actionCapabilities = [NSDictionary dictionaryWithObjectsAndKeys:
             [NSArray arrayWithObjects:kUnixHosts, nil], @"AFPBrowse",
             [NSArray arrayWithObjects:kUnixHosts, nil], @"AFPMount",
             [NSArray arrayWithObjects:kWindowsHosts, kUnixHosts, nil], @"CIFSBrowse",
@@ -34,20 +34,13 @@
             [NSArray arrayWithObjects:kUnixHosts, kWindowsHosts, kMultipleHosts, nil], @"GetHostInfo",
             [NSArray arrayWithObjects:kRequireCoRD, nil], @"MSRemoteDesktop",
             nil
-        ] retain];
+        ];
         // store known actions
-        actionList = [[actionCapabilities allKeys] retain];
+        actionList = [actionCapabilities allKeys];
         // no need to check for an application over and over, so do it once here
-        cordPath = [[[NSWorkspace sharedWorkspace] absolutePathForAppBundleWithIdentifier:@"net.sf.cord"] retain];
+        cordPath = [[NSWorkspace sharedWorkspace] absolutePathForAppBundleWithIdentifier:@"net.sf.cord"];
     }
     return self;
-}
-
-- (void)dealloc {
-	[actionCapabilities release];
-    [actionList release];
-	[cordPath release];
-    [super dealloc];
 }
 
 #pragma mark - helper methods

@@ -290,6 +290,7 @@
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.skurfer.Quicksilver.RemoteHosts;
 			};
 			name = Debug;
 		};
@@ -299,6 +300,7 @@
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.skurfer.Quicksilver.RemoteHosts;
 			};
 			name = Release;
 		};
@@ -306,7 +308,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D44D8092149A467C002EA077 /* Debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
 				ONLY_ACTIVE_ARCH = YES;
 			};
 			name = Debug;
@@ -315,7 +321,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D44D8098149A467C002EA077 /* Release.xcconfig */;
 			buildSettings = {
-				PRODUCT_NAME = ttt;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
 			};
 			name = Release;
 		};
