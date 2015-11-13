@@ -15,6 +15,12 @@ NSString *identifierForHost(NSString *host) {
 	return [NSString stringWithFormat:@"remote-host-%@", host];
 }
 
+BOOL isIPAddress(NSString *fqdn) {
+	NSString *ipRegEx = @"^\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}$";
+	NSRegularExpression *ipaddr = [NSRegularExpression regularExpressionWithPattern:ipRegEx options:0 error:nil];
+	return [ipaddr firstMatchInString:fqdn options:0 range:NSMakeRange(0, [fqdn length])] != nil;
+}
+
 QSObject *hostObjectForSource(NSString *fqdn, NSString *source) {
 	QSObject *result = [QSObject objectWithName:fqdn];
 	[result setObject:source forMeta:@"source"];
@@ -25,8 +31,8 @@ QSObject *hostObjectForSource(NSString *fqdn, NSString *source) {
 	// this type allows paste, large type, e-mail, IM, etc
 	[result setObject:fqdn forType:QSTextType];
 	// figure out what the label should be
-	BOOL displayHostname = [[NSUserDefaults standardUserDefaults] boolForKey:kDisplayHostname];
-	// TODO detect IP addresses
+	BOOL displayHostname = [[NSUserDefaults standardUserDefaults] boolForKey:kDisplayHostname]
+	                       && !isIPAddress(fqdn);
 	NSString *hostname = displayHostname ? [fqdn componentsSeparatedByString:@"."][0] : fqdn;
 	[result setLabel:hostname];
 	return result;

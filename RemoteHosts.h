@@ -25,6 +25,11 @@
 NSPredicate* predicateForValidHostname();
 
 /**
+ * returns whether or not the string is an IP address
+ */
+BOOL isIPAddress(NSString *fqdn);
+
+/**
  * creates a qsobject for a host and initializes the source meta data to the given string.
  */
 QSObject* hostObjectForSource(NSString* fqdn, NSString* source);
