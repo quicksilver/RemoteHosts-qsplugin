@@ -161,18 +161,6 @@
     return nil;
 }
 
-- (QSObject *)connectWithMosh:(QSObject *)dObject
-{
-    if ([QSReg respondsToSelector:@selector(preferredTerminalMediator)]) {
-        NSString *command = nil;
-        for (NSString *remoteHost in [self hostsFromQSObject:dObject]) {
-            command = [NSString stringWithFormat:@"mosh %@", remoteHost];
-            [[QSReg preferredTerminalMediator] performCommandInTerminal:command];
-        }
-    }
-    return nil;
-}
-
 - (QSObject *)connectWithTelnet:(QSObject *)dObject
 {
     // launch Telnet connection
@@ -417,11 +405,6 @@
                 // the Info URL is defined
                 [newActions addObject:action];
             }
-            continue;
-        }
-        if ([action isEqualToString:@"ConnectUsingMosh"] && ![QSReg respondsToSelector:@selector(preferredTerminalMediator)]) {
-            // no Terminal handler installed
-            // can't run commands
             continue;
         }
         NSArray *capabilities = [actionCapabilities valueForKey:action];

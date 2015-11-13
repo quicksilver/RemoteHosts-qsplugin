@@ -193,26 +193,6 @@
 			<key>validatesObjects</key>
 			<true/>
 		</dict>
-		<key>ConnectUsingMosh</key>
-		<dict>
-			<key>actionClass</key>
-			<string>QSRemoteHostsAction</string>
-			<key>actionSelector</key>
-			<string>connectWithMosh:</string>
-			<key>commandFormat</key>
-			<string>mosh %@</string>
-			<key>directTypes</key>
-			<array>
-				<string>QSRemoteHostsType</string>
-				<string>QSRemoteHostsGroupType</string>
-			</array>
-			<key>icon</key>
-			<string>com.apple.Terminal</string>
-			<key>name</key>
-			<string>Mobile Shell</string>
-			<key>validatesObjects</key>
-			<true/>
-		</dict>
 		<key>ConnectUsingSSH</key>
 		<dict>
 			<key>actionClass</key>
