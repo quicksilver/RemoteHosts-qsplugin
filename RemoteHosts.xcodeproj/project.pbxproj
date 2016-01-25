@@ -29,6 +29,7 @@
 		D4D686261A840DC700E082E0 /* SSHKeySource.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D686251A840DC700E082E0 /* SSHKeySource.m */; };
 		D4E8AC3F150108A4006B2D89 /* RemoteHostsPrefPane.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4E8AC3E150108A4006B2D89 /* RemoteHostsPrefPane.xib */; };
 		D4E8AC4215010C22006B2D89 /* RemoteHostsPrefPane.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E8AC4115010C22006B2D89 /* RemoteHostsPrefPane.m */; };
+		D4F784EA1C00B6B8006504A8 /* freebsd.png in Resources */ = {isa = PBXBuildFile; fileRef = D4F784E91C00B6B8006504A8 /* freebsd.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +67,7 @@
 		D4E8AC3E150108A4006B2D89 /* RemoteHostsPrefPane.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RemoteHostsPrefPane.xib; sourceTree = "<group>"; };
 		D4E8AC4015010C22006B2D89 /* RemoteHostsPrefPane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteHostsPrefPane.h; sourceTree = "<group>"; };
 		D4E8AC4115010C22006B2D89 /* RemoteHostsPrefPane.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoteHostsPrefPane.m; sourceTree = "<group>"; };
+		D4F784E91C00B6B8006504A8 /* freebsd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = freebsd.png; sourceTree = "<group>"; };
 		DD92D38A0106425D02CA0E72 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		E1EAB047068128A800774DFF /* RemoteHosts.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = RemoteHosts.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -161,6 +163,7 @@
 				D486257818B4646B00D8CAE4 /* bsd.png */,
 				D486257918B4646B00D8CAE4 /* debian.png */,
 				D486257A18B4646B00D8CAE4 /* fedora.png */,
+				D4F784E91C00B6B8006504A8 /* freebsd.png */,
 				D486257B18B4646B00D8CAE4 /* gentoo.png */,
 				D486257C18B4646B00D8CAE4 /* netbsd.png */,
 				D486257D18B4646B00D8CAE4 /* opensuse.png */,
@@ -239,6 +242,7 @@
 				D486258818B4646B00D8CAE4 /* netbsd.png in Resources */,
 				D486258718B4646B00D8CAE4 /* gentoo.png in Resources */,
 				D486258D18B4646B00D8CAE4 /* ubuntu.png in Resources */,
+				D4F784EA1C00B6B8006504A8 /* freebsd.png in Resources */,
 				D486258918B4646B00D8CAE4 /* opensuse.png in Resources */,
 				D486258E18B4646B00D8CAE4 /* unix-linux.png in Resources */,
 				D486258F18B4646B00D8CAE4 /* windows.png in Resources */,
