@@ -193,6 +193,54 @@
 			<key>validatesObjects</key>
 			<true/>
 		</dict>
+		<key>ConnectUsingSFTP</key>
+		<dict>
+			<key>actionClass</key>
+			<string>QSRemoteHostsAction</string>
+			<key>actionSelector</key>
+			<string>connectWithSFTP:</string>
+			<key>commandFormat</key>
+			<string>Launch SFTP to %@</string>
+			<key>directTypes</key>
+			<array>
+				<string>QSRemoteHostsType</string>
+			</array>
+			<key>displaysResult</key>
+			<false/>
+			<key>icon</key>
+			<string>InternetLocationFTP</string>
+			<key>name</key>
+			<string>SFTP</string>
+			<key>validatesObjects</key>
+			<true/>
+		</dict>
+		<key>ConnectUsingSFTPpath</key>
+		<dict>
+			<key>actionClass</key>
+			<string>QSRemoteHostsAction</string>
+			<key>actionSelector</key>
+			<string>connectWithSFTP:atPath:</string>
+			<key>commandFormat</key>
+			<string>Connect to sftp://%2$@@%1$@</string>
+			<key>directTypes</key>
+			<array>
+				<string>QSRemoteHostsType</string>
+			</array>
+			<key>displaysResult</key>
+			<false/>
+			<key>icon</key>
+			<string>InternetLocationFTP</string>
+			<key>indirectOptional</key>
+			<false/>
+			<key>indirectTypes</key>
+			<array>
+				<string>NSStringPboardType</string>
+			</array>
+			<key>name</key>
+			<string>SFTP Starting at Path…</string>
+			<key>validatesObjects</key>
+			<true/>
+		</dict>
 		<key>ConnectUsingSSH</key>
 		<dict>
 			<key>actionClass</key>
@@ -508,6 +556,8 @@
 &lt;li&gt;Telnet&lt;/li&gt;
 &lt;li&gt;Telnet to port… [port number in 3rd pane]&lt;/li&gt;
 &lt;li&gt;FTP&lt;/li&gt;
+&lt;li&gt;SFTP&lt;/li&gt;
+&lt;li&gt;SFTP Starting at Path…&lt;/li&gt;
 &lt;li&gt;HTTP&lt;/li&gt;
 &lt;li&gt;HTTPS&lt;/li&gt;
 &lt;li&gt;Screen Sharing (VNC)&lt;/li&gt;

@@ -15,6 +15,7 @@
         actionCapabilities = [NSDictionary dictionaryWithObjectsAndKeys:
             [NSArray arrayWithObjects:kUnixHosts, nil], @"AFPBrowse",
             [NSArray arrayWithObjects:kUnixHosts, nil], @"AFPMount",
+            [NSArray arrayWithObjects:kUnixHosts, nil], @"ConnectUsingSFTPpath",
             [NSArray arrayWithObjects:kWindowsHosts, kUnixHosts, nil], @"CIFSBrowse",
             [NSArray arrayWithObjects:kWindowsHosts, kUnixHosts, nil], @"CIFSMount",
             [NSArray arrayWithObjects:kUnixHosts, kMultipleHosts, nil], @"ConnectUsingSSH",
@@ -23,6 +24,7 @@
             [NSArray arrayWithObjects:kUnixHosts, kMultipleHosts, nil], @"ConnectUsingMosh",
             [NSArray arrayWithObjects:kUnixHosts, kMultipleHosts, nil], @"ConnectUsingMoshUser",
             [NSArray arrayWithObjects:kUnixHosts, kMultipleHosts, nil], @"ConnectUsingTelnet",
+            [NSArray arrayWithObjects:kUnixHosts, kMultipleHosts, nil], @"ConnectUsingSFTP",
             [NSArray arrayWithObjects:kUnixHosts, kWindowsHosts, kMultipleHosts, nil], @"ConnectUsingTelnetPort",
             [NSArray arrayWithObjects:kUnixHosts, kWindowsHosts, kMultipleHosts, nil], @"ConnectUsingFTP",
             [NSArray arrayWithObjects:kUnixHosts, kWindowsHosts, kMultipleHosts, nil], @"ConnectUsingHTTP",
@@ -206,6 +208,23 @@
         [self launchConnection:[NSString stringWithFormat:@"ftp://%@/",remoteHost]];
     
     }
+    return nil;
+}
+
+- (QSObject *)connectWithSFTP:(QSObject *)dObject
+{
+    for(NSString *remoteHost in [dObject arrayForType:QSRemoteHostsType])
+    {
+        [self launchConnection:[NSString stringWithFormat:@"sftp://%@/", remoteHost]];
+    }
+    return nil;
+}
+
+- (QSObject *)connectWithSFTP:(QSObject *)dObject atPath:(QSObject *)iObject
+{
+    NSString *remoteHost = [dObject objectForType:QSRemoteHostsType];
+    NSString *remotePath = [iObject stringValue];
+    [self launchConnection:[NSString stringWithFormat:@"sftp://%@/%@", remoteHost, remotePath]];
     return nil;
 }
 

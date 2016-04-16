@@ -10,6 +10,8 @@ Given a text file with a list of machines in it (either hostname, Fully Qualifie
   * Telnet
   * Telnet to port… [port number in 3rd pane]
   * FTP
+  * SFTP
+  * SFTP Starting at Path…
   * HTTP
   * HTTPS
   * Screen Sharing (VNC)
