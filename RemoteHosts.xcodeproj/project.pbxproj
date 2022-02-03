@@ -184,7 +184,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7F6B3EEB085CE8DF000735A8 /* Build configuration list for PBXNativeTarget "Remote Hosts Plugin" */;
 			buildPhases = (
-				E1022B2806B3475D00299BEC /* Update Version and Documentation */,
 				8D1AC9660486D14A00FE50C9 /* Resources */,
 				8D1AC96A0486D14A00FE50C9 /* Sources */,
 				8D1AC96E0486D14A00FE50C9 /* Frameworks */,
@@ -205,9 +204,13 @@
 		0259C573FE90428111CA0C5A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				BuildIndependentTargetsInParallel = NO;
 				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = "Skurfers' Alliance";
+				TargetAttributes = {
+					8D1AC9600486D14A00FE50C9 = {
+						ProvisioningStyle = Manual;
+					};
+				};
 			};
 			buildConfigurationList = 7F6B3EEF085CE8DF000735A8 /* Build configuration list for PBXProject "RemoteHosts" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -253,23 +256,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		E1022B2806B3475D00299BEC /* Update Version and Documentation */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 12;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Update Version and Documentation";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"$QS_BUILD_ROOT/Tools/bltrversion\"";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8D1AC96A0486D14A00FE50C9 /* Sources */ = {
